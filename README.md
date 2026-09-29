@@ -1,5 +1,5 @@
 # STRIDE
-[![arXiv](https://img.shields.io/badge/arXiv-coming_soon-b31b1b.svg?style=plastic)](https://arxiv.org/) [![Web](https://img.shields.io/badge/Web-STRIDE-blue.svg?style=plastic)](https://github.com/PlusLabNLP/STRIDE) [![HF](https://img.shields.io/badge/%F0%9F%A4%97-HuggingFace-yellow?style=plastic)](https://huggingface.co/)
+[![arXiv](https://img.shields.io/badge/arXiv-coming_soon-b31b1b.svg?style=plastic)](https://arxiv.org/) [![Web](https://img.shields.io/badge/Web-STRIDE-blue.svg?style=plastic)](https://github.com/Lieqi-Liu/STRIDE) [![HF](https://img.shields.io/badge/%F0%9F%A4%97-HuggingFace-yellow?style=plastic)](https://huggingface.co/)
 
 This repository contains the implementation of the paper:
 
@@ -8,20 +8,21 @@ This repository contains the implementation of the paper:
 > *Benchmark release, 2026*
 
 <p align="center">
-  <img src="./images/dataset_coverage_overview.png" style="width: 85%; margin: 0 auto; text-align: center"/>
+  <img src="./images/overview.png" style="width: 95%; margin: 0 auto; text-align: center"/>
 </p>
+<p align="center"><em>Overview of STRIDE (data · tasks · comparison). High-res vector: <a href="./images/STRIDE_v4.pdf">STRIDE_v4.pdf</a>.</em></p>
 
 ## Update
 
-- **2026.09**: Initial public release of STRIDE annotations (nuScenes v6 + Waymo v1), evaluation toolkit, and baseline leaderboard.
+- **2026.09**: Initial release of STRIDE annotations (nuScenes v6 + Waymo v1), evaluation toolkit, and baseline leaderboard.
 - **2026.09**: Mini demonstration subsets released under `STRIDE/Mini`.
 
 ## Data Preparation
 
-The instructions for downloading STRIDE are listed as follows:
+The instructions for setting up STRIDE are listed as follows:
 
-1. Clone this repository (annotations ship with the code).
-2. Download the **image** files from the upstream datasets and place them following the directory layout below:
+1. Clone this repository (question annotations ship with the code under `STRIDE/`).
+2. Download the **source images** from the upstream datasets and place them following the layout below:
    - **nuScenes**: obtain [nuScenes](https://www.nuscenes.org/) trainval under the official ToU, then prepare / download the STRIDE `formatted_scenes` multi-camera grids for the miniset scenes.
    - **Waymo**: obtain the [Waymo Open Dataset](https://waymo.com/open/) validation CAM_FRONT images under the official terms.
 
@@ -69,25 +70,27 @@ export STRIDE_WAYMO_IMAGE_ROOT=/path/to/waymo/val/images
 
 ## Task Hierarchy
 
-<p align="center">
-  <img src="./images/scenario_task_family_heatmap.png" style="width: 70%; margin: 0 auto; text-align: center"/>
-</p>
+STRIDE probes whether models can reason about **space**, **time**, and **ego motion** in real driving clips. Each sample uses a short temporal window (past → present → future context) with multi-view frames at the query timestep; targets are drawn from **object**, **ego**, and **scene** evidence.
 
-STRIDE contains six task families to promote spatial-temporal reasoning for more reliable autonomous driving agents.
+Conceptually, questions cover four capability axes (see overview figure):
 
-- **Scene Context.** Models summarize the overall driving environment (weather, lighting, road type, and notable surrounding activity) from a chronological multi-view clip. This family stresses global scene understanding rather than a single local object.
+- **Spatial** — grounding & understanding of geometry / relations (e.g., distance, relative direction, interactions).
+- **Temporal** — memory of past frames & extrapolation of near-future events.
+- **Planning** — action-oriented and trajectory outcomes for the ego vehicle.
+- **Reasoning** — causal / counterfactual explanations beyond surface description.
 
-- **Spatial Perception.** Models answer geometry-centric questions about a target object highlighted by a red bounding box (relative direction, position, distance-related attributes, etc.) given five chronological frames where the query frame is last.
+Concretely, the released miniset is organized into six template families (50 instances each):
 
-- **Spatial Understanding.** Models perform higher-level spatial inference about interactions and affordances among road users (nuScenes split). This goes beyond raw geometry toward situational interpretation.
+| Family | Focus | Example templates |
+| ------ | ----- | ----------------- |
+| Scene context | Global environment summary | `SC-*` |
+| Spatial perception | Local geometry around a red-boxed object | `SP-*` |
+| Spatial understanding | Higher-level spatial inference (nuScenes) | `SU-*` |
+| Temporal memory | What happened earlier in the clip | `TM-*` |
+| Temporal extrapolation | Likely near-future outcomes | `TE-*` |
+| Trajectory | Ranking, language, or waypoint regression | `TRJ-*` |
 
-- **Temporal Memory.** Models must recall what happened earlier in the clip (past motion / events), using the provided frame history rather than the query frame alone.
-
-- **Temporal Extrapolation.** Models predict near-future events or outcomes conditioned on the observed history, probing short-horizon forecasting without requiring full waypoint regression.
-
-- **Trajectory.** Models rank candidate futures, describe motion in language, or regress ego-centric waypoints (`TRJ-5` / `TRJ-6`). This family connects language reasoning with quantitative motion prediction.
-
-Each retained template has **50** curated instances. Visual inputs are **5 chronological frames** (nuScenes: 360° multi-camera grids; Waymo: CAM_FRONT). When a target object exists, it is highlighted by a **red box** on the query frame.
+**Question formats.** STRIDE mixes **MCQ**, **open-ended (OEQ)** text, and **geometric** waypoint answers (`TRJ-5` / `TRJ-6`). Visual inputs are **5 chronological frames** (nuScenes: 360° multi-camera grids; Waymo: CAM_FRONT). When a target object exists, it is highlighted by a **red box** on the query frame.
 
 ## Data Format
 
@@ -126,10 +129,6 @@ The annotation files contain question-answering pairs as follows (fields may var
 }
 ```
 
-<p align="center">
-  <img src="./images/spatial_coverage_heatmap.png" style="width: 55%; margin: 0 auto; text-align: center"/>
-</p>
-
 ## Data Usage
 
 ### ✨ Python API
@@ -152,7 +151,7 @@ print(payload["meta"])
 print(tasks[0]["id"], tasks[0]["question"])
 ```
 
-### Original Format / Prediction Template
+### Prediction Template
 
 To help users run models against STRIDE, we provide helpers under `evaluation/`:
 
@@ -171,7 +170,7 @@ To help users run models against STRIDE, we provide helpers under `evaluation/`:
    | Format | Expected `model_response` |
    | ------ | ------------------------- |
    | MCQ | Single letter `A` / `B` / … (also accepts `ANSWER: A`, `{"answer":"A"}`) |
-   | Open FRQ | Free-form text |
+   | OEQ | Free-form text |
    | TRJ-5 / TRJ-6 | JSON list of `[x, y]` waypoints (5 or 4 points) |
 
 4. Optionally run the OpenAI-compatible multimodal runner:
@@ -188,7 +187,9 @@ To help users run models against STRIDE, we provide helpers under `evaluation/`:
 
 ## Leaderboard
 
-Primary ranking key: **MCQ accuracy**. Open-FRQ and trajectory metrics are reported separately (no single fused score). Random-guess MCQ baselines are ≈19.8% (nuScenes) and ≈20.3% (Waymo).
+Primary ranking key: **MCQ accuracy**. Open-ended and trajectory metrics are reported separately (no single fused score). Random-guess MCQ baselines are ≈19.8% (nuScenes) and ≈20.3% (Waymo).
+
+As in the overview figure, STRIDE is substantially harder than prior driving VQA suites: even GPT-6-Astra drops from ~85% on previous benchmarks to **45.5%** MCQ on STRIDE (nuScenes).
 
 ### nuScenes v6
 
