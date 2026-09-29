@@ -1,15 +1,17 @@
 # STRIDE
-
-[arXiv](https://arxiv.org/) [Web](https://github.com/Lieqi-Liu/STRIDE) [HF](https://huggingface.co/)
+[![arXiv](https://img.shields.io/badge/arXiv-coming_soon-b31b1b.svg?style=plastic)](https://arxiv.org/) [![Web](https://img.shields.io/badge/Web-STRIDE-blue.svg?style=plastic)](https://github.com/Lieqi-Liu/STRIDE) [![HF](https://img.shields.io/badge/%F0%9F%A4%97-HuggingFace-yellow?style=plastic)](https://huggingface.co/)
 
 This repository contains the implementation of the paper:
 
-> **STRIDE: Spatial-Temporal Reasoning In Driving Environments**   
->
-> [PlusLabNLP](https://github.com/PlusLabNLP)  
->  *arXiv, 2026*
+> **STRIDE: Evaluating Spatiotemporal Reasoning in Driving Edge Cases** <br>
+> [Lieqi Liu](https://github.com/Lieqi-Liu)<sup>1\*</sup>, [Rui Gao](https://github.com/)<sup>1\*</sup>, Jia-Chen Gu<sup>1</sup>, Wenbo Hu<sup>1</sup>, Zhaobin Mo<sup>2</sup>, Ahmadreza Moradipari<sup>2</sup>, Nejib Ammar<sup>2</sup>, Wei Wang<sup>1</sup>, [Nanyun Peng](https://vnpeng.net/)<sup>1</sup> <br>
+> <sup>1</sup>University of California, Los Angeles &nbsp;&nbsp; <sup>2</sup>Toyota InfoTech Labs <br>
+> <sup>\*</sup>Equal contribution
 
-*Overview of STRIDE.*
+<p align="center">
+  <img src="images/overview.png" width="95%" alt="Overview of STRIDE"/>
+</p>
+<p align="center"><em>Figure 1: Overview of STRIDE (data · tasks · comparison). Vector version: <a href="images/STRIDE_v4.pdf">STRIDE_v4.pdf</a>.</em></p>
 
 ## Update
 
@@ -22,17 +24,15 @@ The instructions for setting up STRIDE are listed as follows:
 
 1. Clone this repository (question annotations ship with the code under `STRIDE/`).
 2. Download the **source images** from the upstream datasets and place them following the layout below:
-  - **nuScenes**: obtain [nuScenes](https://www.nuscenes.org/) trainval under the official ToU, then prepare / download the STRIDE `formatted_scenes` multi-camera grids for the miniset scenes.
-  - **Waymo**: obtain the [Waymo Open Dataset](https://waymo.com/open/) validation CAM_FRONT images under the official terms.
+   - **nuScenes**: obtain [nuScenes](https://www.nuscenes.org/) trainval under the official ToU, then prepare / download the STRIDE `formatted_scenes` multi-camera grids for the miniset scenes.
+   - **Waymo**: obtain the [Waymo Open Dataset](https://waymo.com/open/) validation CAM_FRONT images under the official terms.
 
-
-| Split           | Size | Image Source           | Annotation                             | Notes                                   |
-| --------------- | ---- | ---------------------- | -------------------------------------- | --------------------------------------- |
-| nuScenes        | 1150 | nuScenes trainval      | `[STRIDE/nuScenes](./STRIDE/nuScenes)` | 23 templates × 50; GT-revised open OEQs |
-| Waymo           | 1200 | Waymo Open Dataset val | `[STRIDE/Waymo](./STRIDE/Waymo)`       | 24 templates × 50                       |
-| Mini (nuScenes) | 3    | same as nuScenes       | `[STRIDE/Mini](./STRIDE/Mini)`         | Schema demo only                        |
-| Mini (Waymo)    | 3    | same as Waymo          | `[STRIDE/Mini](./STRIDE/Mini)`         | Schema demo only                        |
-
+| Split | Size | Image Source | Annotation | Notes |
+| :---: | :--: | :----------: | :--------: | :---: |
+| nuScenes | 1150 | nuScenes trainval | [`STRIDE/nuScenes`](./STRIDE/nuScenes) | 23 templates × 50; GT-revised open OEQs |
+| Waymo | 1200 | Waymo Open Dataset val | [`STRIDE/Waymo`](./STRIDE/Waymo) | 24 templates × 50 |
+| Mini (nuScenes) | 3 | same as nuScenes | [`STRIDE/Mini`](./STRIDE/Mini) | Schema demo only |
+| Mini (Waymo) | 3 | same as Waymo | [`STRIDE/Mini`](./STRIDE/Mini) | Schema demo only |
 
 Note that:
 
@@ -69,33 +69,35 @@ export STRIDE_NUSCENES_FORMATTED_SCENES=/path/to/formatted_scenes
 export STRIDE_WAYMO_IMAGE_ROOT=/path/to/waymo/val/images
 ```
 
-
-
 ## Task Hierarchy
 
-STRIDE probes whether models can reason about **space**, **time**, and **ego motion** in real driving clips. Each sample uses a short temporal window (past → present → future context) with multi-view frames at the query timestep; targets are drawn from **object**, **ego**, and **scene** evidence.
+STRIDE is organized around the complementary dimensions of **space** and **time**, plus **driving context** for ego motion and the broader environment (paper §3.1). It comprises **39 question templates** in **six task families**, pairing MCQs that test intermediate judgments with OEQs that assess integration into driving explanations and decisions.
 
-Conceptually, questions cover four capability axes (see overview figure):
+### Space
 
-- **Spatial** — grounding & understanding of geometry / relations (e.g., distance, relative direction, interactions).
-- **Temporal** — memory of past frames & extrapolation of near-future events.
-- **Planning** — action-oriented and trajectory outcomes for the ego vehicle.
-- **Reasoning** — causal / counterfactual explanations beyond surface description.
+- **Spatial perception** (`SP-*`). Basic object-level properties that are directly observable from the scene, including relative position, distance, direction of motion, and lane occupancy.
+- **Spatial understanding** (`SU-*`). Interprets the *driving significance* of these spatial relationships—whether an object restricts the drivable region, affects lane-change feasibility, constrains the ego vehicle’s motion, or poses a potential risk.
 
-Concretely, the released miniset is organized into six template families (50 instances each):
+### Time
 
+- **Temporal memory** (`TM-*`). Reconstructs how the current spatial state developed from previous observations: previously visible or disappeared objects, earlier locations, occlusion and reappearance, and recent motion trends.
+- **Temporal extrapolation** (`TE-*`). Anticipates how the current scene may evolve, including future object motion, lane occupancy, collision timing, and likely subsequent events.
 
-| Family                 | Focus                                     | Example templates |
-| ---------------------- | ----------------------------------------- | ----------------- |
-| Scene context          | Global environment summary                | `SC-*`            |
-| Spatial perception     | Local geometry around a red-boxed object  | `SP-*`            |
-| Spatial understanding  | Higher-level spatial inference (nuScenes) | `SU-*`            |
-| Temporal memory        | What happened earlier in the clip         | `TM-*`            |
-| Temporal extrapolation | Likely near-future outcomes               | `TE-*`            |
-| Trajectory             | Ranking, language, or waypoint regression | `TRJ-*`           |
+### Driving context
 
+- **Trajectory prediction** (`TRJ-*`). Assesses the ego vehicle’s past and future motion (ranking, language justifications, and waypoint regression).
+- **Scene-context awareness** (`SC-*`). Assesses environmental conditions, road structure, and surrounding activity that provide context for interpreting individual objects and their interactions.
 
-**Question formats.** STRIDE mixes **MCQ**, **open-ended (OEQ)** text, and **geometric** waypoint answers (`TRJ-5` / `TRJ-6`). Visual inputs are **5 chronological frames** (nuScenes: 360° multi-camera grids; Waymo: CAM_FRONT). When a target object exists, it is highlighted by a **red box** on the query frame.
+| Family | Split coverage | Formats |
+| ------ | -------------- | ------- |
+| Spatial perception | nuScenes + Waymo | MCQ + OEQ |
+| Spatial understanding | nuScenes | MCQ + OEQ |
+| Temporal memory | nuScenes + Waymo | MCQ |
+| Temporal extrapolation | nuScenes + Waymo | MCQ + OEQ |
+| Trajectory prediction | nuScenes + Waymo | MCQ + OEQ + Geo (`TRJ-5`/`TRJ-6`) |
+| Scene-context awareness | nuScenes + Waymo | OEQ (and Waymo MCQs for SC-*) |
+
+**Inputs.** Each question uses a **five-frame** temporal context. nuScenes uses surrounding multi-camera grids; Waymo uses CAM_FRONT. When a target object exists, it is highlighted by a **red box** on the query frame.
 
 ## Data Format
 
@@ -240,7 +242,7 @@ As in the overview figure, STRIDE is substantially harder than prior driving VQA
 | 13   | Dolphins                  | expert      | 22.2%     | −0.629   | 1.86           | 18.43     | 8.60       |
 
 
-Machine-readable tables: `[evaluation/leaderboard](./evaluation/leaderboard)`.
+Machine-readable tables: [`evaluation/leaderboard`](./evaluation/leaderboard).
 
 # Evaluation
 
@@ -249,12 +251,12 @@ Check [STRIDE Evaluation](./evaluation) for more details.
 ## Citation
 
 ```bibtex
-@misc{stride2026,
-  title        = {{STRIDE}: Spatial-Temporal Reasoning In Driving Environments},
-  author       = {{PlusLabNLP}},
+@misc{liu2026stride,
+  title        = {{STRIDE}: Evaluating Spatiotemporal Reasoning in Driving Edge Cases},
+  author       = {Liu, Lieqi and Gao, Rui and Gu, Jia-Chen and Hu, Wenbo and Mo, Zhaobin and Moradipari, Ahmadreza and Ammar, Nejib and Wang, Wei and Peng, Nanyun},
   year         = {2026},
-  howpublished = {\url{https://github.com/PlusLabNLP/STRIDE}},
-  note         = {Benchmark release}
+  note         = {Preprint},
+  howpublished = {\url{https://github.com/Lieqi-Liu/STRIDE}}
 }
 ```
 
