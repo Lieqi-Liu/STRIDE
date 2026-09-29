@@ -1,0 +1,15 @@
+# STRIDE dependencies
+# Core scoring (MCQ + trajectory) needs only Python stdlib + optional Pillow for visuals.
+Pillow>=10.0.0
+
+# BLEURT open-FRQ scoring
+torch>=2.1.0
+transformers>=4.40.0
+sentencepiece>=0.1.99
+
+# Optional: OpenAI / proprietary runners
+openai>=1.40.0
+
+# Optional: vision LLM judge / local VLMs (install in a dedicated env)
+# vllm>=0.6.0
+# nuscenes-devkit>=1.1.11

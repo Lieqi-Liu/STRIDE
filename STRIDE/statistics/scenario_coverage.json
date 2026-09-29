@@ -1,0 +1,91 @@
+{
+  "sources": {
+    "nuscenes_miniset": "/home/lieqiliu/AutoDriving/Spatial_Temporal_Intelligence/full_nuscenes/questions_with_answers_full_nuscenes_miniset_review_trimmed_v6.json",
+    "nuscenes_scene_descriptions": "/local1/lieqiliu/nuscenes/fullset/questions_with_answers_all_flat.json",
+    "waymo_miniset": "/home/lieqiliu/AutoDriving/Spatial_Temporal_Intelligence/full_waymo/questions_with_answers_waymo_miniset_50_per_id_v1.json"
+  },
+  "denominators": {
+    "nuscenes_clips_with_descriptions": 577,
+    "nuscenes_selected_clips_total": 761,
+    "waymo_clips_with_scenario_cluster": 335
+  },
+  "multi_label": true,
+  "nuscenes_tag_rules": {
+    "Intersection": "\\b(intersection|junction|roundabout|crossroad)\\b",
+    "Pedestrian": "\\b(ped|peds|pedestrian|pedestrians|jaywalker|people|stroller)\\b",
+    "Cyclist": "\\b(cyclist|bicyclist|motorcyclist|motorcycle|scooter|moped)\\b",
+    "Construction": "\\b(construction|roadwork|road work|excavator)\\b",
+    "Cut-ins": "\\b(cut[ -]?in|cutting in)\\b",
+    "Multi-lane maneuvers": "\\b(multi[ -]?lane|lane change|change lanes|switch lane|merge|overtake|overtaking)\\b",
+    "Special vehicles": "\\b(bus|buses|truck|trucks|trailer|ambulance|police|emergency vehicle|construction vehicle)\\b",
+    "Foreign object / debris": "\\b(debris|obstacle|trash|garbage|fallen|blocked road|road block)\\b"
+  },
+  "waymo_tag_mapping": {
+    "Intersection": "Intersection",
+    "Pedestrian": "Pedestrian",
+    "Cyclist": "Cyclist",
+    "Construction": "Construction",
+    "Cut-ins": "Cut-ins",
+    "Multi-Lane Maneuvers": "Multi-lane maneuvers",
+    "Special Vehicles": "Special vehicles",
+    "Foreign Object Debris": "Foreign object / debris"
+  },
+  "coverage": [
+    {
+      "scenario_tag": "Intersection",
+      "nuscenes_clip_count": 214,
+      "nuscenes_clip_percent": 37.0884,
+      "waymo_clip_count": 73,
+      "waymo_clip_percent": 21.791
+    },
+    {
+      "scenario_tag": "Pedestrian",
+      "nuscenes_clip_count": 327,
+      "nuscenes_clip_percent": 56.6724,
+      "waymo_clip_count": 39,
+      "waymo_clip_percent": 11.6418
+    },
+    {
+      "scenario_tag": "Cyclist",
+      "nuscenes_clip_count": 81,
+      "nuscenes_clip_percent": 14.0381,
+      "waymo_clip_count": 60,
+      "waymo_clip_percent": 17.9104
+    },
+    {
+      "scenario_tag": "Construction",
+      "nuscenes_clip_count": 116,
+      "nuscenes_clip_percent": 20.104,
+      "waymo_clip_count": 15,
+      "waymo_clip_percent": 4.4776
+    },
+    {
+      "scenario_tag": "Cut-ins",
+      "nuscenes_clip_count": 0,
+      "nuscenes_clip_percent": 0.0,
+      "waymo_clip_count": 19,
+      "waymo_clip_percent": 5.6716
+    },
+    {
+      "scenario_tag": "Multi-lane maneuvers",
+      "nuscenes_clip_count": 54,
+      "nuscenes_clip_percent": 9.3588,
+      "waymo_clip_count": 30,
+      "waymo_clip_percent": 8.9552
+    },
+    {
+      "scenario_tag": "Special vehicles",
+      "nuscenes_clip_count": 251,
+      "nuscenes_clip_percent": 43.5009,
+      "waymo_clip_count": 19,
+      "waymo_clip_percent": 5.6716
+    },
+    {
+      "scenario_tag": "Foreign object / debris",
+      "nuscenes_clip_count": 23,
+      "nuscenes_clip_percent": 3.9861,
+      "waymo_clip_count": 54,
+      "waymo_clip_percent": 16.1194
+    }
+  ]
+}

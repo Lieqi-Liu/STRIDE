@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "benchmark": "STRIDE",
+    "split": "nuscenes_v6_examples",
+    "source_dataset": "nuScenes",
+    "version": "v6_gt_revised",
+    "n_questions": 3,
+    "n_templates": 23,
+    "n_scenes": 761,
+    "counts_by_template": {
+      "SC-6": 50,
+      "SP-1": 50,
+      "SP-2": 50,
+      "SP-3": 50,
+      "SP-5": 50,
+      "SP-7": 50,
+      "SU-1": 50,
+      "SU-2": 50,
+      "SU-4": 50,
+      "SU-7": 50,
+      "TE-1": 50,
+      "TE-6": 50,
+      "TM-2": 50,
+      "TM-3": 50,
+      "TM-4": 50,
+      "TM-5": 50,
+      "TRJ-1": 50,
+      "TRJ-2": 50,
+      "TRJ-3": 50,
+      "TRJ-4": 50,
+      "TRJ-5": 50,
+      "TRJ-6": 50,
+      "TRJ-7": 50
+    },
+    "counts_by_task_family": {
+      "scene-context": 50,
+      "space-perception": 250,
+      "space-understanding": 200,
+      "time-extrapolation": 100,
+      "time-memory": 200,
+      "trajectory-prediction": 350
+    },
+    "counts_by_format": {
+      "FRQ": 350,
+      "MCQ": 800
+    },
+    "notes": [
+      "Ground-truth answers included for open evaluation.",
+      "Images are NOT bundled; resolve via formatted_scenes using source_group_file.",
+      "239 open-FRQ ground truths were revised via vision audit relative to plain v6."
+    ],
+    "packaged_at": "2026-09-28T23:42:03.998571+00:00"
+  },
+  "tasks": [
+    {
+      "choices": {
+        "A": "Moving toward ego",
+        "B": "Moving away from ego",
+        "C": "Moving left-to-right across ego",
+        "D": "Moving right-to-left across ego",
+        "E": "Static",
+        "F": "Same direction as ego"
+      },
+      "question": "What is the trajectory direction of the object in the red bounding box in relation to the ego vehicle?",
+      "task": "space-perception",
+      "object_id": "abd58e7c79ec435c912afbc2dd93b38e",
+      "source_group_file": "scene_012/group_002_vehicle_annotations.json",
+      "id": "SP-1",
+      "group_id": "group_002",
+      "object_reference": "the vehicle rear-left at about 38m",
+      "scene_id": "scene_012",
+      "ground_truth": "B",
+      "question_format": "MCQ",
+      "scoring_type": "mcq"
+    },
+    {
+      "choices": {
+        "A": "In front",
+        "B": "Front-right",
+        "C": "Front-left",
+        "D": "Left",
+        "E": "Right",
+        "F": "Behind"
+      },
+      "question": "Where was the object in the red bounding box located relative to the ego vehicle in the previous frame(s)?",
+      "task": "time-memory",
+      "object_id": "e1f8fc954ccd4047b257d2fcfad62088",
+      "source_group_file": "scene_003/group_007_vehicle_annotations.json",
+      "scene_description": "",
+      "id": "TM-2",
+      "group_id": "group_007",
+      "object_reference": "the vehicle front-right at about 24m",
+      "scene_id": "scene_003",
+      "ground_truth": "B",
+      "question_format": "MCQ",
+      "scoring_type": "mcq"
+    },
+    {
+      "question": "Describe the overall environment of the scene, including weather, lighting conditions, road type, and notable surrounding activity.",
+      "task": "scene-context",
+      "source_group_file": "scene_299/group_001_vehicle_annotations.json",
+      "scene_description": "Cross bridge, peds, ban, parked bicycle",
+      "id": "SC-6",
+      "group_id": "group_001",
+      "scene_id": "scene_299",
+      "nuscenes_scene_name": "scene-0299",
+      "nuscenes_log_location": "boston-seaport",
+      "ground_truth": "The scene takes place during daytime under partly cloudy conditions with adequate natural lighting. It is set in a straight urban road environment with light to moderate traffic. The road features double yellow lines and crosswalks. Notable surrounding activity includes parked vehicles, industrial buildings (including a 'New Boston Seafood' facility), and some pedestrian activity near sidewalks. There are no visible bridges, barriers, or roundabouts. Traffic flow is steady but not dense.",
+      "question_format": "FRQ",
+      "scoring_type": "open_frq_text"
+    }
+  ]
+}

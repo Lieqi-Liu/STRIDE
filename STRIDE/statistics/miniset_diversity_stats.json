@@ -1,0 +1,217 @@
+{
+  "source_files": {
+    "nuScenes v6": "/home/lieqiliu/AutoDriving/Spatial_Temporal_Intelligence/full_nuscenes/questions_with_answers_full_nuscenes_miniset_review_trimmed_v6.json",
+    "Waymo v1": "/home/lieqiliu/AutoDriving/Spatial_Temporal_Intelligence/full_waymo/questions_with_answers_waymo_miniset_50_per_id_v1.json"
+  },
+  "datasets": [
+    {
+      "name": "nuScenes v6",
+      "questions": 1150,
+      "scenes": 761,
+      "frames": null,
+      "templates": 23,
+      "formats": {
+        "FRQ": 350,
+        "MCQ": 800
+      },
+      "families": {
+        "Scene context": {
+          "MCQ": 0,
+          "FRQ": 50,
+          "unique_scenes": 50
+        },
+        "Spatial perception": {
+          "MCQ": 200,
+          "FRQ": 50,
+          "unique_scenes": 242
+        },
+        "Spatial understanding": {
+          "MCQ": 150,
+          "FRQ": 50,
+          "unique_scenes": 186
+        },
+        "Temporal memory": {
+          "MCQ": 200,
+          "FRQ": 0,
+          "unique_scenes": 187
+        },
+        "Temporal extrapolation": {
+          "MCQ": 50,
+          "FRQ": 50,
+          "unique_scenes": 100
+        },
+        "Trajectory": {
+          "MCQ": 200,
+          "FRQ": 150,
+          "unique_scenes": 316
+        }
+      },
+      "answer_balance": {
+        "letters": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "observed_pct": [
+          21.0,
+          20.75,
+          18.75,
+          19.125,
+          10.125,
+          7.875,
+          1.625,
+          0.75
+        ],
+        "expected_pct": [
+          19.79910714285713,
+          19.79910714285713,
+          19.79910714285713,
+          19.79910714285713,
+          10.424107142857183,
+          7.9241071428570935,
+          1.674107142857141,
+          0.78125
+        ],
+        "deviation_pp": [
+          1.2008928571428683,
+          0.9508928571428683,
+          -1.0491071428571317,
+          -0.6741071428571317,
+          -0.2991071428571832,
+          -0.0491071428570935,
+          -0.04910714285714102,
+          -0.03125
+        ]
+      },
+      "distance_count": 750,
+      "distance_distribution_pct": [
+        7.6,
+        18.133333333333333,
+        36.93333333333333,
+        21.6,
+        10.133333333333333,
+        5.466666666666667,
+        0.13333333333333333
+      ],
+      "distance_median_m": 32.0,
+      "distance_p90_m": 68.0,
+      "trajectory_count": 312,
+      "scenario_clusters": {}
+    },
+    {
+      "name": "Waymo v1",
+      "questions": 1200,
+      "scenes": 335,
+      "frames": 691,
+      "templates": 24,
+      "formats": {
+        "MCQ": 900,
+        "FRQ": 300
+      },
+      "families": {
+        "Scene context": {
+          "MCQ": 150,
+          "FRQ": 50,
+          "unique_scenes": 117
+        },
+        "Spatial perception": {
+          "MCQ": 100,
+          "FRQ": 50,
+          "unique_scenes": 108
+        },
+        "Spatial understanding": {
+          "MCQ": 0,
+          "FRQ": 0,
+          "unique_scenes": 0
+        },
+        "Temporal memory": {
+          "MCQ": 150,
+          "FRQ": 0,
+          "unique_scenes": 109
+        },
+        "Temporal extrapolation": {
+          "MCQ": 200,
+          "FRQ": 0,
+          "unique_scenes": 158
+        },
+        "Trajectory": {
+          "MCQ": 300,
+          "FRQ": 200,
+          "unique_scenes": 135
+        }
+      },
+      "answer_balance": {
+        "letters": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H"
+        ],
+        "observed_pct": [
+          21.11111111111111,
+          21.11111111111111,
+          19.77777777777778,
+          18.0,
+          12.666666666666666,
+          6.0,
+          0.6666666666666666,
+          0.6666666666666666
+        ],
+        "expected_pct": [
+          20.324074074074186,
+          20.324074074074186,
+          20.324074074074186,
+          18.47222222222228,
+          12.916666666666837,
+          6.249999999999972,
+          0.6944444444444444,
+          0.6944444444444444
+        ],
+        "deviation_pp": [
+          0.7870370370369275,
+          0.7870370370369275,
+          -0.5462962962964057,
+          -0.47222222222227905,
+          -0.250000000000169,
+          -0.24999999999997158,
+          -0.027777777777777776,
+          -0.027777777777777776
+        ]
+      },
+      "distance_count": 500,
+      "distance_distribution_pct": [
+        20.2,
+        35.8,
+        30.0,
+        9.2,
+        2.8,
+        1.8,
+        0.2
+      ],
+      "distance_median_m": 17.0,
+      "distance_p90_m": 45.200000000000045,
+      "trajectory_count": 180,
+      "scenario_clusters": {
+        "Special Vehicles": 58,
+        "Cut-ins": 118,
+        "Cyclist": 215,
+        "Intersection": 259,
+        "Construction": 85,
+        "Foreign Object Debris": 207,
+        "Pedestrian": 121,
+        "Others": 29,
+        "Single-Lane Maneuvers": 26,
+        "Multi-Lane Maneuvers": 82
+      }
+    }
+  ]
+}

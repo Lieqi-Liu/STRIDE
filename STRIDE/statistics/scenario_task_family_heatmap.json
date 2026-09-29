@@ -1,0 +1,187 @@
+{
+  "sources": {
+    "nuscenes_miniset": "/home/lieqiliu/AutoDriving/Spatial_Temporal_Intelligence/full_nuscenes/questions_with_answers_full_nuscenes_miniset_review_trimmed_v6.json",
+    "nuscenes_scene_descriptions": "/local1/lieqiliu/nuscenes/fullset/questions_with_answers_all_flat.json",
+    "waymo_miniset": "/home/lieqiliu/AutoDriving/Spatial_Temporal_Intelligence/full_waymo/questions_with_answers_waymo_miniset_50_per_id_v1.json"
+  },
+  "task_families": [
+    "Scene context",
+    "Spatial perception",
+    "Spatial understanding",
+    "Temporal memory",
+    "Temporal extrapolation",
+    "Trajectory"
+  ],
+  "scenario_types": [
+    "Intersection",
+    "Pedestrian",
+    "Cyclist",
+    "Construction",
+    "Cut-ins",
+    "Multi-lane maneuvers",
+    "Special vehicles",
+    "Foreign object / debris"
+  ],
+  "family_clip_denominators": {
+    "Scene context": 167,
+    "Spatial perception": 317,
+    "Spatial understanding": 150,
+    "Temporal memory": 278,
+    "Temporal extrapolation": 278,
+    "Trajectory": 363
+  },
+  "count_matrix": [
+    [
+      52,
+      91,
+      53,
+      85,
+      55,
+      122
+    ],
+    [
+      43,
+      107,
+      81,
+      89,
+      72,
+      146
+    ],
+    [
+      27,
+      56,
+      21,
+      40,
+      34,
+      58
+    ],
+    [
+      17,
+      41,
+      21,
+      40,
+      43,
+      58
+    ],
+    [
+      6,
+      13,
+      0,
+      20,
+      24,
+      8
+    ],
+    [
+      18,
+      22,
+      16,
+      18,
+      28,
+      31
+    ],
+    [
+      30,
+      78,
+      69,
+      73,
+      53,
+      102
+    ],
+    [
+      13,
+      38,
+      9,
+      32,
+      34,
+      28
+    ]
+  ],
+  "percentage_matrix": [
+    [
+      31.137724550898202,
+      28.706624605678233,
+      35.333333333333336,
+      30.575539568345324,
+      19.784172661870503,
+      33.608815426997246
+    ],
+    [
+      25.748502994011975,
+      33.753943217665615,
+      54.0,
+      32.014388489208635,
+      25.899280575539567,
+      40.22038567493113
+    ],
+    [
+      16.167664670658684,
+      17.665615141955836,
+      14.0,
+      14.388489208633093,
+      12.23021582733813,
+      15.977961432506888
+    ],
+    [
+      10.179640718562874,
+      12.933753943217665,
+      14.0,
+      14.388489208633093,
+      15.467625899280575,
+      15.977961432506888
+    ],
+    [
+      3.592814371257485,
+      4.100946372239748,
+      0.0,
+      7.194244604316546,
+      8.633093525179856,
+      2.203856749311295
+    ],
+    [
+      10.778443113772456,
+      6.94006309148265,
+      10.666666666666666,
+      6.474820143884892,
+      10.071942446043165,
+      8.539944903581267
+    ],
+    [
+      17.964071856287426,
+      24.605678233438486,
+      46.0,
+      26.258992805755394,
+      19.06474820143885,
+      28.09917355371901
+    ],
+    [
+      7.7844311377245505,
+      11.987381703470032,
+      6.0,
+      11.510791366906474,
+      12.23021582733813,
+      7.7134986225895315
+    ]
+  ],
+  "normalization": "Column-wise within unique clip-family instances.",
+  "multi_label": true,
+  "nuscenes_tag_rules": {
+    "Intersection": "\\b(intersection|junction|roundabout|crossroad)\\b",
+    "Pedestrian": "\\b(ped|peds|pedestrian|pedestrians|jaywalker|people|stroller)\\b",
+    "Cyclist": "\\b(cyclist|bicyclist|motorcyclist|motorcycle|scooter|moped)\\b",
+    "Construction": "\\b(construction|roadwork|road work|excavator)\\b",
+    "Cut-ins": "\\b(cut[ -]?in|cutting in)\\b",
+    "Multi-lane maneuvers": "\\b(multi[ -]?lane|lane change|change lanes|switch lane|merge|overtake|overtaking)\\b",
+    "Special vehicles": "\\b(bus|buses|truck|trucks|trailer|ambulance|police|emergency vehicle|construction vehicle)\\b",
+    "Foreign object / debris": "\\b(debris|obstacle|trash|garbage|fallen|blocked road|road block)\\b"
+  },
+  "waymo_tag_mapping": {
+    "Intersection": "Intersection",
+    "Pedestrian": "Pedestrian",
+    "Cyclist": "Cyclist",
+    "Construction": "Construction",
+    "Cut-ins": "Cut-ins",
+    "Multi-Lane Maneuvers": "Multi-lane maneuvers",
+    "Special Vehicles": "Special vehicles",
+    "Foreign Object Debris": "Foreign object / debris"
+  }
+}

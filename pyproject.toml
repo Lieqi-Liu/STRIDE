@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stride-bench"
+version = "0.1.0"
+description = "STRIDE: Spatial-Temporal Reasoning In Driving Environments"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "PlusLabNLP" }]
+dependencies = [
+  "Pillow>=10.0.0",
+]
+
+[project.optional-dependencies]
+bleurt = ["torch>=2.1.0", "transformers>=4.40.0", "sentencepiece>=0.1.99"]
+openai = ["openai>=1.40.0"]
+all = ["torch>=2.1.0", "transformers>=4.40.0", "sentencepiece>=0.1.99", "openai>=1.40.0"]
+
+[project.scripts]
+stride-eval = "stride.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["stride*"]

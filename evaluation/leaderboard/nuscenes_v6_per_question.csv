@@ -1,0 +1,278 @@
+model,model_type,question_id,question_format,task_family,n_datapoints,n_answered,mcq_n_correct,mcq_n_unparsed,mcq_accuracy,mcq_random_guess_baseline,open_frq_bleurt_n,open_frq_bleurt_mean,open_frq_llm_judge_n,open_frq_llm_judge_mean,open_frq_llm_judge_mode,traj_n,traj_parse_ok,traj_parse_fail,traj_invalid_format,traj_ade,traj_fde,traj_mini_fde,metric_primary,metric_primary_value
+gpt-6-astra,proprietary,SC-6,FRQ,scene-context,50,50,NA,NA,NA,NA,0,NA,50,8.940000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,8.940000
+gpt-6-astra,proprietary,SP-1,MCQ,space-perception,50,50,19,0,0.380000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.380000
+gpt-6-astra,proprietary,SP-2,MCQ,space-perception,50,50,30,0,0.600000,0.125000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.600000
+gpt-6-astra,proprietary,SP-3,MCQ,space-perception,50,50,22,0,0.440000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.440000
+gpt-6-astra,proprietary,SP-5,MCQ,space-perception,50,50,22,0,0.440000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.440000
+gpt-6-astra,proprietary,SP-7,FRQ,space-perception,50,50,NA,NA,NA,NA,0,NA,50,2.940000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,2.940000
+gpt-6-astra,proprietary,SU-1,MCQ,space-understanding,50,50,13,0,0.260000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.260000
+gpt-6-astra,proprietary,SU-2,MCQ,space-understanding,50,50,12,0,0.240000,0.142857,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.240000
+gpt-6-astra,proprietary,SU-4,MCQ,space-understanding,50,50,20,0,0.400000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.400000
+gpt-6-astra,proprietary,SU-7,FRQ,space-understanding,50,50,NA,NA,NA,NA,0,NA,50,7.440000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,7.440000
+gpt-6-astra,proprietary,TE-1,MCQ,time-extrapolation,50,50,17,0,0.340000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.340000
+gpt-6-astra,proprietary,TE-6,FRQ,time-extrapolation,50,50,NA,NA,NA,NA,0,NA,50,5.360000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,5.360000
+gpt-6-astra,proprietary,TM-2,MCQ,time-memory,50,50,35,0,0.700000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.700000
+gpt-6-astra,proprietary,TM-3,MCQ,time-memory,50,50,10,0,0.200000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.200000
+gpt-6-astra,proprietary,TM-4,MCQ,time-memory,50,50,13,0,0.260000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.260000
+gpt-6-astra,proprietary,TM-5,MCQ,time-memory,50,50,26,0,0.520000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.520000
+gpt-6-astra,proprietary,TRJ-1,MCQ,trajectory-prediction,50,50,25,0,0.500000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.500000
+gpt-6-astra,proprietary,TRJ-2,MCQ,trajectory-prediction,50,50,27,0,0.540000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.540000
+gpt-6-astra,proprietary,TRJ-3,MCQ,trajectory-prediction,50,50,45,0,0.900000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.900000
+gpt-6-astra,proprietary,TRJ-4,MCQ,trajectory-prediction,50,50,28,0,0.560000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.560000
+gpt-6-astra,proprietary,TRJ-5,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,50,0,0,0.721330,1.382921,1.238975,traj_ade,0.721330
+gpt-6-astra,proprietary,TRJ-6,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,50,0,0,0.485854,0.891612,0.727385,traj_ade,0.485854
+gpt-6-astra,proprietary,TRJ-7,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,0,NA,50,7.360000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,7.360000
+GPT-5.5,proprietary,SC-6,FRQ,scene-context,50,50,NA,NA,NA,NA,0,NA,50,9.220000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,9.220000
+GPT-5.5,proprietary,SP-1,MCQ,space-perception,50,50,12,0,0.240000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.240000
+GPT-5.5,proprietary,SP-2,MCQ,space-perception,50,50,28,0,0.560000,0.125000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.560000
+GPT-5.5,proprietary,SP-3,MCQ,space-perception,50,50,20,0,0.400000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.400000
+GPT-5.5,proprietary,SP-5,MCQ,space-perception,50,50,18,0,0.360000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.360000
+GPT-5.5,proprietary,SP-7,FRQ,space-perception,50,50,NA,NA,NA,NA,0,NA,50,3.660000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,3.660000
+GPT-5.5,proprietary,SU-1,MCQ,space-understanding,50,50,16,0,0.320000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.320000
+GPT-5.5,proprietary,SU-2,MCQ,space-understanding,50,50,11,0,0.220000,0.142857,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.220000
+GPT-5.5,proprietary,SU-4,MCQ,space-understanding,50,50,11,0,0.220000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.220000
+GPT-5.5,proprietary,SU-7,FRQ,space-understanding,50,50,NA,NA,NA,NA,0,NA,50,7.180000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,7.180000
+GPT-5.5,proprietary,TE-1,MCQ,time-extrapolation,50,50,16,0,0.320000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.320000
+GPT-5.5,proprietary,TE-6,FRQ,time-extrapolation,50,50,NA,NA,NA,NA,0,NA,50,5.440000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,5.440000
+GPT-5.5,proprietary,TM-2,MCQ,time-memory,50,50,36,0,0.720000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.720000
+GPT-5.5,proprietary,TM-3,MCQ,time-memory,50,50,9,0,0.180000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.180000
+GPT-5.5,proprietary,TM-4,MCQ,time-memory,50,50,16,0,0.320000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.320000
+GPT-5.5,proprietary,TM-5,MCQ,time-memory,50,50,21,0,0.420000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.420000
+GPT-5.5,proprietary,TRJ-1,MCQ,trajectory-prediction,50,50,21,0,0.420000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.420000
+GPT-5.5,proprietary,TRJ-2,MCQ,trajectory-prediction,50,50,28,0,0.560000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.560000
+GPT-5.5,proprietary,TRJ-3,MCQ,trajectory-prediction,50,50,26,0,0.520000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.520000
+GPT-5.5,proprietary,TRJ-4,MCQ,trajectory-prediction,50,50,25,0,0.500000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.500000
+GPT-5.5,proprietary,TRJ-5,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,50,0,0,0.697719,1.329933,1.148758,traj_ade,0.697719
+GPT-5.5,proprietary,TRJ-6,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,50,0,0,0.609923,1.156490,0.785448,traj_ade,0.609923
+GPT-5.5,proprietary,TRJ-7,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,0,NA,50,7.900000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,7.900000
+gemini-3.6-flash,proprietary,SC-6,FRQ,scene-context,50,50,NA,NA,NA,NA,0,NA,50,8.500000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,8.500000
+gemini-3.6-flash,proprietary,SP-1,MCQ,space-perception,50,50,18,0,0.360000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.360000
+gemini-3.6-flash,proprietary,SP-2,MCQ,space-perception,50,50,31,0,0.620000,0.125000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.620000
+gemini-3.6-flash,proprietary,SP-3,MCQ,space-perception,50,50,25,0,0.500000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.500000
+gemini-3.6-flash,proprietary,SP-5,MCQ,space-perception,50,50,20,0,0.400000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.400000
+gemini-3.6-flash,proprietary,SP-7,FRQ,space-perception,50,50,NA,NA,NA,NA,0,NA,50,3.220000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,3.220000
+gemini-3.6-flash,proprietary,SU-1,MCQ,space-understanding,50,50,14,0,0.280000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.280000
+gemini-3.6-flash,proprietary,SU-2,MCQ,space-understanding,50,50,13,0,0.260000,0.142857,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.260000
+gemini-3.6-flash,proprietary,SU-4,MCQ,space-understanding,50,50,9,0,0.180000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.180000
+gemini-3.6-flash,proprietary,SU-7,FRQ,space-understanding,50,50,NA,NA,NA,NA,0,NA,50,6.360000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,6.360000
+gemini-3.6-flash,proprietary,TE-1,MCQ,time-extrapolation,50,50,14,0,0.280000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.280000
+gemini-3.6-flash,proprietary,TE-6,FRQ,time-extrapolation,50,50,NA,NA,NA,NA,0,NA,50,6.980000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,6.980000
+gemini-3.6-flash,proprietary,TM-2,MCQ,time-memory,50,50,28,0,0.560000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.560000
+gemini-3.6-flash,proprietary,TM-3,MCQ,time-memory,50,50,9,0,0.180000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.180000
+gemini-3.6-flash,proprietary,TM-4,MCQ,time-memory,50,50,16,0,0.320000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.320000
+gemini-3.6-flash,proprietary,TM-5,MCQ,time-memory,50,50,22,0,0.440000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.440000
+gemini-3.6-flash,proprietary,TRJ-1,MCQ,trajectory-prediction,50,50,21,0,0.420000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.420000
+gemini-3.6-flash,proprietary,TRJ-2,MCQ,trajectory-prediction,50,50,19,0,0.380000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.380000
+gemini-3.6-flash,proprietary,TRJ-3,MCQ,trajectory-prediction,50,50,23,0,0.460000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.460000
+gemini-3.6-flash,proprietary,TRJ-4,MCQ,trajectory-prediction,50,50,29,0,0.580000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.580000
+gemini-3.6-flash,proprietary,TRJ-5,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,50,0,0,0.736697,1.389122,1.242053,traj_ade,0.736697
+gemini-3.6-flash,proprietary,TRJ-6,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,50,0,0,0.633407,1.203882,0.783172,traj_ade,0.633407
+gemini-3.6-flash,proprietary,TRJ-7,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,0,NA,50,7.420000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,7.420000
+gpt-5.6-sol,proprietary,SC-6,FRQ,scene-context,50,50,NA,NA,NA,NA,0,NA,50,8.940000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,8.940000
+gpt-5.6-sol,proprietary,SP-1,MCQ,space-perception,50,50,16,0,0.320000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.320000
+gpt-5.6-sol,proprietary,SP-2,MCQ,space-perception,50,50,21,0,0.420000,0.125000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.420000
+gpt-5.6-sol,proprietary,SP-3,MCQ,space-perception,50,50,21,0,0.420000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.420000
+gpt-5.6-sol,proprietary,SP-5,MCQ,space-perception,50,50,21,0,0.420000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.420000
+gpt-5.6-sol,proprietary,SP-7,FRQ,space-perception,50,50,NA,NA,NA,NA,0,NA,50,1.960000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,1.960000
+gpt-5.6-sol,proprietary,SU-1,MCQ,space-understanding,50,50,16,0,0.320000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.320000
+gpt-5.6-sol,proprietary,SU-2,MCQ,space-understanding,50,50,16,0,0.320000,0.142857,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.320000
+gpt-5.6-sol,proprietary,SU-4,MCQ,space-understanding,50,50,15,0,0.300000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.300000
+gpt-5.6-sol,proprietary,SU-7,FRQ,space-understanding,50,50,NA,NA,NA,NA,0,NA,50,6.680000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,6.680000
+gpt-5.6-sol,proprietary,TE-1,MCQ,time-extrapolation,50,50,17,0,0.340000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.340000
+gpt-5.6-sol,proprietary,TE-6,FRQ,time-extrapolation,50,50,NA,NA,NA,NA,0,NA,50,4.460000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,4.460000
+gpt-5.6-sol,proprietary,TM-2,MCQ,time-memory,50,50,36,0,0.720000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.720000
+gpt-5.6-sol,proprietary,TM-3,MCQ,time-memory,50,50,8,0,0.160000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.160000
+gpt-5.6-sol,proprietary,TM-4,MCQ,time-memory,50,50,14,0,0.280000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.280000
+gpt-5.6-sol,proprietary,TM-5,MCQ,time-memory,50,50,16,0,0.320000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.320000
+gpt-5.6-sol,proprietary,TRJ-1,MCQ,trajectory-prediction,50,50,20,0,0.400000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.400000
+gpt-5.6-sol,proprietary,TRJ-2,MCQ,trajectory-prediction,50,50,22,0,0.440000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.440000
+gpt-5.6-sol,proprietary,TRJ-3,MCQ,trajectory-prediction,50,50,23,0,0.460000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.460000
+gpt-5.6-sol,proprietary,TRJ-4,MCQ,trajectory-prediction,50,50,26,0,0.520000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.520000
+gpt-5.6-sol,proprietary,TRJ-5,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,50,0,0,0.766898,1.444255,1.209062,traj_ade,0.766898
+gpt-5.6-sol,proprietary,TRJ-6,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,50,0,0,0.615350,1.191683,0.774987,traj_ade,0.615350
+gpt-5.6-sol,proprietary,TRJ-7,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,0,NA,50,6.200000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,6.200000
+gemini-3.1-pro-preview,proprietary,SC-6,FRQ,scene-context,50,50,NA,NA,NA,NA,0,NA,50,7.220000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,7.220000
+gemini-3.1-pro-preview,proprietary,SP-1,MCQ,space-perception,50,50,12,0,0.240000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.240000
+gemini-3.1-pro-preview,proprietary,SP-2,MCQ,space-perception,50,50,27,0,0.540000,0.125000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.540000
+gemini-3.1-pro-preview,proprietary,SP-3,MCQ,space-perception,50,50,32,0,0.640000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.640000
+gemini-3.1-pro-preview,proprietary,SP-5,MCQ,space-perception,50,50,20,0,0.400000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.400000
+gemini-3.1-pro-preview,proprietary,SP-7,FRQ,space-perception,50,50,NA,NA,NA,NA,0,NA,50,2.100000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,2.100000
+gemini-3.1-pro-preview,proprietary,SU-1,MCQ,space-understanding,50,50,15,0,0.300000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.300000
+gemini-3.1-pro-preview,proprietary,SU-2,MCQ,space-understanding,50,50,13,0,0.260000,0.142857,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.260000
+gemini-3.1-pro-preview,proprietary,SU-4,MCQ,space-understanding,50,50,14,0,0.280000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.280000
+gemini-3.1-pro-preview,proprietary,SU-7,FRQ,space-understanding,50,50,NA,NA,NA,NA,0,NA,50,3.900000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,3.900000
+gemini-3.1-pro-preview,proprietary,TE-1,MCQ,time-extrapolation,50,50,20,0,0.400000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.400000
+gemini-3.1-pro-preview,proprietary,TE-6,FRQ,time-extrapolation,50,50,NA,NA,NA,NA,0,NA,50,4.320000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,4.320000
+gemini-3.1-pro-preview,proprietary,TM-2,MCQ,time-memory,50,50,34,0,0.680000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.680000
+gemini-3.1-pro-preview,proprietary,TM-3,MCQ,time-memory,50,50,11,0,0.220000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.220000
+gemini-3.1-pro-preview,proprietary,TM-4,MCQ,time-memory,50,50,11,0,0.220000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.220000
+gemini-3.1-pro-preview,proprietary,TM-5,MCQ,time-memory,50,50,19,0,0.380000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.380000
+gemini-3.1-pro-preview,proprietary,TRJ-1,MCQ,trajectory-prediction,50,50,19,0,0.380000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.380000
+gemini-3.1-pro-preview,proprietary,TRJ-2,MCQ,trajectory-prediction,50,50,16,0,0.320000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.320000
+gemini-3.1-pro-preview,proprietary,TRJ-3,MCQ,trajectory-prediction,50,50,19,0,0.380000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.380000
+gemini-3.1-pro-preview,proprietary,TRJ-4,MCQ,trajectory-prediction,50,50,20,0,0.400000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.400000
+gemini-3.1-pro-preview,proprietary,TRJ-5,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,50,0,0,1.912745,3.448979,2.352868,traj_ade,1.912745
+gemini-3.1-pro-preview,proprietary,TRJ-6,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,50,0,0,0.920913,1.771624,1.322823,traj_ade,0.920913
+gemini-3.1-pro-preview,proprietary,TRJ-7,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,0,NA,50,5.100000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,5.100000
+Qwen3.6 35B-A3B,vlm,SC-6,FRQ,scene-context,50,50,NA,NA,NA,NA,0,NA,50,8.840000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,8.840000
+Qwen3.6 35B-A3B,vlm,SP-1,MCQ,space-perception,50,50,7,0,0.140000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.140000
+Qwen3.6 35B-A3B,vlm,SP-2,MCQ,space-perception,50,50,23,0,0.460000,0.125000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.460000
+Qwen3.6 35B-A3B,vlm,SP-3,MCQ,space-perception,50,50,20,0,0.400000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.400000
+Qwen3.6 35B-A3B,vlm,SP-5,MCQ,space-perception,50,50,14,0,0.280000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.280000
+Qwen3.6 35B-A3B,vlm,SP-7,FRQ,space-perception,50,50,NA,NA,NA,NA,0,NA,50,2.740000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,2.740000
+Qwen3.6 35B-A3B,vlm,SU-1,MCQ,space-understanding,50,50,19,0,0.380000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.380000
+Qwen3.6 35B-A3B,vlm,SU-2,MCQ,space-understanding,50,50,3,18,0.060000,0.142857,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.060000
+Qwen3.6 35B-A3B,vlm,SU-4,MCQ,space-understanding,50,50,15,0,0.300000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.300000
+Qwen3.6 35B-A3B,vlm,SU-7,FRQ,space-understanding,50,50,NA,NA,NA,NA,0,NA,50,5.860000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,5.860000
+Qwen3.6 35B-A3B,vlm,TE-1,MCQ,time-extrapolation,50,50,15,0,0.300000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.300000
+Qwen3.6 35B-A3B,vlm,TE-6,FRQ,time-extrapolation,50,50,NA,NA,NA,NA,0,NA,50,4.160000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,4.160000
+Qwen3.6 35B-A3B,vlm,TM-2,MCQ,time-memory,50,50,28,0,0.560000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.560000
+Qwen3.6 35B-A3B,vlm,TM-3,MCQ,time-memory,50,50,7,0,0.140000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.140000
+Qwen3.6 35B-A3B,vlm,TM-4,MCQ,time-memory,50,50,18,0,0.360000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.360000
+Qwen3.6 35B-A3B,vlm,TM-5,MCQ,time-memory,50,50,21,0,0.420000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.420000
+Qwen3.6 35B-A3B,vlm,TRJ-1,MCQ,trajectory-prediction,50,50,15,0,0.300000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.300000
+Qwen3.6 35B-A3B,vlm,TRJ-2,MCQ,trajectory-prediction,50,50,16,0,0.320000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.320000
+Qwen3.6 35B-A3B,vlm,TRJ-3,MCQ,trajectory-prediction,50,50,15,0,0.300000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.300000
+Qwen3.6 35B-A3B,vlm,TRJ-4,MCQ,trajectory-prediction,50,50,17,0,0.340000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.340000
+Qwen3.6 35B-A3B,vlm,TRJ-5,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,50,0,0,6.656424,11.250208,6.283282,traj_ade,6.656424
+Qwen3.6 35B-A3B,vlm,TRJ-6,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,8,42,42,8.192286,11.871083,4.608118,traj_ade,8.192286
+Qwen3.6 35B-A3B,vlm,TRJ-7,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,0,NA,50,5.020000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,5.020000
+claude-sonnet-5,proprietary,SC-6,FRQ,scene-context,50,50,NA,NA,NA,NA,0,NA,50,8.940000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,8.940000
+claude-sonnet-5,proprietary,SP-1,MCQ,space-perception,50,50,8,0,0.160000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.160000
+claude-sonnet-5,proprietary,SP-2,MCQ,space-perception,50,50,20,0,0.400000,0.125000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.400000
+claude-sonnet-5,proprietary,SP-3,MCQ,space-perception,50,50,21,0,0.420000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.420000
+claude-sonnet-5,proprietary,SP-5,MCQ,space-perception,50,50,15,0,0.300000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.300000
+claude-sonnet-5,proprietary,SP-7,FRQ,space-perception,50,50,NA,NA,NA,NA,0,NA,50,3.420000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,3.420000
+claude-sonnet-5,proprietary,SU-1,MCQ,space-understanding,50,50,16,0,0.320000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.320000
+claude-sonnet-5,proprietary,SU-2,MCQ,space-understanding,50,50,8,0,0.160000,0.142857,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.160000
+claude-sonnet-5,proprietary,SU-4,MCQ,space-understanding,50,50,17,0,0.340000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.340000
+claude-sonnet-5,proprietary,SU-7,FRQ,space-understanding,50,50,NA,NA,NA,NA,0,NA,50,6.480000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,6.480000
+claude-sonnet-5,proprietary,TE-1,MCQ,time-extrapolation,50,50,12,0,0.240000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.240000
+claude-sonnet-5,proprietary,TE-6,FRQ,time-extrapolation,50,50,NA,NA,NA,NA,0,NA,50,5.140000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,5.140000
+claude-sonnet-5,proprietary,TM-2,MCQ,time-memory,50,50,26,0,0.520000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.520000
+claude-sonnet-5,proprietary,TM-3,MCQ,time-memory,50,50,10,0,0.200000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.200000
+claude-sonnet-5,proprietary,TM-4,MCQ,time-memory,50,50,13,0,0.260000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.260000
+claude-sonnet-5,proprietary,TM-5,MCQ,time-memory,50,50,14,0,0.280000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.280000
+claude-sonnet-5,proprietary,TRJ-1,MCQ,trajectory-prediction,50,50,17,0,0.340000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.340000
+claude-sonnet-5,proprietary,TRJ-2,MCQ,trajectory-prediction,50,50,14,0,0.280000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.280000
+claude-sonnet-5,proprietary,TRJ-3,MCQ,trajectory-prediction,50,50,13,0,0.260000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.260000
+claude-sonnet-5,proprietary,TRJ-4,MCQ,trajectory-prediction,50,50,11,0,0.220000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.220000
+claude-sonnet-5,proprietary,TRJ-5,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,50,0,0,0.906926,1.714385,1.574154,traj_ade,0.906926
+claude-sonnet-5,proprietary,TRJ-6,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,50,0,0,0.826838,1.564363,1.028027,traj_ade,0.826838
+claude-sonnet-5,proprietary,TRJ-7,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,0,NA,50,8.120000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,8.120000
+Qwen2.5-VL 3B,vlm,SC-6,FRQ,scene-context,50,50,NA,NA,NA,NA,0,NA,50,7.160000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,7.160000
+Qwen2.5-VL 3B,vlm,SP-1,MCQ,space-perception,50,50,10,0,0.200000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.200000
+Qwen2.5-VL 3B,vlm,SP-2,MCQ,space-perception,50,50,16,0,0.320000,0.125000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.320000
+Qwen2.5-VL 3B,vlm,SP-3,MCQ,space-perception,50,50,9,0,0.180000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.180000
+Qwen2.5-VL 3B,vlm,SP-5,MCQ,space-perception,50,50,11,0,0.220000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.220000
+Qwen2.5-VL 3B,vlm,SP-7,FRQ,space-perception,50,50,NA,NA,NA,NA,0,NA,50,0.780000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,0.780000
+Qwen2.5-VL 3B,vlm,SU-1,MCQ,space-understanding,50,50,18,0,0.360000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.360000
+Qwen2.5-VL 3B,vlm,SU-2,MCQ,space-understanding,50,50,9,0,0.180000,0.142857,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.180000
+Qwen2.5-VL 3B,vlm,SU-4,MCQ,space-understanding,50,50,18,0,0.360000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.360000
+Qwen2.5-VL 3B,vlm,SU-7,FRQ,space-understanding,50,50,NA,NA,NA,NA,0,NA,50,3.920000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,3.920000
+Qwen2.5-VL 3B,vlm,TE-1,MCQ,time-extrapolation,50,50,12,0,0.240000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.240000
+Qwen2.5-VL 3B,vlm,TE-6,FRQ,time-extrapolation,50,50,NA,NA,NA,NA,0,NA,50,1.760000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,1.760000
+Qwen2.5-VL 3B,vlm,TM-2,MCQ,time-memory,50,50,21,0,0.420000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.420000
+Qwen2.5-VL 3B,vlm,TM-3,MCQ,time-memory,50,50,15,0,0.300000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.300000
+Qwen2.5-VL 3B,vlm,TM-4,MCQ,time-memory,50,50,10,0,0.200000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.200000
+Qwen2.5-VL 3B,vlm,TM-5,MCQ,time-memory,50,50,19,0,0.380000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.380000
+Qwen2.5-VL 3B,vlm,TRJ-1,MCQ,trajectory-prediction,50,50,13,0,0.260000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.260000
+Qwen2.5-VL 3B,vlm,TRJ-2,MCQ,trajectory-prediction,50,50,11,0,0.220000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.220000
+Qwen2.5-VL 3B,vlm,TRJ-3,MCQ,trajectory-prediction,50,50,14,0,0.280000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.280000
+Qwen2.5-VL 3B,vlm,TRJ-4,MCQ,trajectory-prediction,50,50,13,0,0.260000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.260000
+Qwen2.5-VL 3B,vlm,TRJ-5,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,0,50,50,NA,NA,NA,traj_ade,NA
+Qwen2.5-VL 3B,vlm,TRJ-6,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,0,50,50,NA,NA,NA,traj_ade,NA
+Qwen2.5-VL 3B,vlm,TRJ-7,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,0,NA,50,4.460000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,4.460000
+Qwen3-VL 30B-A3B-Thinking,vlm,SC-6,FRQ,scene-context,50,50,NA,NA,NA,NA,0,NA,50,9.140000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,9.140000
+Qwen3-VL 30B-A3B-Thinking,vlm,SP-1,MCQ,space-perception,50,50,10,0,0.200000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.200000
+Qwen3-VL 30B-A3B-Thinking,vlm,SP-2,MCQ,space-perception,50,50,20,0,0.400000,0.125000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.400000
+Qwen3-VL 30B-A3B-Thinking,vlm,SP-3,MCQ,space-perception,50,50,16,0,0.320000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.320000
+Qwen3-VL 30B-A3B-Thinking,vlm,SP-5,MCQ,space-perception,50,50,12,0,0.240000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.240000
+Qwen3-VL 30B-A3B-Thinking,vlm,SP-7,FRQ,space-perception,50,50,NA,NA,NA,NA,0,NA,50,2.160000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,2.160000
+Qwen3-VL 30B-A3B-Thinking,vlm,SU-1,MCQ,space-understanding,50,50,18,0,0.360000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.360000
+Qwen3-VL 30B-A3B-Thinking,vlm,SU-2,MCQ,space-understanding,50,50,5,0,0.100000,0.142857,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.100000
+Qwen3-VL 30B-A3B-Thinking,vlm,SU-4,MCQ,space-understanding,50,50,13,0,0.260000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.260000
+Qwen3-VL 30B-A3B-Thinking,vlm,SU-7,FRQ,space-understanding,50,50,NA,NA,NA,NA,0,NA,50,6.700000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,6.700000
+Qwen3-VL 30B-A3B-Thinking,vlm,TE-1,MCQ,time-extrapolation,50,50,14,0,0.280000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.280000
+Qwen3-VL 30B-A3B-Thinking,vlm,TE-6,FRQ,time-extrapolation,50,50,NA,NA,NA,NA,0,NA,50,4.200000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,4.200000
+Qwen3-VL 30B-A3B-Thinking,vlm,TM-2,MCQ,time-memory,50,50,15,0,0.300000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.300000
+Qwen3-VL 30B-A3B-Thinking,vlm,TM-3,MCQ,time-memory,50,50,10,0,0.200000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.200000
+Qwen3-VL 30B-A3B-Thinking,vlm,TM-4,MCQ,time-memory,50,50,10,0,0.200000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.200000
+Qwen3-VL 30B-A3B-Thinking,vlm,TM-5,MCQ,time-memory,50,50,18,0,0.360000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.360000
+Qwen3-VL 30B-A3B-Thinking,vlm,TRJ-1,MCQ,trajectory-prediction,50,50,13,0,0.260000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.260000
+Qwen3-VL 30B-A3B-Thinking,vlm,TRJ-2,MCQ,trajectory-prediction,50,50,14,0,0.280000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.280000
+Qwen3-VL 30B-A3B-Thinking,vlm,TRJ-3,MCQ,trajectory-prediction,50,50,15,0,0.300000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.300000
+Qwen3-VL 30B-A3B-Thinking,vlm,TRJ-4,MCQ,trajectory-prediction,50,50,11,0,0.220000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.220000
+Qwen3-VL 30B-A3B-Thinking,vlm,TRJ-5,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,27,23,23,5.507314,8.562904,1.974693,traj_ade,5.507314
+Qwen3-VL 30B-A3B-Thinking,vlm,TRJ-6,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,8,42,42,8.733452,12.288114,4.861301,traj_ade,8.733452
+Qwen3-VL 30B-A3B-Thinking,vlm,TRJ-7,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,0,NA,50,5.040000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,5.040000
+Qwen3-VL 8B-Thinking,vlm,SC-6,FRQ,scene-context,50,50,NA,NA,NA,NA,0,NA,50,9.100000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,9.100000
+Qwen3-VL 8B-Thinking,vlm,SP-1,MCQ,space-perception,50,50,9,0,0.180000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.180000
+Qwen3-VL 8B-Thinking,vlm,SP-2,MCQ,space-perception,50,50,17,0,0.340000,0.125000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.340000
+Qwen3-VL 8B-Thinking,vlm,SP-3,MCQ,space-perception,50,50,11,0,0.220000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.220000
+Qwen3-VL 8B-Thinking,vlm,SP-5,MCQ,space-perception,50,50,12,0,0.240000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.240000
+Qwen3-VL 8B-Thinking,vlm,SP-7,FRQ,space-perception,50,50,NA,NA,NA,NA,0,NA,50,2.280000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,2.280000
+Qwen3-VL 8B-Thinking,vlm,SU-1,MCQ,space-understanding,50,50,21,0,0.420000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.420000
+Qwen3-VL 8B-Thinking,vlm,SU-2,MCQ,space-understanding,50,50,11,0,0.220000,0.142857,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.220000
+Qwen3-VL 8B-Thinking,vlm,SU-4,MCQ,space-understanding,50,50,12,0,0.240000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.240000
+Qwen3-VL 8B-Thinking,vlm,SU-7,FRQ,space-understanding,50,50,NA,NA,NA,NA,0,NA,50,6.860000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,6.860000
+Qwen3-VL 8B-Thinking,vlm,TE-1,MCQ,time-extrapolation,50,50,10,0,0.200000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.200000
+Qwen3-VL 8B-Thinking,vlm,TE-6,FRQ,time-extrapolation,50,50,NA,NA,NA,NA,0,NA,50,4.580000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,4.580000
+Qwen3-VL 8B-Thinking,vlm,TM-2,MCQ,time-memory,50,50,11,0,0.220000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.220000
+Qwen3-VL 8B-Thinking,vlm,TM-3,MCQ,time-memory,50,50,9,0,0.180000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.180000
+Qwen3-VL 8B-Thinking,vlm,TM-4,MCQ,time-memory,50,50,4,0,0.080000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.080000
+Qwen3-VL 8B-Thinking,vlm,TM-5,MCQ,time-memory,50,50,16,0,0.320000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.320000
+Qwen3-VL 8B-Thinking,vlm,TRJ-1,MCQ,trajectory-prediction,50,50,11,0,0.220000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.220000
+Qwen3-VL 8B-Thinking,vlm,TRJ-2,MCQ,trajectory-prediction,50,50,13,0,0.260000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.260000
+Qwen3-VL 8B-Thinking,vlm,TRJ-3,MCQ,trajectory-prediction,50,50,12,0,0.240000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.240000
+Qwen3-VL 8B-Thinking,vlm,TRJ-4,MCQ,trajectory-prediction,50,50,8,0,0.160000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.160000
+Qwen3-VL 8B-Thinking,vlm,TRJ-5,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,32,18,18,6.079521,8.635470,2.286271,traj_ade,6.079521
+Qwen3-VL 8B-Thinking,vlm,TRJ-6,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,14,36,36,9.913314,12.892492,5.313060,traj_ade,9.913314
+Qwen3-VL 8B-Thinking,vlm,TRJ-7,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,0,NA,50,4.700000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,4.700000
+Dolphins,expert,SC-6,FRQ,scene-context,50,50,NA,NA,NA,NA,0,NA,50,4.580000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,4.580000
+Dolphins,expert,SP-1,MCQ,space-perception,50,50,13,0,0.260000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.260000
+Dolphins,expert,SP-2,MCQ,space-perception,50,50,5,3,0.100000,0.125000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.100000
+Dolphins,expert,SP-3,MCQ,space-perception,50,50,10,0,0.200000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.200000
+Dolphins,expert,SP-5,MCQ,space-perception,50,50,6,0,0.120000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.120000
+Dolphins,expert,SP-7,FRQ,space-perception,50,50,NA,NA,NA,NA,0,NA,50,1.120000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,1.120000
+Dolphins,expert,SU-1,MCQ,space-understanding,50,50,13,0,0.260000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.260000
+Dolphins,expert,SU-2,MCQ,space-understanding,50,50,8,1,0.160000,0.142857,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.160000
+Dolphins,expert,SU-4,MCQ,space-understanding,50,50,13,0,0.260000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.260000
+Dolphins,expert,SU-7,FRQ,space-understanding,50,50,NA,NA,NA,NA,0,NA,50,3.480000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,3.480000
+Dolphins,expert,TE-1,MCQ,time-extrapolation,50,50,8,0,0.160000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.160000
+Dolphins,expert,TE-6,FRQ,time-extrapolation,50,50,NA,NA,NA,NA,0,NA,50,1.660000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,1.660000
+Dolphins,expert,TM-2,MCQ,time-memory,50,50,5,0,0.100000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.100000
+Dolphins,expert,TM-3,MCQ,time-memory,50,50,7,0,0.140000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.140000
+Dolphins,expert,TM-4,MCQ,time-memory,50,50,13,0,0.260000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.260000
+Dolphins,expert,TM-5,MCQ,time-memory,50,50,13,0,0.260000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.260000
+Dolphins,expert,TRJ-1,MCQ,trajectory-prediction,50,50,5,0,0.100000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.100000
+Dolphins,expert,TRJ-2,MCQ,trajectory-prediction,50,50,9,0,0.180000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.180000
+Dolphins,expert,TRJ-3,MCQ,trajectory-prediction,50,50,9,0,0.180000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.180000
+Dolphins,expert,TRJ-4,MCQ,trajectory-prediction,50,50,11,0,0.220000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.220000
+Dolphins,expert,TRJ-5,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,9,41,41,8.587598,13.863252,3.242350,traj_ade,8.587598
+Dolphins,expert,TRJ-6,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,9,41,41,7.731017,11.262734,4.382987,traj_ade,7.731017
+Dolphins,expert,TRJ-7,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,0,NA,50,5.340000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,5.340000
+Qwen3.6 27B,vlm,SC-6,FRQ,scene-context,50,50,NA,NA,NA,NA,0,NA,50,8.940000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,8.940000
+Qwen3.6 27B,vlm,SP-1,MCQ,space-perception,50,50,3,38,0.060000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.060000
+Qwen3.6 27B,vlm,SP-2,MCQ,space-perception,50,50,26,1,0.520000,0.125000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.520000
+Qwen3.6 27B,vlm,SP-3,MCQ,space-perception,50,50,11,33,0.220000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.220000
+Qwen3.6 27B,vlm,SP-5,MCQ,space-perception,50,50,12,1,0.240000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.240000
+Qwen3.6 27B,vlm,SP-7,FRQ,space-perception,50,50,NA,NA,NA,NA,0,NA,50,2.860000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,2.860000
+Qwen3.6 27B,vlm,SU-1,MCQ,space-understanding,50,50,18,5,0.360000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.360000
+Qwen3.6 27B,vlm,SU-2,MCQ,space-understanding,50,50,0,47,0.000000,0.142857,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.000000
+Qwen3.6 27B,vlm,SU-4,MCQ,space-understanding,50,50,10,26,0.200000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.200000
+Qwen3.6 27B,vlm,SU-7,FRQ,space-understanding,50,50,NA,NA,NA,NA,0,NA,50,6.840000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,6.840000
+Qwen3.6 27B,vlm,TE-1,MCQ,time-extrapolation,50,50,8,21,0.160000,0.200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.160000
+Qwen3.6 27B,vlm,TE-6,FRQ,time-extrapolation,50,50,NA,NA,NA,NA,0,NA,50,5.820000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,5.820000
+Qwen3.6 27B,vlm,TM-2,MCQ,time-memory,50,50,16,27,0.320000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.320000
+Qwen3.6 27B,vlm,TM-3,MCQ,time-memory,50,50,1,42,0.020000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.020000
+Qwen3.6 27B,vlm,TM-4,MCQ,time-memory,50,50,4,37,0.080000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.080000
+Qwen3.6 27B,vlm,TM-5,MCQ,time-memory,50,50,13,11,0.260000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.260000
+Qwen3.6 27B,vlm,TRJ-1,MCQ,trajectory-prediction,50,50,15,25,0.300000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.300000
+Qwen3.6 27B,vlm,TRJ-2,MCQ,trajectory-prediction,50,50,1,49,0.020000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.020000
+Qwen3.6 27B,vlm,TRJ-3,MCQ,trajectory-prediction,50,50,1,49,0.020000,0.166667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.020000
+Qwen3.6 27B,vlm,TRJ-4,MCQ,trajectory-prediction,50,50,1,48,0.020000,0.250000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mcq_accuracy,0.020000
+Qwen3.6 27B,vlm,TRJ-5,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,22,28,28,10.129255,16.817935,6.811782,traj_ade,10.129255
+Qwen3.6 27B,vlm,TRJ-6,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,44,6,6,1.487576,2.465077,1.315092,traj_ade,1.487576
+Qwen3.6 27B,vlm,TRJ-7,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,0,NA,50,5.500000,vision,NA,NA,NA,NA,NA,NA,NA,open_frq_llm_judge_mean,5.500000
+UniAD 2.0,expert,TRJ-5,FRQ,trajectory-prediction,50,50,NA,NA,NA,NA,NA,NA,NA,NA,NA,50,50,0,0,0.556213,0.857118,0.785944,traj_ade,0.556213
