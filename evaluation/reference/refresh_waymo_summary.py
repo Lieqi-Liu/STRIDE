@@ -19,7 +19,7 @@ from run_waymo_miniset_model_benchmark import MODEL_SPECS, nusc_bench
 SCRIPT_DIR = Path(__file__).resolve().parent
 DEFAULT_INPUT = SCRIPT_DIR / "questions_with_answers_waymo_miniset_50_per_id_v1.json"
 DEFAULT_OUTPUT_DIR = SCRIPT_DIR / "miniset_model_benchmark_outputs"
-OPEN_FRQ_IDS = {"SC-4", "SP-3a", "TRJ-7", "TRJ-9"}
+OPEN_OEQ_IDS = {"SC-4", "SP-3a", "TRJ-7", "TRJ-9"}
 TRAJECTORY_IDS = {"TRJ-5", "TRJ-6"}
 
 
@@ -106,12 +106,12 @@ def leaderboard_row(name: str, result: dict[str, Any]) -> dict[str, Any]:
     open_bleurt = [
         float(t["bleurt_model_gt"])
         for t in tasks
-        if str(t.get("id")) in OPEN_FRQ_IDS and isinstance(t.get("bleurt_model_gt"), (int, float))
+        if str(t.get("id")) in OPEN_OEQ_IDS and isinstance(t.get("bleurt_model_gt"), (int, float))
     ]
     open_judge = [
         float(t["llm_judge_score"])
         for t in tasks
-        if str(t.get("id")) in OPEN_FRQ_IDS and isinstance(t.get("llm_judge_score"), (int, float))
+        if str(t.get("id")) in OPEN_OEQ_IDS and isinstance(t.get("llm_judge_score"), (int, float))
     ]
     traj = [t for t in tasks if str(t.get("id")) in TRAJECTORY_IDS]
     traj_ok = [t for t in traj if t.get("traj_parse_ok") is True]
@@ -124,14 +124,14 @@ def leaderboard_row(name: str, result: dict[str, Any]) -> dict[str, Any]:
         "split": "waymo_miniset_50_per_id_v1",
         "n_tasks": summary.get("total"),
         "n_mcq": (mcq.get("total")),
-        "n_frq": (summary.get("frq") or {}).get("total"),
+        "n_oeq": (summary.get("oeq") or {}).get("total"),
         "mcq_accuracy": mcq.get("accuracy"),
         "mcq_random_guess_baseline": mcq.get("random_guess_baseline"),
         "mcq_accuracy_minus_baseline": mcq.get("accuracy_minus_random_guess"),
-        "open_frq_bleurt_mean": mean_or_none(open_bleurt),
-        "open_frq_bleurt_n": len(open_bleurt),
-        "open_frq_llm_judge_mean": mean_or_none(open_judge),
-        "open_frq_llm_judge_n": len(open_judge),
+        "open_oeq_bleurt_mean": mean_or_none(open_bleurt),
+        "open_oeq_bleurt_n": len(open_bleurt),
+        "open_oeq_llm_judge_mean": mean_or_none(open_judge),
+        "open_oeq_llm_judge_n": len(open_judge),
         "llm_judge_mode": judge_mode,
         "traj_parse_ok": len(traj_ok),
         "traj_n": len(traj),
@@ -188,8 +188,8 @@ def main() -> None:
             for row in rows:
                 print(
                     f"{row['model']}: mcq={row['mcq_accuracy']} "
-                    f"bleurt={row['open_frq_bleurt_mean']} "
-                    f"judge={row['open_frq_llm_judge_mean']} "
+                    f"bleurt={row['open_oeq_bleurt_mean']} "
+                    f"judge={row['open_oeq_llm_judge_mean']} "
                     f"ade={row['traj_ade']} parse={row['traj_parse_ok']}/{row['traj_n']}"
                 )
     finally:

@@ -3,7 +3,7 @@
 
 Settings copied from full_nuscenes/run_openai_miniset_expert.py:
   model=gpt-5.5, reasoning_effort=low, image_detail=low,
-  max_output_tokens MCQ/FRQ=4096, save_every=10, resume, max_retries=6.
+  max_output_tokens MCQ/OEQ=4096, save_every=10, resume, max_retries=6.
 Images come from Waymo CAM_FRONT paths with red-box overlay.
 """
 from __future__ import annotations
@@ -84,7 +84,7 @@ def main() -> None:
     print(f"[OpenAI] split=waymo_miniset_50_per_id_v1")
     print(f"[OpenAI] model={args.model} remaining={len(runnable_idx)}/{len(tasks)}")
     print(f"[OpenAI] reasoning_effort={args.reasoning_effort} image_detail={args.image_detail}")
-    print(f"[OpenAI] max_tokens mcq={args.max_output_tokens_mcq} frq={args.max_output_tokens_frq}")
+    print(f"[OpenAI] max_tokens mcq={args.max_output_tokens_mcq} oeq={args.max_output_tokens_oeq}")
     print(f"[OpenAI] base_url={args.base_url or 'https://api.openai.com/v1 (default)'}")
     client = openai_nusc.create_client(api_key, args.base_url)
     resolver = WaymoVisualResolver(image_cache_size=32, draw_boxes=True)
@@ -99,7 +99,7 @@ def main() -> None:
             "max_frames": args.max_frames,
             "reasoning_effort": args.reasoning_effort,
             "max_output_tokens_mcq": args.max_output_tokens_mcq,
-            "max_output_tokens_frq": args.max_output_tokens_frq,
+            "max_output_tokens_oeq": args.max_output_tokens_oeq,
             "created_at": datetime.now().isoformat(timespec="seconds"),
             "base_url": args.base_url or "https://api.openai.com/v1",
             "matched_nuscenes_openai_settings": True,
@@ -122,7 +122,7 @@ def main() -> None:
                 max_out = (
                     args.max_output_tokens_mcq
                     if str(task.get("question_format")) == "MCQ"
-                    else args.max_output_tokens_frq
+                    else args.max_output_tokens_oeq
                 )
                 raw = openai_nusc.generate_one(
                     client,

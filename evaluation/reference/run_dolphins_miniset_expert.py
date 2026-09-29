@@ -55,7 +55,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--no-resume", action="store_false", dest="resume")
     p.add_argument("--save-every", type=int, default=10)
     p.add_argument("--max-new-tokens-mcq", type=int, default=64)
-    p.add_argument("--max-new-tokens-frq", type=int, default=512)
+    p.add_argument("--max-new-tokens-oeq", type=int, default=512)
     p.add_argument("--num-beams", type=int, default=3)
     p.add_argument("--max-frames", type=int, default=16, help="Cap SC-6 frames (official demo uses 16).")
     return p.parse_args()
@@ -275,7 +275,7 @@ def main() -> None:
                 max_new = (
                     args.max_new_tokens_mcq
                     if str(task.get("question_format")) == "MCQ"
-                    else args.max_new_tokens_frq
+                    else args.max_new_tokens_oeq
                 )
                 raw = generate_one(
                     model,

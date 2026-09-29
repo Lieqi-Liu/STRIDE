@@ -41,7 +41,7 @@
       "trajectory-prediction": 500
     },
     "counts_by_format": {
-      "FRQ": 300,
+      "OEQ": 300,
       "MCQ": 900
     },
     "image_root_hint": "Set STRIDE_WAYMO_IMAGE_ROOT to the directory containing CAM_FRONT sequences (val/images/).",
@@ -186,7 +186,7 @@
       "image_path": "0075c28f1f1a68c4c1c8dcf37958046b/CAM_FRONT/0075c28f1f1a68c4c1c8dcf37958046b-194_FRONT.jpg",
       "frame_name": "0075c28f1f1a68c4c1c8dcf37958046b-194",
       "bundle_id": "0075c28f1f1a68c4c1c8dcf37958046b:group_033",
-      "question_format": "FRQ",
+      "question_format": "OEQ",
       "question": "Briefly describe the scene, the main risk, and the preferred action.",
       "task": "scenario-corner-case",
       "frame_index": 194,
@@ -209,7 +209,7 @@
         "0075c28f1f1a68c4c1c8dcf37958046b-194"
       ],
       "ground_truth": "A nighttime driving scene on a multi-lane road with streetlights. The ego vehicle is driving straight, and the road is mostly clear. On the right side of the road, a white pickup truck is parked. The scene is dark, with the primary light sources being streetlights and the vehicle's headlights. The road markings are visible, including a crosswalk and lane dividers. The main risk is Foreign Object Debris The preferred action is to proceed with caution, maintain lane position, and be prepared to stop if any debris is observed on the road surface.",
-      "scoring_type": "open_frq_text"
+      "scoring_type": "open_oeq_text"
     }
   ]
 }

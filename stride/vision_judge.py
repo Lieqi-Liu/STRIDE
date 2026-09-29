@@ -1,4 +1,4 @@
-"""Vision LLM judge for open-ended FRQ answers (optional heavy dependency)."""
+"""Vision LLM judge for open-ended OEQ answers (optional heavy dependency)."""
 from __future__ import annotations
 
 import json
@@ -6,7 +6,7 @@ import re
 import statistics
 from typing import Any
 
-from .bleurt import NUSCENES_OPEN_FRQ_IDS, WAYMO_OPEN_FRQ_IDS, collect_open_frq_rows
+from .bleurt import NUSCENES_OPEN_OEQ_IDS, WAYMO_OPEN_OEQ_IDS, collect_open_oeq_rows
 from .io import strip_thinking
 from .visual import load_nuscenes_images, load_waymo_images
 
@@ -60,7 +60,7 @@ def score_vision_judge_tasks(
     temperature: float = 0.0,
     batch_size: int = 2,
 ) -> dict[str, Any]:
-    """Score open FRQs with a vision LLM judge via vLLM.
+    """Score open OEQs with a vision LLM judge via vLLM.
 
     Requires vLLM + a Qwen3-VL (or compatible) checkpoint and local image roots.
     """
@@ -74,9 +74,9 @@ def score_vision_judge_tasks(
 
     if question_ids is None:
         question_ids = (
-            set(WAYMO_OPEN_FRQ_IDS) if image_backend == "waymo" else set(NUSCENES_OPEN_FRQ_IDS)
+            set(WAYMO_OPEN_OEQ_IDS) if image_backend == "waymo" else set(NUSCENES_OPEN_OEQ_IDS)
         )
-    rows, skip_counts = collect_open_frq_rows(tasks, question_ids)
+    rows, skip_counts = collect_open_oeq_rows(tasks, question_ids)
     if not rows:
         return {"scored_count": 0, "skip_counts": dict(skip_counts), "mean": None}
 

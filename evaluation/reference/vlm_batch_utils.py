@@ -120,7 +120,7 @@ def parse_args() -> argparse.Namespace:
         help="Only write a sanitized JSON copy; do not load the model.",
     )
     parser.add_argument("--mcq-max-tokens", type=int, default=8, help="Max output tokens for MCQ.")
-    parser.add_argument("--frq-max-tokens", type=int, default=256, help="Max output tokens for FRQ.")
+    parser.add_argument("--oeq-max-tokens", type=int, default=256, help="Max output tokens for OEQ.")
     parser.add_argument("--temperature", type=float, default=0.0, help="Sampling temperature.")
     parser.add_argument("--top-p", type=float, default=1.0, help="Sampling top-p.")
     parser.add_argument(
@@ -752,7 +752,7 @@ def main() -> None:
         "batch_size": effective_batch_size,
         "max_model_len": effective_max_model_len,
         "mcq_max_tokens": args.mcq_max_tokens,
-        "frq_max_tokens": args.frq_max_tokens,
+        "oeq_max_tokens": args.oeq_max_tokens,
         "temperature": args.temperature,
         "top_p": args.top_p,
         "object_reference_prompt_value": MASKED_OBJECT_REFERENCE,
@@ -778,10 +778,10 @@ def main() -> None:
         )
     ]
     mcq_indices = [idx for idx in runnable if all_tasks[idx].get("question_format") == "MCQ"]
-    frq_indices = [idx for idx in runnable if all_tasks[idx].get("question_format") != "MCQ"]
+    oeq_indices = [idx for idx in runnable if all_tasks[idx].get("question_format") != "MCQ"]
     print(
         f"Loaded {len(all_tasks)} tasks; running {len(runnable)} "
-        f"({len(mcq_indices)} MCQ, {len(frq_indices)} FRQ)."
+        f"({len(mcq_indices)} MCQ, {len(oeq_indices)} OEQ)."
     )
 
     from transformers import AutoProcessor
@@ -806,10 +806,10 @@ def main() -> None:
         max_tokens=args.mcq_max_tokens,
         repetition_penalty=1.0,
     )
-    frq_sampling = SamplingParams(
+    oeq_sampling = SamplingParams(
         temperature=args.temperature,
         top_p=args.top_p,
-        max_tokens=args.frq_max_tokens,
+        max_tokens=args.oeq_max_tokens,
         repetition_penalty=1.0,
     )
     resolver = VisualResolver(
@@ -834,18 +834,18 @@ def main() -> None:
                 output_payload,
                 "MCQ annotation",
             )
-        if frq_indices:
-            print("Running FRQ pass...")
+        if oeq_indices:
+            print("Running OEQ pass...")
             run_batches(
                 all_tasks,
-                frq_indices,
+                oeq_indices,
                 processor,
                 llm,
-                frq_sampling,
+                oeq_sampling,
                 resolver,
                 args,
                 output_payload,
-                "FRQ annotation",
+                "OEQ annotation",
             )
     finally:
         resolver.close()

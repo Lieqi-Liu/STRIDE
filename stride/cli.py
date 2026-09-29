@@ -27,7 +27,7 @@ from pathlib import Path
 from typing import Any
 
 from .aggregate import SPLIT_PATHS, aggregate_scores, index_predictions, load_tasks
-from .bleurt import default_open_frq_ids, score_bleurt_tasks
+from .bleurt import default_open_oeq_ids, score_bleurt_tasks
 from .io import read_json, write_json
 from .mcq import score_mcq_tasks
 from .trajectory import score_trajectory_tasks
@@ -129,7 +129,7 @@ def cmd_score(args: argparse.Namespace) -> None:
 
     if "bleurt" in metrics:
         split_key = str(args.split)
-        qids = default_open_frq_ids(split_key)
+        qids = default_open_oeq_ids(split_key)
         bleurt = score_bleurt_tasks(
             tasks,
             question_ids=qids,
@@ -167,7 +167,7 @@ def cmd_score(args: argparse.Namespace) -> None:
     summary = {
         "model": model_name,
         "mcq_accuracy": mcq.get("accuracy"),
-        "open_frq_bleurt_mean": bleurt.get("mean"),
+        "open_oeq_bleurt_mean": bleurt.get("mean"),
         "traj_ade": (traj.get("overall") or {}).get("ade", {}).get("mean"),
         "traj_mini_fde": (traj.get("overall") or {}).get("mini_fde", {}).get("mean"),
     }

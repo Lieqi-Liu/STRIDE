@@ -110,7 +110,7 @@ def score_trajectory_task(task: dict[str, Any]) -> dict[str, Any] | None:
     qid = str(task.get("id", ""))
     if qid not in TRAJECTORY_IDS:
         return None
-    if str(task.get("question_format", "")).upper() != "FRQ":
+    if str(task.get("question_format", "")).upper() != "OEQ":
         return None
 
     expected = expected_point_count(qid)

@@ -18,14 +18,14 @@ except Exception:
 
 
 DEFAULT_INPUT = Path("/local1/lieqiliu/nuscenes/fullset/questions_with_answers_all_qwen3vl30b.json")
-DEFAULT_OUTPUT_DIR = Path("/local1/lieqiliu/nuscenes/fullset/frq_bleurt_scores_qwen3vl30b")
+DEFAULT_OUTPUT_DIR = Path("/local1/lieqiliu/nuscenes/fullset/oeq_bleurt_scores_qwen3vl30b")
 DEFAULT_BLEURT_MODEL = "Elron/bleurt-base-512"
 DEFAULT_HF_HOME = Path("/local1/lieqiliu/huggingface")
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Score full NuScenes FRQ Qwen responses against ground truth with BLEURT."
+        description="Score full NuScenes OEQ Qwen responses against ground truth with BLEURT."
     )
     parser.add_argument("--input", type=Path, default=DEFAULT_INPUT)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
@@ -39,7 +39,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--batch-size", type=int, default=32)
     parser.add_argument("--device", choices=("auto", "cpu", "cuda"), default="auto")
-    parser.add_argument("--task-id", action="append", default=[], help="Optional FRQ id filter.")
+    parser.add_argument("--task-id", action="append", default=[], help="Optional OEQ id filter.")
     parser.add_argument("--max-rows", type=int, default=0, help="If >0, score only first N rows.")
     parser.add_argument("--include-errors", action="store_true")
     parser.add_argument("--write-back", action="store_true")
@@ -106,8 +106,8 @@ def resolve_device(device: str) -> str:
         return "cpu"
 
 
-def is_frq(row: dict[str, Any]) -> bool:
-    return str(row.get("question_format", "")).upper() == "FRQ"
+def is_oeq(row: dict[str, Any]) -> bool:
+    return str(row.get("question_format", "")).upper() == "OEQ"
 
 
 def collect_rows(
@@ -116,8 +116,8 @@ def collect_rows(
     rows: list[dict[str, Any]] = []
     counters: Counter[str] = Counter()
     for index, task in enumerate(tasks):
-        if not is_frq(task):
-            counters["non_frq"] += 1
+        if not is_oeq(task):
+            counters["non_oeq"] += 1
             continue
         if task_ids and str(task.get("id", "")) not in task_ids:
             counters["filtered_task_id"] += 1
@@ -278,7 +278,7 @@ def main() -> None:
 
     rows, skip_counts = collect_rows(tasks, set(args.task_id), args.include_errors, args.max_rows)
     if not rows:
-        raise SystemExit("No FRQ rows are ready for BLEURT scoring.")
+        raise SystemExit("No OEQ rows are ready for BLEURT scoring.")
 
     device = resolve_device(args.device)
     hypotheses = [str(row.get("model_response", "")).strip() for row in rows]
@@ -304,8 +304,8 @@ def main() -> None:
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
     write_json(args.output_dir / "summary.json", summary)
-    write_json(args.output_dir / "frq_bleurt_scores.json", {"meta": summary, "rows": rows})
-    write_csv(args.output_dir / "frq_bleurt_scores.csv", rows)
+    write_json(args.output_dir / "oeq_bleurt_scores.json", {"meta": summary, "rows": rows})
+    write_csv(args.output_dir / "oeq_bleurt_scores.csv", rows)
 
     if args.write_back:
         for row in rows:
@@ -314,13 +314,13 @@ def main() -> None:
             task["bleurt_model"] = args.bleurt_model
             task["bleurt_scored_at"] = summary["created_at"]
         payload.setdefault("meta", {})
-        payload["meta"]["frq_bleurt_summary"] = summary
+        payload["meta"]["oeq_bleurt_summary"] = summary
         write_json(args.write_back_output or args.input, payload)
 
-    print(f"Scored FRQ rows: {summary['scored_count']}")
+    print(f"Scored OEQ rows: {summary['scored_count']}")
     print(f"Mean BLEURT model-vs-GT: {summary['overall']['mean']}")
     print(f"Wrote: {args.output_dir / 'summary.json'}")
-    print(f"Wrote: {args.output_dir / 'frq_bleurt_scores.csv'}")
+    print(f"Wrote: {args.output_dir / 'oeq_bleurt_scores.csv'}")
 
 
 if __name__ == "__main__":

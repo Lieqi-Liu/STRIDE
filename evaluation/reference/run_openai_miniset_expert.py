@@ -54,7 +54,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--save-every", type=int, default=10)
     # GPT-5.x spends completion tokens on hidden reasoning; 64/512 often yields empty text.
     p.add_argument("--max-output-tokens-mcq", type=int, default=4096)
-    p.add_argument("--max-output-tokens-frq", type=int, default=4096)
+    p.add_argument("--max-output-tokens-oeq", type=int, default=4096)
     p.add_argument(
         "--max-frames",
         type=int,
@@ -322,7 +322,7 @@ def main() -> None:
                 max_out = (
                     args.max_output_tokens_mcq
                     if str(task.get("question_format")) == "MCQ"
-                    else args.max_output_tokens_frq
+                    else args.max_output_tokens_oeq
                 )
                 raw = generate_one(
                     client,

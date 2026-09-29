@@ -14,7 +14,7 @@ Gemini/Claude/OpenAI experts, Dolphins, vision-judge batches). Before running:
 
 | File | Role |
 |------|------|
-| `score_miniset_frq_*.py` | BLEURT / trajectory / vision-judge scorers |
+| `score_miniset_oeq_*.py` | BLEURT / trajectory / vision-judge scorers |
 | `run_*_miniset*.py` | Inference runners |
 | `vlm_batch_utils.py` | Shared MCQ parse + VisualResolver |
 | `refresh_waymo_summary.py` | Rebuild Waymo leaderboard CSV |

@@ -79,7 +79,7 @@ MODEL_SPECS = [
         "backend": "vllm",
         "enabled": True,
         "mcq_max_tokens": 4096,
-        "frq_max_tokens": 4096,
+        "oeq_max_tokens": 4096,
         "batch_size": 8,
         "note": "Qwen3-VL thinking variant; answers extracted after </think>.",
     },
@@ -89,7 +89,7 @@ MODEL_SPECS = [
         "backend": "vllm",
         "enabled": True,
         "mcq_max_tokens": 4096,
-        "frq_max_tokens": 4096,
+        "oeq_max_tokens": 4096,
         "batch_size": 4,
         "note": "Qwen3-VL MoE thinking variant; answers extracted after </think>.",
     },
@@ -154,7 +154,7 @@ def parse_args() -> argparse.Namespace:
         help="Disable vLLM CUDA graphs (default: true).",
     )
     parser.add_argument("--mcq-max-tokens", type=int, default=8)
-    parser.add_argument("--frq-max-tokens", type=int, default=256)
+    parser.add_argument("--oeq-max-tokens", type=int, default=256)
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--top-p", type=float, default=1.0)
     parser.add_argument("--max-tasks", type=int, default=0)
@@ -182,7 +182,7 @@ def parse_args() -> argparse.Namespace:
         "--only-question-format",
         action="append",
         default=[],
-        choices=("MCQ", "FRQ", "mcq", "frq"),
+        choices=("MCQ", "OEQ", "mcq", "oeq"),
     )
     parser.add_argument(
         "--resume-from-output",
@@ -835,10 +835,10 @@ def run_model_spec(
                 and nusc_bench.matches_question_filter(task, requested_ids)
                 and nusc_bench.matches_format_filter(task, requested_formats)
             ]
-            frq_indices = [
+            oeq_indices = [
                 idx
                 for idx, task in enumerate(runnable_tasks)
-                if nusc_bench.is_frq(task)
+                if nusc_bench.is_oeq(task)
                 and nusc_bench.matches_question_filter(task, requested_ids)
                 and nusc_bench.matches_format_filter(task, requested_formats)
             ]
@@ -856,15 +856,15 @@ def run_model_spec(
             )
             run_indices_vllm(
                 tasks=runnable_tasks,
-                indices=frq_indices,
+                indices=oeq_indices,
                 loaded=loaded,
-                sampling_params=loaded.frq_sampling,
+                sampling_params=loaded.oeq_sampling,
                 resolver=resolver,
                 model_id=model_id,
                 output_path=output_path,
                 payload=payload,
                 args=run_args,
-                desc=f"{name} FRQ",
+                desc=f"{name} OEQ",
             )
         finally:
             resolver.close()

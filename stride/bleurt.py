@@ -1,4 +1,4 @@
-"""BLEURT scoring for open-ended FRQ text answers."""
+"""BLEURT scoring for open-ended OEQ text answers."""
 from __future__ import annotations
 
 import statistics
@@ -9,19 +9,19 @@ from typing import Any
 from .io import strip_thinking
 from .trajectory import TRAJECTORY_IDS
 
-# Default open-FRQ sets (geometric TRJ-5/6 are scored separately).
-NUSCENES_OPEN_FRQ_IDS = {"SC-6", "SP-7", "SU-7", "TE-6", "TRJ-7"}
-WAYMO_OPEN_FRQ_IDS = {"SC-4", "SP-3a", "TRJ-7", "TRJ-9"}
+# Default open-OEQ sets (geometric TRJ-5/6 are scored separately).
+NUSCENES_OPEN_OEQ_IDS = {"SC-6", "SP-7", "SU-7", "TE-6", "TRJ-7"}
+WAYMO_OPEN_OEQ_IDS = {"SC-4", "SP-3a", "TRJ-7", "TRJ-9"}
 DEFAULT_BLEURT_MODEL = "Elron/bleurt-base-512"
 
 
-def default_open_frq_ids(split: str) -> set[str]:
+def default_open_oeq_ids(split: str) -> set[str]:
     if split.startswith("waymo"):
-        return set(WAYMO_OPEN_FRQ_IDS)
-    return set(NUSCENES_OPEN_FRQ_IDS)
+        return set(WAYMO_OPEN_OEQ_IDS)
+    return set(NUSCENES_OPEN_OEQ_IDS)
 
 
-def collect_open_frq_rows(
+def collect_open_oeq_rows(
     tasks: list[dict[str, Any]],
     question_ids: set[str] | None = None,
     *,
@@ -31,12 +31,12 @@ def collect_open_frq_rows(
     rows: list[dict[str, Any]] = []
     counters: Counter[str] = Counter()
     for index, task in enumerate(tasks):
-        if str(task.get("question_format", "")).upper() != "FRQ":
-            counters["non_frq"] += 1
+        if str(task.get("question_format", "")).upper() != "OEQ":
+            counters["non_oeq"] += 1
             continue
         qid = str(task.get("id", ""))
         if exclude_trajectory and qid in TRAJECTORY_IDS:
-            counters["trajectory_frq"] += 1
+            counters["trajectory_oeq"] += 1
             continue
         if question_ids is not None and qid not in question_ids:
             counters["filtered_task_id"] += 1
@@ -126,7 +126,7 @@ def score_bleurt_tasks(
     device: str = "auto",
     include_errors: bool = False,
 ) -> dict[str, Any]:
-    rows, skip_counts = collect_open_frq_rows(
+    rows, skip_counts = collect_open_oeq_rows(
         tasks, question_ids, include_errors=include_errors
     )
     if not rows:

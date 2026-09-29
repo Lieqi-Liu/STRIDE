@@ -71,7 +71,7 @@ MODEL_SPECS = [
         "enabled": True,
         # Thinking models emit a long chain-of-thought before the final answer.
         "mcq_max_tokens": 4096,
-        "frq_max_tokens": 4096,
+        "oeq_max_tokens": 4096,
         "batch_size": 8,
         "note": "Qwen3-VL thinking variant; answers extracted after </think>.",
     },
@@ -81,7 +81,7 @@ MODEL_SPECS = [
         "backend": "vllm",
         "enabled": True,
         "mcq_max_tokens": 4096,
-        "frq_max_tokens": 4096,
+        "oeq_max_tokens": 4096,
         "batch_size": 4,
         "note": "Qwen3-VL MoE thinking variant; answers extracted after </think>.",
     },
@@ -140,7 +140,7 @@ class LoadedModel:
     processor: Any
     llm: Any
     mcq_sampling: Any
-    frq_sampling: Any
+    oeq_sampling: Any
     model_id: str
 
 
@@ -178,7 +178,7 @@ def parse_args() -> argparse.Namespace:
         help="Disable vLLM CUDA graphs (default: true; avoids OOM on A6000 for 30B).",
     )
     parser.add_argument("--mcq-max-tokens", type=int, default=8)
-    parser.add_argument("--frq-max-tokens", type=int, default=256)
+    parser.add_argument("--oeq-max-tokens", type=int, default=256)
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--top-p", type=float, default=1.0)
     parser.add_argument("--max-tasks", type=int, default=0)
@@ -206,8 +206,8 @@ def parse_args() -> argparse.Namespace:
         "--only-question-format",
         action="append",
         default=[],
-        choices=("MCQ", "FRQ", "mcq", "frq"),
-        help="Run only MCQ or FRQ tasks. Can be repeated.",
+        choices=("MCQ", "OEQ", "mcq", "oeq"),
+        help="Run only MCQ or OEQ tasks. Can be repeated.",
     )
     parser.add_argument(
         "--resume-from-output",
@@ -239,8 +239,8 @@ def is_mcq(row: dict[str, Any]) -> bool:
     return str(row.get("question_format", "")).upper() == "MCQ" and isinstance(row.get("choices"), dict)
 
 
-def is_frq(row: dict[str, Any]) -> bool:
-    return str(row.get("question_format", "")).upper() == "FRQ"
+def is_oeq(row: dict[str, Any]) -> bool:
+    return str(row.get("question_format", "")).upper() == "OEQ"
 
 
 def is_error_response(row: dict[str, Any]) -> bool:
@@ -472,7 +472,7 @@ def load_vllm_model(
 
     model_spec = model_spec or {}
     mcq_max_tokens = int(model_spec.get("mcq_max_tokens", args.mcq_max_tokens))
-    frq_max_tokens = int(model_spec.get("frq_max_tokens", args.frq_max_tokens))
+    oeq_max_tokens = int(model_spec.get("oeq_max_tokens", args.oeq_max_tokens))
 
     hf_home = apply_hf_home_env(resolve_hf_home(model_id, args.hf_home, local_files_only))
     processor = AutoProcessor.from_pretrained(
@@ -496,10 +496,10 @@ def load_vllm_model(
         max_tokens=mcq_max_tokens,
         repetition_penalty=1.0,
     )
-    frq_sampling = SamplingParams(
+    oeq_sampling = SamplingParams(
         temperature=args.temperature,
         top_p=args.top_p,
-        max_tokens=frq_max_tokens,
+        max_tokens=oeq_max_tokens,
         repetition_penalty=1.0,
     )
     return LoadedModel(
@@ -507,7 +507,7 @@ def load_vllm_model(
         processor=processor,
         llm=llm,
         mcq_sampling=mcq_sampling,
-        frq_sampling=frq_sampling,
+        oeq_sampling=oeq_sampling,
         model_id=model_id,
     )
 
@@ -541,13 +541,13 @@ def load_transformers_llava_model(
         "top_p": args.top_p,
     }
     mcq_sampling = {"max_new_tokens": args.mcq_max_tokens, **sampling_defaults}
-    frq_sampling = {"max_new_tokens": args.frq_max_tokens, **sampling_defaults}
+    oeq_sampling = {"max_new_tokens": args.oeq_max_tokens, **sampling_defaults}
     return LoadedModel(
         backend="transformers_llava",
         processor=processor,
         llm=model,
         mcq_sampling=mcq_sampling,
-        frq_sampling=frq_sampling,
+        oeq_sampling=oeq_sampling,
         model_id=model_id,
     )
 
@@ -769,9 +769,9 @@ def bucket_bleurt(values: list[float]) -> dict[str, Any]:
 
 def summarize_model(tasks: list[dict[str, Any]]) -> dict[str, Any]:
     by_id: dict[str, Counter[str]] = defaultdict(Counter)
-    frq_bleurt_by_id: dict[str, list[float]] = defaultdict(list)
+    oeq_bleurt_by_id: dict[str, list[float]] = defaultdict(list)
     mcq_rows = [row for row in tasks if is_mcq(row)]
-    frq_rows = [row for row in tasks if is_frq(row)]
+    oeq_rows = [row for row in tasks if is_oeq(row)]
     scored_mcq = [row for row in mcq_rows if row_correctness(row) is not None]
     correct_mcq = [row for row in scored_mcq if row_correctness(row) is True]
     random_baselines = [
@@ -792,22 +792,22 @@ def summarize_model(tasks: list[dict[str, Any]]) -> dict[str, Any]:
         if correct is not None:
             counter["scored"] += 1
             counter["correct"] += int(correct)
-        if is_frq(row):
+        if is_oeq(row):
             bleurt = row.get("bleurt_model_gt")
             if isinstance(bleurt, (int, float)):
                 value = float(bleurt)
-                frq_bleurt_by_id[qid].append(value)
+                oeq_bleurt_by_id[qid].append(value)
                 counter["bleurt_scored"] += 1
 
-    frq_bleurt_values = [
+    oeq_bleurt_values = [
         float(row["bleurt_model_gt"])
-        for row in frq_rows
+        for row in oeq_rows
         if isinstance(row.get("bleurt_model_gt"), (int, float))
     ]
     bleurt_model = next(
         (
             str(row["bleurt_model"])
-            for row in frq_rows
+            for row in oeq_rows
             if isinstance(row.get("bleurt_model"), str) and row.get("bleurt_model")
         ),
         None,
@@ -823,7 +823,7 @@ def summarize_model(tasks: list[dict[str, Any]]) -> dict[str, Any]:
             "correct": counter["correct"],
             "accuracy": counter["correct"] / counter["scored"] if counter["scored"] else None,
         }
-        bleurt_bucket = bucket_bleurt(frq_bleurt_by_id.get(qid, []))
+        bleurt_bucket = bucket_bleurt(oeq_bleurt_by_id.get(qid, []))
         if bleurt_bucket["count"]:
             entry["bleurt_count"] = bleurt_bucket["count"]
             entry["bleurt_mean"] = bleurt_bucket["mean"]
@@ -833,7 +833,7 @@ def summarize_model(tasks: list[dict[str, Any]]) -> dict[str, Any]:
 
     mcq_accuracy = len(correct_mcq) / len(scored_mcq) if scored_mcq else None
     random_baseline = sum(random_baselines) / len(random_baselines) if random_baselines else None
-    frq_responses = sum(1 for row in frq_rows if row.get("model_response") and not is_error_response(row))
+    oeq_responses = sum(1 for row in oeq_rows if row.get("model_response") and not is_error_response(row))
     return {
         "total": len(tasks),
         "by_question_format": dict(sorted(Counter(row.get("question_format") for row in tasks).items())),
@@ -849,13 +849,13 @@ def summarize_model(tasks: list[dict[str, Any]]) -> dict[str, Any]:
             if mcq_accuracy is not None and random_baseline is not None
             else None,
         },
-        "frq": {
-            "total": len(frq_rows),
-            "responses": frq_responses,
-            "bleurt": bucket_bleurt(frq_bleurt_values),
+        "oeq": {
+            "total": len(oeq_rows),
+            "responses": oeq_responses,
+            "bleurt": bucket_bleurt(oeq_bleurt_values),
             "bleurt_model": bleurt_model,
             "by_question_id": {
-                qid: bucket_bleurt(values) for qid, values in sorted(frq_bleurt_by_id.items()) if values
+                qid: bucket_bleurt(values) for qid, values in sorted(oeq_bleurt_by_id.items()) if values
             },
         },
         "per_question_id": per_question_id,
@@ -958,10 +958,10 @@ def run_model_spec(
                 and matches_question_filter(task, requested_ids)
                 and matches_format_filter(task, requested_formats)
             ]
-            frq_indices = [
+            oeq_indices = [
                 idx
                 for idx, task in enumerate(runnable_tasks)
-                if is_frq(task)
+                if is_oeq(task)
                 and matches_question_filter(task, requested_ids)
                 and matches_format_filter(task, requested_formats)
             ]
@@ -979,15 +979,15 @@ def run_model_spec(
             )
             run_indices(
                 tasks=runnable_tasks,
-                indices=frq_indices,
+                indices=oeq_indices,
                 loaded=loaded,
-                sampling_params=loaded.frq_sampling,
+                sampling_params=loaded.oeq_sampling,
                 resolver=resolver,
                 model_id=model_id,
                 output_path=output_path,
                 payload=payload,
                 args=run_args,
-                desc=f"{name} FRQ",
+                desc=f"{name} OEQ",
             )
         finally:
             resolver.close()

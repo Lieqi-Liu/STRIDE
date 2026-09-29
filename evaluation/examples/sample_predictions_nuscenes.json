@@ -64,7 +64,7 @@
       "scene_id": "scene_028",
       "group_id": "group_007",
       "object_id": null,
-      "question_format": "FRQ",
+      "question_format": "OEQ",
       "question": "Based on the past 5 consecutive 360-degree multi-camera frames, use the following past ego trajectory in the ego-centric coordinate system anchored at the 5th observed frame.\nPast observed ego positions (oldest to current, where the current frame is [0.0, 0.0]): [[-12.833, 0.405], [-9.672, 0.267], [-6.504, 0.147], [-3.26, 0.055], [0.0, -0.0]]\nPredict the next 5 future ego positions in the same coordinate system. Output only a JSON array of exactly 5 points formatted as [[x1, y1], [x2, y2], [x3, y3], [x4, y4], [x5, y5]].",
       "choices": null,
       "ground_truth": "[[2.547, 0.004], [5.669, 0.096], [8.765, 0.237], [11.849, 0.361], [15.002, 0.441]]",

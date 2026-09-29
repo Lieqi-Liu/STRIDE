@@ -41,13 +41,13 @@
       "trajectory-prediction": 350
     },
     "counts_by_format": {
-      "FRQ": 350,
+      "OEQ": 350,
       "MCQ": 800
     },
     "notes": [
       "Ground-truth answers included for open evaluation.",
       "Images are NOT bundled; resolve via formatted_scenes using source_group_file.",
-      "239 open-FRQ ground truths were revised via vision audit relative to plain v6."
+      "239 open-OEQ ground truths were revised via vision audit relative to plain v6."
     ],
     "packaged_at": "2026-09-28T23:42:03.998571+00:00"
   },
@@ -106,8 +106,8 @@
       "nuscenes_scene_name": "scene-0299",
       "nuscenes_log_location": "boston-seaport",
       "ground_truth": "The scene takes place during daytime under partly cloudy conditions with adequate natural lighting. It is set in a straight urban road environment with light to moderate traffic. The road features double yellow lines and crosswalks. Notable surrounding activity includes parked vehicles, industrial buildings (including a 'New Boston Seafood' facility), and some pedestrian activity near sidewalks. There are no visible bridges, barriers, or roundabouts. Traffic flow is steady but not dense.",
-      "question_format": "FRQ",
-      "scoring_type": "open_frq_text"
+      "question_format": "OEQ",
+      "scoring_type": "open_oeq_text"
     }
   ]
 }

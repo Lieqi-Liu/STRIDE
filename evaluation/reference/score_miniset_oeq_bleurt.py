@@ -16,7 +16,7 @@ from run_miniset_model_benchmark import (
     safe_slug,
     write_json,
 )
-from score_full_nuscenes_frq_bleurt import (
+from score_full_nuscenes_oeq_bleurt import (
     DEFAULT_BLEURT_MODEL,
     DEFAULT_HF_HOME,
     collect_rows,
@@ -29,7 +29,7 @@ from score_full_nuscenes_frq_bleurt import (
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Score miniset benchmark FRQ responses with BLEURT and refresh benchmark_summary.json."
+        description="Score miniset benchmark OEQ responses with BLEURT and refresh benchmark_summary.json."
     )
     parser.add_argument("--input-json", type=Path, default=DEFAULT_INPUT_JSON)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
@@ -55,7 +55,7 @@ def parse_args() -> argparse.Namespace:
         "--only-question-id",
         action="append",
         default=[],
-        help="Only score these FRQ ids (e.g. SC-4). Repeatable. Default: all FRQs.",
+        help="Only score these OEQ ids (e.g. SC-4). Repeatable. Default: all OEQs.",
     )
     return parser.parse_args()
 
@@ -122,7 +122,7 @@ def score_response_file(
         task["bleurt_scored_at"] = scored_at
 
     payload.setdefault("meta", {})
-    payload["meta"]["frq_bleurt_summary"] = summary
+    payload["meta"]["oeq_bleurt_summary"] = summary
     write_json(response_path, payload)
     return summary
 

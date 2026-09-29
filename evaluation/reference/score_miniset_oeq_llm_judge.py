@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""LLM-as-judge scoring for open-ended FRQs using Qwen3-VL-32B-Instruct.
+"""LLM-as-judge scoring for open-ended OEQs using Qwen3-VL-32B-Instruct.
 
 Default mode is vision+text: the judge sees the same driving frames as the model
 and treats ground truth as a reference (not absolute), following human-scoring notes.
@@ -27,8 +27,8 @@ from run_miniset_model_benchmark import (
     write_json,
 )
 
-# Geometric waypoint FRQs are scored separately; exclude from LLM judge.
-OPEN_FRQ_IDS = {"SC-6", "SP-7", "SU-7", "TE-6", "TRJ-7", "TM-6"}
+# Geometric waypoint OEQs are scored separately; exclude from LLM judge.
+OPEN_OEQ_IDS = {"SC-6", "SP-7", "SU-7", "TE-6", "TRJ-7", "TM-6"}
 THINK_END = "</" + "think>"
 DEFAULT_JUDGE_MODEL = "Qwen/Qwen3-VL-32B-Instruct"
 DEFAULT_HF_HOME = Path("/local1/lieqiliu/huggingface")
@@ -46,7 +46,7 @@ def load_annotator() -> Any:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="LLM-as-judge for open FRQ responses.")
+    parser = argparse.ArgumentParser(description="LLM-as-judge for open OEQ responses.")
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--input-json", type=Path, required=True)
     parser.add_argument("--model", action="append", default=[], help="Candidate model name(s) to score.")
@@ -108,7 +108,7 @@ def parse_args() -> argparse.Namespace:
         "--only-question-id",
         action="append",
         default=[],
-        help="Override the default open-FRQ id set. Repeatable.",
+        help="Override the default open-OEQ id set. Repeatable.",
     )
     return parser.parse_args()
 
@@ -288,10 +288,10 @@ def collect_targets(
     *,
     question_ids: set[str] | None = None,
 ) -> list[tuple[int, dict[str, Any]]]:
-    allowed = question_ids if question_ids else OPEN_FRQ_IDS
+    allowed = question_ids if question_ids else OPEN_OEQ_IDS
     rows: list[tuple[int, dict[str, Any]]] = []
     for index, task in enumerate(tasks):
-        if str(task.get("question_format", "")).upper() != "FRQ":
+        if str(task.get("question_format", "")).upper() != "OEQ":
             continue
         qid = str(task.get("id", ""))
         if qid not in allowed:
@@ -422,7 +422,7 @@ def score_response_file_text(
         "scored_at": scored_at,
     }
     payload.setdefault("meta", {})
-    payload["meta"]["frq_llm_judge_summary"] = summary
+    payload["meta"]["oeq_llm_judge_summary"] = summary
     write_json(response_path, payload)
     return summary
 
@@ -539,7 +539,7 @@ def score_response_file_vision(
         "scored_at": scored_at,
     }
     payload.setdefault("meta", {})
-    payload["meta"]["frq_llm_judge_summary"] = summary
+    payload["meta"]["oeq_llm_judge_summary"] = summary
     write_json(response_path, payload)
     return summary
 

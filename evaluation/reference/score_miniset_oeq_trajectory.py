@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Score TRJ-5 / TRJ-6 FRQ waypoint predictions with L2 / ADE / minFDE-style metrics."""
+"""Score TRJ-5 / TRJ-6 OEQ waypoint predictions with L2 / ADE / minFDE-style metrics."""
 from __future__ import annotations
 
 import argparse
@@ -25,7 +25,7 @@ THINK_END = "</" + "think>"
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Score TRJ-5/TRJ-6 waypoint FRQs.")
+    parser = argparse.ArgumentParser(description="Score TRJ-5/TRJ-6 waypoint OEQs.")
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--input-json", type=Path, required=True)
     parser.add_argument("--model", action="append", default=[])
@@ -168,7 +168,7 @@ def score_file(response_path: Path) -> dict[str, Any]:
         qid = str(task.get("id", ""))
         if qid not in TRAJECTORY_IDS:
             continue
-        if str(task.get("question_format", "")).upper() != "FRQ":
+        if str(task.get("question_format", "")).upper() != "OEQ":
             continue
         gt_raw = str(task.get("ground_truth", "")).strip()
         pred_raw = str(task.get("model_response", "")).strip()
@@ -252,7 +252,7 @@ def score_file(response_path: Path) -> dict[str, Any]:
         "scored_at": scored_at,
     }
     payload.setdefault("meta", {})
-    payload["meta"]["frq_trajectory_summary"] = summary
+    payload["meta"]["oeq_trajectory_summary"] = summary
     write_json(response_path, payload)
     return summary
 

@@ -87,14 +87,14 @@ def aggregate_scores(tasks: list[dict[str, Any]]) -> dict[str, Any]:
         float(t["bleurt_model_gt"])
         for t in tasks
         if t.get("bleurt_model_gt") is not None
-        and str(t.get("question_format", "")).upper() == "FRQ"
+        and str(t.get("question_format", "")).upper() == "OEQ"
         and str(t.get("id", "")) not in {"TRJ-5", "TRJ-6"}
     ]
     judge_vals = [
         float(t["llm_judge_score"])
         for t in tasks
         if t.get("llm_judge_score") is not None
-        and str(t.get("question_format", "")).upper() == "FRQ"
+        and str(t.get("question_format", "")).upper() == "OEQ"
         and str(t.get("id", "")) not in {"TRJ-5", "TRJ-6"}
     ]
     traj = score_trajectory_tasks(tasks)
@@ -105,8 +105,8 @@ def aggregate_scores(tasks: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "n_tasks": len(tasks),
         "mcq": mcq,
-        "open_frq_bleurt_mean": _mean(bleurt_vals),
-        "open_frq_llm_judge_mean": _mean(judge_vals),
+        "open_oeq_bleurt_mean": _mean(bleurt_vals),
+        "open_oeq_llm_judge_mean": _mean(judge_vals),
         "trajectory": traj,
     }
 
@@ -119,11 +119,11 @@ def write_leaderboard_row(path: Path, row: dict[str, Any], *, fieldnames: list[s
         "model_type",
         "n_tasks",
         "n_mcq",
-        "n_frq",
+        "n_oeq",
         "mcq_accuracy",
         "mcq_random_guess_baseline",
-        "open_frq_bleurt_mean",
-        "open_frq_llm_judge_mean",
+        "open_oeq_bleurt_mean",
+        "open_oeq_llm_judge_mean",
         "traj_ade",
         "traj_mini_fde",
     ]

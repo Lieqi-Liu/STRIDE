@@ -3,7 +3,7 @@
 
 Settings copied from full_nuscenes/run_claude_miniset_expert.py:
   model=claude-sonnet-5, location=global, effort=medium,
-  max_output_tokens MCQ/FRQ=4096, max_image_side=768, jpeg_quality=85,
+  max_output_tokens MCQ/OEQ=4096, max_image_side=768, jpeg_quality=85,
   save_every=5 (via shell), resume, max_retries=6.
 Images come from Waymo CAM_FRONT paths with red-box overlay.
 """
@@ -111,7 +111,7 @@ def main() -> None:
             "effort": args.effort,
             "image_detail_equiv": "low",
             "max_output_tokens_mcq": args.max_output_tokens_mcq,
-            "max_output_tokens_frq": args.max_output_tokens_frq,
+            "max_output_tokens_oeq": args.max_output_tokens_oeq,
             "created_at": datetime.now().isoformat(timespec="seconds"),
             "input_json": str(args.input_json),
             "matched_nuscenes_claude_settings": True,
@@ -139,7 +139,7 @@ def main() -> None:
                 max_out = (
                     args.max_output_tokens_mcq
                     if str(task.get("question_format")) == "MCQ"
-                    else args.max_output_tokens_frq
+                    else args.max_output_tokens_oeq
                 )
                 raw = claude_nusc.generate_one(
                     client,
