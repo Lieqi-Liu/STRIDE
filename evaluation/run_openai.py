@@ -3,12 +3,12 @@
 
 Requires:
   export OPENAI_API_KEY=...
-  export STRIDE_WAYMO_IMAGE_ROOT=...          # for waymo_v1
-  export STRIDE_NUSCENES_FORMATTED_SCENES=... # for nuscenes_v6
+  export STRIDE_WAYMO_IMAGE_ROOT=...          # for waymo
+  export STRIDE_NUSCENES_FORMATTED_SCENES=... # for nuscenes
 
 Example:
   python evaluation/run_openai.py \\
-      --split nuscenes_v6 \\
+      --split nuscenes \\
       --model gpt-4.1 \\
       --limit 5 \\
       --output runs/gpt41_responses.json
@@ -53,7 +53,7 @@ def image_to_data_url(image) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--split", default="nuscenes_v6")
+    parser.add_argument("--split", default="nuscenes")
     parser.add_argument("--model", default="gpt-4.1")
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--output", type=Path, required=True)

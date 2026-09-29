@@ -1,5 +1,5 @@
 # STRIDE dependencies
-# Core scoring (MCQ + trajectory) needs only Python stdlib + optional Pillow for visuals.
+# Core scoring (MCQ + trajectory) needs only Python stdlib + Pillow for visuals.
 Pillow>=10.0.0
 
 # BLEURT open-OEQ scoring
@@ -10,6 +10,11 @@ sentencepiece>=0.1.99
 # Optional: OpenAI / proprietary runners
 openai>=1.40.0
 
+# Optional: nuScenes media prep (selected-vehicle overlays)
+# pip install -e ".[media]"
+nuscenes-devkit>=1.0.0
+matplotlib>=3.7.0
+numpy>=1.24.0
+
 # Optional: vision LLM judge / local VLMs (install in a dedicated env)
 # vllm>=0.6.0
-# nuscenes-devkit>=1.1.11

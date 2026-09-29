@@ -32,7 +32,7 @@ ANNOTATOR = nusc_bench.ANNOTATOR
 MASKED_OBJECT_REFERENCE = ANNOTATOR.MASKED_OBJECT_REFERENCE
 MAX_IMAGE_PIXELS = ANNOTATOR.MAX_IMAGE_PIXELS
 
-DEFAULT_INPUT_JSON = SCRIPT_DIR / "questions_with_answers_waymo_miniset_50_per_id_v1.json"
+DEFAULT_INPUT_JSON = SCRIPT_DIR / "questions_with_answers_waymo_miniset.json"
 DEFAULT_OUTPUT_DIR = SCRIPT_DIR / "miniset_model_benchmark_outputs"
 DEFAULT_HF_HOME = Path("/local1/lieqiliu/huggingface")
 DEFAULT_CAMERA_CALIBRATION_DIR = Path(
@@ -785,7 +785,7 @@ def run_model_spec(
     tasks = payload["tasks"]
     payload["meta"]["benchmark_model"] = model_spec
     payload["meta"]["benchmark_started_at"] = started_at
-    payload["meta"]["dataset_split"] = "waymo_miniset_50_per_id_v1"
+    payload["meta"]["dataset_split"] = "waymo_miniset"
     payload["meta"]["visual_backend"] = "waymo_cam_front_paths"
 
     run_args = argparse.Namespace(**vars(args))
@@ -952,7 +952,7 @@ def main() -> None:
         )
     finally:
         nusc_bench.MODEL_SPECS = original_specs
-    benchmark_summary["dataset_split"] = "waymo_miniset_50_per_id_v1"
+    benchmark_summary["dataset_split"] = "waymo_miniset"
     nusc_bench.write_json(summary_path, benchmark_summary)
     print(f"\nWrote Waymo benchmark summary: {summary_path}")
 

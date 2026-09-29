@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run OpenAI VLMs on the Waymo miniset using the same API settings as nuScenes v6.
+"""Run OpenAI VLMs on the Waymo miniset using the same API settings as nuScenes.
 
 Settings copied from full_nuscenes/run_openai_miniset_expert.py:
   model=gpt-5.5, reasoning_effort=low, image_detail=low,
@@ -31,8 +31,8 @@ from run_waymo_miniset_model_benchmark import (  # noqa: E402
     apply_trajectory_prompt,
 )
 
-openai_nusc.DEFAULT_INPUT_JSON = SCRIPT_DIR / "questions_with_answers_waymo_miniset_50_per_id_v1.json"
-openai_nusc.DEFAULT_OUTPUT_DIR = SCRIPT_DIR / "miniset_model_benchmark_outputs" / "proprietary_openai_v1"
+openai_nusc.DEFAULT_INPUT_JSON = SCRIPT_DIR / "questions_with_answers_waymo_miniset.json"
+openai_nusc.DEFAULT_OUTPUT_DIR = SCRIPT_DIR / "miniset_model_benchmark_outputs" / "proprietary_openai"
 
 
 def main() -> None:
@@ -81,7 +81,7 @@ def main() -> None:
     if args.limit and args.limit > 0:
         runnable_idx = runnable_idx[: args.limit]
 
-    print(f"[OpenAI] split=waymo_miniset_50_per_id_v1")
+    print(f"[OpenAI] split=waymo_miniset")
     print(f"[OpenAI] model={args.model} remaining={len(runnable_idx)}/{len(tasks)}")
     print(f"[OpenAI] reasoning_effort={args.reasoning_effort} image_detail={args.image_detail}")
     print(f"[OpenAI] max_tokens mcq={args.max_output_tokens_mcq} oeq={args.max_output_tokens_oeq}")
@@ -92,7 +92,7 @@ def main() -> None:
     payload.setdefault("meta", {})
     payload["meta"].update(
         {
-            "dataset_split": "waymo_miniset_50_per_id_v1",
+            "dataset_split": "waymo_miniset",
             "expert_model": args.model,
             "backend": "openai_chat_completions",
             "image_detail": args.image_detail,

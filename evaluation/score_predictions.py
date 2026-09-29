@@ -2,7 +2,7 @@
 """Score predictions against a STRIDE split.
 
     python evaluation/score_predictions.py \
-        --split nuscenes_v6 \
+        --split nuscenes \
         --predictions evaluation/examples/sample_predictions_nuscenes.json \
         --metrics mcq,trajectory \
         --output-dir eval_out/sample

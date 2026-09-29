@@ -30,6 +30,13 @@ def build_text_prompt(task: dict[str, Any], *, num_images: int = 5) -> str:
         answer_instruction = "Provide a concise plain-text answer."
         choice_text = ""
 
+    traj_note = ""
+    if task.get("candidate_trajectories") or task.get("candidate_trajectories_image"):
+        traj_note = (
+            "Candidate ego trajectories are drawn on the query frame and labeled on the image; "
+            "a top-down inset (up=forward, left=left) is shown in the top-left corner.\n"
+        )
+
     if qid == "SC-6":
         context_line = (
             f"You are given {num_images} chronological 360-degree multi-camera frames from one driving scene. "
@@ -48,6 +55,7 @@ def build_text_prompt(task: dict[str, Any], *, num_images: int = 5) -> str:
 
     return (
         f"{context_line}"
+        f"{traj_note}"
         f"Question ID: {qid}\n"
         f"{target_line}"
         f"Question: {question}\n"

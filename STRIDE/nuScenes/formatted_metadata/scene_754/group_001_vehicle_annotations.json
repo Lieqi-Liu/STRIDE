@@ -1,0 +1,97 @@
+{
+  "scene_id": "scene_754",
+  "group_id": "group_001",
+  "group_size": 5,
+  "frame_indices_1based": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "fifth_frame_sample_token": "6f3a03abb05941939da51c90df7d3ea9",
+  "fifth_frame_cam_front_filename": "samples/CAM_FRONT/n015-2018-11-14-18-57-54+0800__CAM_FRONT__1542193183512460.jpg",
+  "vehicle_annotation_count": 3,
+  "vehicle_annotations": [
+    {
+      "token": "a12a044cfb7d4771bc53eb08848d6569",
+      "instance_token": "6072dfbab3b9423da1a2113f32f8a00a",
+      "category_name": "vehicle.bus.rigid",
+      "visibility_token": "4",
+      "translation": [
+        819.748,
+        2819.268,
+        -0.15
+      ],
+      "size": [
+        2.853,
+        12.034,
+        3.895
+      ],
+      "rotation": [
+        0.9985333649755121,
+        0.0,
+        0.0,
+        0.05413981003550551
+      ],
+      "num_lidar_pts": 1,
+      "num_radar_pts": 4,
+      "prev": "a3755a7230fe45b4b0652518ac6ba48b",
+      "next": "a17d2636a07c4a0796b7a6da9379406a"
+    },
+    {
+      "token": "f83d2cda17bb42d4a0ff6e4cb3a185e8",
+      "instance_token": "f8e60861f67c491788eb8ad6ccacd93d",
+      "category_name": "vehicle.car",
+      "visibility_token": "4",
+      "translation": [
+        915.071,
+        2822.397,
+        1.074
+      ],
+      "size": [
+        1.786,
+        4.425,
+        1.89
+      ],
+      "rotation": [
+        -0.24699424526071811,
+        0.0,
+        0.0,
+        0.969016946605212
+      ],
+      "num_lidar_pts": 189,
+      "num_radar_pts": 9,
+      "prev": "54ac02b9cece4b2492e0f54e452c30e0",
+      "next": "f63ac5168b044fcfb3465434976459f0"
+    },
+    {
+      "token": "0ee760aa661b42ec83dcd64f32e1d725",
+      "instance_token": "8691163cd2fc47ed91d3a9c53b34fbfd",
+      "category_name": "vehicle.bus.rigid",
+      "visibility_token": "1",
+      "translation": [
+        788.747,
+        2809.393,
+        1.689
+      ],
+      "size": [
+        2.847,
+        12.366,
+        3.482
+      ],
+      "rotation": [
+        0.9544905174450491,
+        0.0,
+        0.0,
+        0.2982412649307311
+      ],
+      "num_lidar_pts": 0,
+      "num_radar_pts": 1,
+      "prev": "e5f75457671f4cbe8c20dc38d5c56f92",
+      "next": "bae8c750d93544fd8dc8e901821295ba"
+    }
+  ],
+  "selected_vehicle_annotation_token": "f83d2cda17bb42d4a0ff6e4cb3a185e8",
+  "selected_vehicle_render_path": "scene_754/group_001_selected_vehicle_render.jpg"
+}

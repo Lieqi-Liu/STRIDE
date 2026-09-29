@@ -33,8 +33,8 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent
 ANNOTATOR_PATH = REPO_ROOT / "lieqiliu" / "run_fake_full_vlm_batch.py"
 
-DEFAULT_INPUT_JSON = SCRIPT_DIR / "questions_with_answers_full_nuscenes_miniset_review_trimmed_v6.json"
-DEFAULT_OUTPUT_DIR = SCRIPT_DIR / "miniset_model_benchmark_outputs" / "expert_dolphins_v6"
+DEFAULT_INPUT_JSON = SCRIPT_DIR / "STRIDE/nuScenes/questions.json"
+DEFAULT_OUTPUT_DIR = SCRIPT_DIR / "miniset_model_benchmark_outputs" / "expert_dolphins"
 DEFAULT_FORMATTED = Path("/local1/lieqiliu/nuscenes/fullset/formatted_scenes")
 DEFAULT_NUSCENES = Path("/local1/lieqiliu/nuscenes/fullset")
 DEFAULT_HF_HOME = Path("/data2/lieqi/huggingface")

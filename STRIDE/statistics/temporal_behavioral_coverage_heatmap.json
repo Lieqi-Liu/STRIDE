@@ -1,7 +1,7 @@
 {
   "sources": {
-    "nuScenes": "/home/lieqiliu/AutoDriving/Spatial_Temporal_Intelligence/full_nuscenes/questions_with_answers_full_nuscenes_miniset_review_trimmed_v6.json",
-    "Waymo E2E": "/home/lieqiliu/AutoDriving/Spatial_Temporal_Intelligence/full_waymo/questions_with_answers_waymo_miniset_50_per_id_v1.json"
+    "nuScenes": "STRIDE/nuScenes/questions.json",
+    "Waymo E2E": "STRIDE/Waymo/questions.json"
   },
   "trajectory_source": "All TRJ tasks carrying a five-point future_traj_local path, with TRJ-5/6 ground-truth reconstruction as fallback; Waymo TRJ-7 and paired TRJ-2/TRJ-4 labels add bundles without numeric paths.",
   "sample_interval_seconds": {
@@ -14,7 +14,7 @@
   },
   "waymo_semantic_behavior_additions": {
     "TRJ-7": 26,
-    "paired TRJ-2 \u00d7 TRJ-4": 6
+    "paired TRJ-2 × TRJ-4": 6
   },
   "classification_thresholds": {
     "veer_angle_deg": 10.0,
@@ -12680,7 +12680,7 @@
       "dataset": "Waymo E2E",
       "maneuver": "Straight",
       "speed_change": "Constant speed",
-      "source": "paired TRJ-2 \u00d7 TRJ-4",
+      "source": "paired TRJ-2 × TRJ-4",
       "bundle_id": "14f0b68cf50bad87e90a490a70109cad:group_149",
       "max_abs_segment_heading_deg": null,
       "initial_interval_speed_mps": null,
@@ -12692,7 +12692,7 @@
       "dataset": "Waymo E2E",
       "maneuver": "Straight",
       "speed_change": "Constant speed",
-      "source": "paired TRJ-2 \u00d7 TRJ-4",
+      "source": "paired TRJ-2 × TRJ-4",
       "bundle_id": "95cd5b7d9945daff327d79cc169b8328:group_148",
       "max_abs_segment_heading_deg": null,
       "initial_interval_speed_mps": null,
@@ -12704,7 +12704,7 @@
       "dataset": "Waymo E2E",
       "maneuver": "Straight",
       "speed_change": "Stop / near stop",
-      "source": "paired TRJ-2 \u00d7 TRJ-4",
+      "source": "paired TRJ-2 × TRJ-4",
       "bundle_id": "9958373d7f370e938afefd45ce177dae:group_147",
       "max_abs_segment_heading_deg": null,
       "initial_interval_speed_mps": null,
@@ -12716,7 +12716,7 @@
       "dataset": "Waymo E2E",
       "maneuver": "Straight",
       "speed_change": "Stop / near stop",
-      "source": "paired TRJ-2 \u00d7 TRJ-4",
+      "source": "paired TRJ-2 × TRJ-4",
       "bundle_id": "bbaa7f64d17a4f25f26d1ef21b5048ca:group_148",
       "max_abs_segment_heading_deg": null,
       "initial_interval_speed_mps": null,
@@ -12728,7 +12728,7 @@
       "dataset": "Waymo E2E",
       "maneuver": "Straight",
       "speed_change": "Stop / near stop",
-      "source": "paired TRJ-2 \u00d7 TRJ-4",
+      "source": "paired TRJ-2 × TRJ-4",
       "bundle_id": "d42445e3d27558f8d2ed5f4e5a4138c0:group_148",
       "max_abs_segment_heading_deg": null,
       "initial_interval_speed_mps": null,
@@ -12740,7 +12740,7 @@
       "dataset": "Waymo E2E",
       "maneuver": "Veer right",
       "speed_change": "Constant speed",
-      "source": "paired TRJ-2 \u00d7 TRJ-4",
+      "source": "paired TRJ-2 × TRJ-4",
       "bundle_id": "d851fd8c2b36dc5a06da14a19d103c41:group_147",
       "max_abs_segment_heading_deg": null,
       "initial_interval_speed_mps": null,

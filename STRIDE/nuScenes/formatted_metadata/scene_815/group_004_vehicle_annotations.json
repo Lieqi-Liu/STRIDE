@@ -1,0 +1,71 @@
+{
+  "scene_id": "scene_815",
+  "group_id": "group_004",
+  "group_size": 5,
+  "frame_indices_1based": [
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "fifth_frame_sample_token": "ebc23b0c8c734a4aa599823afe8e3617",
+  "fifth_frame_cam_front_filename": "samples/CAM_FRONT/n015-2018-11-21-19-38-26+0800__CAM_FRONT__1542800317362460.jpg",
+  "vehicle_annotation_count": 2,
+  "vehicle_annotations": [
+    {
+      "token": "3aac43a2e79d45afb15cceb474c34a66",
+      "instance_token": "6c2a5f84ab3040e9be39f5286394dcbe",
+      "category_name": "vehicle.car",
+      "visibility_token": "4",
+      "translation": [
+        949.183,
+        2517.127,
+        0.485
+      ],
+      "size": [
+        1.953,
+        4.319,
+        1.687
+      ],
+      "rotation": [
+        -0.4687850130846262,
+        0.0,
+        0.0,
+        0.8833122955711908
+      ],
+      "num_lidar_pts": 11,
+      "num_radar_pts": 2,
+      "prev": "647e9d26b0f74d1a9775cea21da97db7",
+      "next": "d5704bb27d77461ab2d3edf36c710849"
+    },
+    {
+      "token": "d8aa62395b824486bf6327da1a5fec9f",
+      "instance_token": "d249a26bc88545b7a8e24db3ff073b63",
+      "category_name": "vehicle.car",
+      "visibility_token": "4",
+      "translation": [
+        960.413,
+        2541.381,
+        0.779
+      ],
+      "size": [
+        1.745,
+        4.508,
+        1.548
+      ],
+      "rotation": [
+        0.8860660774453352,
+        0.0,
+        0.0,
+        0.4635589567688639
+      ],
+      "num_lidar_pts": 1855,
+      "num_radar_pts": 0,
+      "prev": "9bf69740c81d4c8ca68940e678bc96cf",
+      "next": "dfb43fac51834339a4d4a4f3d36ecac4"
+    }
+  ],
+  "selected_vehicle_annotation_token": "3aac43a2e79d45afb15cceb474c34a66",
+  "selected_vehicle_render_path": "scene_815/group_004_selected_vehicle_render.jpg"
+}

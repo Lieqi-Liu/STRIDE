@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>STRIDE: Evaluating Spatiotemporal Reasoning in Driving Edge Cases</title>
+  <meta name="description" content="STRIDE is a benchmark for spatiotemporal reasoning in driving edge cases on nuScenes and Waymo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="logo">
+        <h1>STRIDE</h1>
+      </div>
+      <p class="subtitle">Evaluating Spatiotemporal Reasoning in Driving Edge Cases</p>
+      <p class="authors">
+        <a href="https://github.com/Lieqi-Liu">Lieqi Liu</a><sup>1*</sup>,
+        Rui Gao<sup>1*</sup>,
+        Jia-Chen Gu<sup>1</sup>,
+        Wenbo Hu<sup>1</sup>,
+        Zhaobin Mo<sup>2</sup>,
+        Ahmadreza Moradipari<sup>2</sup>,
+        Nejib Ammar<sup>2</sup>,
+        Wei Wang<sup>1</sup>,
+        <a href="https://vnpeng.net/">Nanyun Peng</a><sup>1</sup>
+      </p>
+      <p class="affil"><sup>1</sup>University of California, Los Angeles &nbsp;&nbsp; <sup>2</sup>Toyota InfoTech Labs</p>
+      <p class="affil"><sup>*</sup>Equal contribution</p>
+      <p class="venue">Preprint, 2026</p>
+      <div class="links">
+        <a class="btn" href="https://arxiv.org/">📄 Paper</a>
+        <a class="btn" href="https://github.com/Lieqi-Liu/STRIDE">💻 Code</a>
+        <a class="btn" href="https://github.com/Lieqi-Liu/STRIDE/tree/main/STRIDE">🤗 Dataset</a>
+        <a class="btn" href="#leaderboard">🏆 Leaderboard</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <div class="wrap">
+      <a href="#introduction">Introduction</a>
+      <a href="#leaderboard">Leaderboard</a>
+      <a href="#benchmark">Benchmark</a>
+      <a href="#statistics">Statistics</a>
+      <a href="#citation">Citation</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section>
+      <div class="figure">
+        <img src="assets/overview.png" alt="Overview of STRIDE: data, tasks, and comparison to prior driving VQA" />
+      </div>
+      <p class="caption">Figure 1. Overview of STRIDE. Five-frame driving context, six task families, and a sharp drop versus prior driving VQA suites (GPT-6-Astra: 85.2% → 45.5% MCQ on nuScenes).</p>
+    </section>
+
+    <section id="introduction">
+      <h2>Introduction</h2>
+      <p class="lead">
+        Vision-language models look strong on existing driving VQA benchmarks, but those suites often test static recognition rather than the spatiotemporal reasoning needed in edge cases.
+        STRIDE asks whether a model can track objects over time, judge driving significance, and plan ego motion from multi-frame observations.
+      </p>
+      <p class="lead">
+        The benchmark contains <b>2,350</b> questions over <b>nuScenes</b> (1,150) and <b>WOD-E2E</b> (1,200), spanning <b>39 templates</b> in six families: spatial perception, spatial understanding, temporal memory, temporal extrapolation, trajectory prediction, and scene-context awareness.
+        Formats include MCQ, open-ended questions (OEQ), and geometric waypoint regression.
+        The strongest model we evaluated, GPT-6-Astra, reaches only <b>45.5%</b> MCQ on nuScenes and <b>41.2%</b> on Waymo — well above random chance (~20%), but far from prior driving VQA numbers.
+      </p>
+      <div class="stats">
+        <div class="stat"><b>2,350</b><span>questions</span></div>
+        <div class="stat"><b>39</b><span>templates · 6 families</span></div>
+        <div class="stat"><b>5</b><span>frames per question</span></div>
+        <div class="stat"><b>45.5%</b><span>best MCQ (nuScenes)</span></div>
+      </div>
+    </section>
+
+    <section id="leaderboard">
+      <h2>Leaderboard</h2>
+      <p class="lead">Primary ranking key: <b>MCQ accuracy</b>. Open-ended (OEQ) and trajectory (ADE / mini-FDE) metrics are reported separately. Missing entries are shown as —.</p>
+      <div class="tabs">
+        <button class="tab active" data-pane="nusc">nuScenes (1,150)</button>
+        <button class="tab" data-pane="waymo">Waymo (1,200)</button>
+      </div>
+
+      <div class="pane" id="pane-nusc">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th><th>Model</th><th>Type</th>
+                <th class="num">MCQ ↑</th><th class="num">OEQ ↑</th>
+                <th class="num">ADE ↓</th><th class="num">mini-FDE ↓</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="best"><td>1 🥇</td><td>gpt-6-astra</td><td>proprietary</td><td class="num"><b>45.5</b></td><td class="num">6.41</td><td class="num">0.60</td><td class="num">0.98</td></tr>
+              <tr><td>2 🥈</td><td>GPT-5.5</td><td>proprietary</td><td class="num">39.3</td><td class="num"><b>6.68</b></td><td class="num">0.65</td><td class="num">0.97</td></tr>
+              <tr><td>3 🥉</td><td>gemini-3.6-flash</td><td>proprietary</td><td class="num">38.9</td><td class="num">6.50</td><td class="num">0.69</td><td class="num">1.01</td></tr>
+              <tr><td>4</td><td>gpt-5.6-sol</td><td>proprietary</td><td class="num">38.5</td><td class="num">5.65</td><td class="num">0.69</td><td class="num">0.99</td></tr>
+              <tr><td>5</td><td>gemini-3.1-pro-preview</td><td>proprietary</td><td class="num">37.8</td><td class="num">4.53</td><td class="num">1.42</td><td class="num">1.84</td></tr>
+              <tr><td>6</td><td>Qwen3.6 35B-A3B</td><td>VLM</td><td class="num">31.6</td><td class="num">5.32</td><td class="num">7.42</td><td class="num">5.45</td></tr>
+              <tr><td>7</td><td>claude-sonnet-5</td><td>proprietary</td><td class="num">29.4</td><td class="num">6.42</td><td class="num">0.87</td><td class="num">1.30</td></tr>
+              <tr><td>8</td><td>Qwen2.5-VL 3B</td><td>VLM</td><td class="num">27.4</td><td class="num">3.62</td><td class="num">—</td><td class="num">—</td></tr>
+              <tr><td>9</td><td>Qwen3-VL 30B-A3B-Thinking</td><td>VLM</td><td class="num">26.8</td><td class="num">5.45</td><td class="num">7.12</td><td class="num">3.42</td></tr>
+              <tr><td>10</td><td>Qwen3-VL 8B-Thinking</td><td>VLM</td><td class="num">23.4</td><td class="num">5.50</td><td class="num">8.00</td><td class="num">3.80</td></tr>
+              <tr><td>11</td><td>Dolphins</td><td>expert</td><td class="num">18.5</td><td class="num">3.24</td><td class="num">8.16</td><td class="num">3.81</td></tr>
+              <tr><td>12</td><td>Qwen3.6 27B</td><td>VLM</td><td class="num">17.5</td><td class="num">5.99</td><td class="num">5.81</td><td class="num">4.06</td></tr>
+              <tr><td>—</td><td>UniAD 2.0</td><td>expert (TRJ-5)</td><td class="num">—</td><td class="num">—</td><td class="num"><b>0.56</b></td><td class="num"><b>0.79</b></td></tr>
+              <tr><td>*</td><td>Random chance</td><td>—</td><td class="num">19.8</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="pane" id="pane-waymo" hidden>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th><th>Model</th><th>Type</th>
+                <th class="num">MCQ ↑</th><th class="num">OEQ ↑</th>
+                <th class="num">ADE ↓</th><th class="num">mini-FDE ↓</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="best"><td>1 🥇</td><td>gpt-6-astra</td><td>proprietary</td><td class="num"><b>41.2</b></td><td class="num">6.77</td><td class="num">13.64</td><td class="num">12.03</td></tr>
+              <tr><td>2 🥈</td><td>gemini-3.1-pro-preview</td><td>proprietary</td><td class="num">39.7</td><td class="num">4.03</td><td class="num">14.22</td><td class="num">14.21</td></tr>
+              <tr><td>3 🥉</td><td>claude-sonnet-5</td><td>proprietary</td><td class="num">39.2</td><td class="num"><b>7.01</b></td><td class="num">13.16</td><td class="num">10.27</td></tr>
+              <tr><td>4</td><td>gemini-3.6-flash</td><td>proprietary</td><td class="num">38.8</td><td class="num">6.20</td><td class="num">13.53</td><td class="num">11.37</td></tr>
+              <tr><td>5</td><td>GPT-5.5</td><td>proprietary</td><td class="num">38.7</td><td class="num">7.00</td><td class="num">13.84</td><td class="num">12.57</td></tr>
+              <tr><td>6</td><td>gpt-5.6-sol</td><td>proprietary</td><td class="num">37.7</td><td class="num">6.48</td><td class="num">13.81</td><td class="num">12.39</td></tr>
+              <tr><td>7</td><td>Qwen2.5-VL 3B</td><td>VLM</td><td class="num">37.4</td><td class="num">2.57</td><td class="num">—</td><td class="num">—</td></tr>
+              <tr><td>8</td><td>Qwen3.6 35B-A3B</td><td>VLM</td><td class="num">34.3</td><td class="num">5.83</td><td class="num">18.55</td><td class="num">8.86</td></tr>
+              <tr><td>9</td><td>Qwen3-VL 8B-Thinking</td><td>VLM</td><td class="num">32.0</td><td class="num">4.72</td><td class="num">22.36</td><td class="num">19.37</td></tr>
+              <tr><td>10</td><td>Qwen3-VL 30B-A3B-Thinking</td><td>VLM</td><td class="num">31.8</td><td class="num">4.98</td><td class="num"><b>11.83</b></td><td class="num"><b>6.18</b></td></tr>
+              <tr><td>11</td><td>Qwen3-VL 8B-Instruct</td><td>VLM</td><td class="num">30.1</td><td class="num">4.96</td><td class="num">19.64</td><td class="num">12.65</td></tr>
+              <tr><td>12</td><td>Qwen3.6 27B</td><td>VLM</td><td class="num">28.4</td><td class="num">5.87</td><td class="num">20.37</td><td class="num">19.25</td></tr>
+              <tr><td>13</td><td>Dolphins</td><td>expert</td><td class="num">22.2</td><td class="num">1.86</td><td class="num">18.43</td><td class="num">8.60</td></tr>
+              <tr><td>*</td><td>Random chance</td><td>—</td><td class="num">20.3</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="note">
+        OEQ is a 0–10 vision-judge score on open-ended answers. Trajectory errors are in meters (nuScenes vs Waymo scales differ).
+        Machine-readable tables live in the <a href="https://github.com/Lieqi-Liu/STRIDE/tree/main/evaluation/leaderboard">repo</a>.
+        To submit a result, open an issue or PR with your <code>*_score_report.json</code>.
+      </p>
+    </section>
+
+    <section id="benchmark">
+      <h2>Benchmark</h2>
+      <p class="lead">
+        Each question uses a five-frame temporal window. nuScenes inputs are 2×3 surrounding-camera grids; Waymo uses CAM_FRONT.
+        When a target object exists, it is marked with a red box on the query frame.
+        Annotations ship in the repository; raw images are downloaded from <a href="https://www.nuscenes.org/">nuScenes</a> and <a href="https://waymo.com/open/">Waymo Open Dataset</a>.
+      </p>
+      <div class="families">
+        <div class="family">
+          <span class="tag">Space</span>
+          <h3>Spatial perception · SP</h3>
+          <p>Observable object properties: relative position, distance, motion direction, lane occupancy.</p>
+        </div>
+        <div class="family">
+          <span class="tag">Space</span>
+          <h3>Spatial understanding · SU</h3>
+          <p>Driving significance of spatial relations: drivable area, lane change, ego constraint, risk.</p>
+        </div>
+        <div class="family">
+          <span class="tag">Time</span>
+          <h3>Temporal memory · TM</h3>
+          <p>How the current state formed: prior visibility, occlusion, reappearance, recent motion.</p>
+        </div>
+        <div class="family">
+          <span class="tag">Time</span>
+          <h3>Temporal extrapolation · TE</h3>
+          <p>Likely evolution: future motion, occupancy, collision timing, subsequent events.</p>
+        </div>
+        <div class="family">
+          <span class="tag">Context</span>
+          <h3>Trajectory prediction · TRJ</h3>
+          <p>Ego past/future motion via ranking, language justifications, and waypoint regression.</p>
+        </div>
+        <div class="family">
+          <span class="tag">Context</span>
+          <h3>Scene-context awareness · SC</h3>
+          <p>Environment, road structure, and surrounding activity that frame individual objects.</p>
+        </div>
+      </div>
+      <p class="note">Setup and evaluation instructions: <a href="https://github.com/Lieqi-Liu/STRIDE">github.com/Lieqi-Liu/STRIDE</a>.</p>
+    </section>
+
+    <section id="statistics">
+      <h2>Statistics</h2>
+      <p class="lead">STRIDE covers challenging driving situations (pedestrians, intersections, construction, debris) across both source datasets, with object-centric questions spanning distance and bearing relative to the ego vehicle.</p>
+      <div class="figure">
+        <img src="assets/dataset_coverage_overview.png" alt="Scenario, task-family, and ego-behavior coverage of STRIDE" />
+      </div>
+      <p class="caption">Figure 2. Dataset coverage: (a) scenario tags on nuScenes vs Waymo, (b) task-family mix, (c) future ego speed change by maneuver.</p>
+      <div class="grid-2">
+        <div>
+          <div class="figure">
+            <img src="assets/spatial_coverage_heatmap.png" alt="Spatial coverage heatmap of target objects" />
+          </div>
+          <p class="caption">Figure 3. Spatial coverage of object-centric questions (bearing × distance).</p>
+        </div>
+        <div>
+          <div class="figure">
+            <img src="assets/scenario_task_family_heatmap.png" alt="Scenario coverage across task families" />
+          </div>
+          <p class="caption">Figure 4. Scenario coverage across the six task families (multi-label clips).</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="citation">
+      <h2>Citation</h2>
+      <pre id="bibtex">@misc{liu2026stride,
+  title        = {{STRIDE}: Evaluating Spatiotemporal Reasoning in Driving Edge Cases},
+  author       = {Liu, Lieqi and Gao, Rui and Gu, Jia-Chen and Hu, Wenbo and Mo, Zhaobin
+                  and Moradipari, Ahmadreza and Ammar, Nejib and Wang, Wei and Peng, Nanyun},
+  year         = {2026},
+  note         = {Preprint},
+  howpublished = {\url{https://github.com/Lieqi-Liu/STRIDE}}
+}</pre>
+      <button class="copy" type="button" id="copy-bib">Copy BibTeX</button>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      STRIDE project page. Layout inspired by
+      <a href="https://mathvista.github.io">MathVista</a>.
+      UCLA · Toyota InfoTech Labs · 2026
+    </div>
+  </footer>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((t) => t.classList.remove("active"));
+        tab.classList.add("active");
+        document.getElementById("pane-nusc").hidden = tab.dataset.pane !== "nusc";
+        document.getElementById("pane-waymo").hidden = tab.dataset.pane !== "waymo";
+      });
+    });
+    document.getElementById("copy-bib").addEventListener("click", async () => {
+      const text = document.getElementById("bibtex").innerText;
+      await navigator.clipboard.writeText(text);
+      const btn = document.getElementById("copy-bib");
+      btn.textContent = "Copied";
+      setTimeout(() => { btn.textContent = "Copy BibTeX"; }, 1200);
+    });
+  </script>
+</body>
+</html>

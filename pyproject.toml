@@ -17,7 +17,8 @@ dependencies = [
 [project.optional-dependencies]
 bleurt = ["torch>=2.1.0", "transformers>=4.40.0", "sentencepiece>=0.1.99"]
 openai = ["openai>=1.40.0"]
-all = ["torch>=2.1.0", "transformers>=4.40.0", "sentencepiece>=0.1.99", "openai>=1.40.0"]
+media = ["nuscenes-devkit>=1.0.0", "matplotlib>=3.7.0", "numpy>=1.24.0"]
+all = ["torch>=2.1.0", "transformers>=4.40.0", "sentencepiece>=0.1.99", "openai>=1.40.0", "nuscenes-devkit>=1.0.0", "matplotlib>=3.7.0", "numpy>=1.24.0"]
 
 [project.scripts]
 stride-eval = "stride.cli:main"

@@ -1,9 +1,8 @@
 {
   "meta": {
     "benchmark": "STRIDE",
-    "split": "nuscenes_v6",
+    "split": "nuscenes",
     "source_dataset": "nuScenes",
-    "version": "v6_gt_revised",
     "n_questions": 1150,
     "n_templates": 23,
     "n_scenes": 761,
@@ -47,7 +46,7 @@
     "notes": [
       "Ground-truth answers included for open evaluation.",
       "Images are NOT bundled; resolve via formatted_scenes using source_group_file.",
-      "239 open-OEQ ground truths were revised via vision audit relative to plain v6."
+      "Open-OEQ ground truths include human-verified revisions."
     ],
     "packaged_at": "2026-09-28T23:42:03.998571+00:00"
   },

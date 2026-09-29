@@ -2,7 +2,7 @@
 """Build a blank prediction template from a STRIDE split.
 
 Usage:
-    python evaluation/make_prediction_template.py --split nuscenes_v6 --output preds/template.json
+    python evaluation/make_prediction_template.py --split nuscenes --output preds/template.json
 """
 from __future__ import annotations
 
@@ -19,7 +19,7 @@ from stride.io import write_json
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--split", default="nuscenes_v6")
+    parser.add_argument("--split", default="nuscenes")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--limit", type=int, default=0, help="Optional cap for smoke tests")
     args = parser.parse_args()

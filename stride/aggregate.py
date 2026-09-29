@@ -12,8 +12,8 @@ from .trajectory import score_trajectory_tasks
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 SPLIT_PATHS = {
-    "nuscenes_v6": REPO_ROOT / "STRIDE" / "nuScenes" / "questions.json",
-    "waymo_v1": REPO_ROOT / "STRIDE" / "Waymo" / "questions.json",
+    "nuscenes": REPO_ROOT / "STRIDE" / "nuScenes" / "questions.json",
+    "waymo": REPO_ROOT / "STRIDE" / "Waymo" / "questions.json",
     "nuscenes_mini": REPO_ROOT / "STRIDE" / "Mini" / "nuscenes_mini.json",
     "waymo_mini": REPO_ROOT / "STRIDE" / "Mini" / "waymo_mini.json",
 }

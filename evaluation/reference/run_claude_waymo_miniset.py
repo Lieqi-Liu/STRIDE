@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run Anthropic Claude on the Waymo miniset using the same Vertex settings as nuScenes v6.
+"""Run Anthropic Claude on the Waymo miniset using the same Vertex settings as nuScenes.
 
 Settings copied from full_nuscenes/run_claude_miniset_expert.py:
   model=claude-sonnet-5, location=global, effort=medium,
@@ -85,7 +85,7 @@ def main() -> None:
     if args.limit and args.limit > 0:
         runnable_idx = runnable_idx[: args.limit]
 
-    print(f"[Claude] split=waymo_miniset_50_per_id_v1")
+    print(f"[Claude] split=waymo_miniset")
     print(
         f"[Claude] model={args.model} project={args.project} location={args.location} "
         f"remaining={len(runnable_idx)}/{len(tasks)}"
@@ -100,7 +100,7 @@ def main() -> None:
     payload.setdefault("meta", {})
     payload["meta"].update(
         {
-            "dataset_split": "waymo_miniset_50_per_id_v1",
+            "dataset_split": "waymo_miniset",
             "expert_model": args.model,
             "backend": "vertex_claude",
             "project": args.project,

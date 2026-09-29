@@ -9,7 +9,7 @@ Use this folder when you need to reproduce the exact research runners (vLLM VLM 
 Gemini/Claude/OpenAI experts, Dolphins, vision-judge batches). Before running:
 
 1. Set `STRIDE_NUSCENES_FORMATTED_SCENES` / `STRIDE_WAYMO_IMAGE_ROOT` (or edit hardcoded paths).
-2. Point `--input-json` at `data/nuscenes/stride_nuscenes_v6.json` or `data/waymo/stride_waymo_v1.json`.
+2. Point `--input-json` at `data/nuscenes/stride_nuscenes.json` or `data/waymo/stride_waymo.json`.
 3. Install the matching heavy deps (`vllm`, Vertex ADC, Dolphins env, etc.).
 
 | File | Role |

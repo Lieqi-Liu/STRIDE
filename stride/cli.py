@@ -6,7 +6,7 @@ Examples
 Score MCQ + trajectory from a prediction JSON (no GPU needed)::
 
     python -m stride.cli score \\
-        --split nuscenes_v6 \\
+        --split nuscenes \\
         --predictions path/to/model_responses.json \\
         --metrics mcq,trajectory \\
         --output-dir runs/my_model
@@ -14,7 +14,7 @@ Score MCQ + trajectory from a prediction JSON (no GPU needed)::
 Also run BLEURT (downloads Elron/bleurt-base-512 on first use)::
 
     python -m stride.cli score \\
-        --split waymo_v1 \\
+        --split waymo \\
         --predictions path/to/model_responses.json \\
         --metrics mcq,trajectory,bleurt \\
         --output-dir runs/my_model
@@ -40,7 +40,7 @@ def parse_args() -> argparse.Namespace:
     score = sub.add_parser("score", help="Score a prediction JSON against a STRIDE split")
     score.add_argument(
         "--split",
-        default="nuscenes_v6",
+        default="nuscenes",
         help=f"Split name ({', '.join(SPLIT_PATHS)}) or path to GT JSON",
     )
     score.add_argument("--predictions", type=Path, required=True, help="Model responses JSON")
@@ -68,7 +68,7 @@ def parse_args() -> argparse.Namespace:
     )
 
     info = sub.add_parser("info", help="Print split statistics")
-    info.add_argument("--split", default="nuscenes_v6")
+    info.add_argument("--split", default="nuscenes")
 
     return parser.parse_args()
 

@@ -17,7 +17,7 @@ from run_waymo_miniset_model_benchmark import MODEL_SPECS, nusc_bench
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-DEFAULT_INPUT = SCRIPT_DIR / "questions_with_answers_waymo_miniset_50_per_id_v1.json"
+DEFAULT_INPUT = SCRIPT_DIR / "questions_with_answers_waymo_miniset.json"
 DEFAULT_OUTPUT_DIR = SCRIPT_DIR / "miniset_model_benchmark_outputs"
 OPEN_OEQ_IDS = {"SC-4", "SP-3a", "TRJ-7", "TRJ-9"}
 TRAJECTORY_IDS = {"TRJ-5", "TRJ-6"}
@@ -121,7 +121,7 @@ def leaderboard_row(name: str, result: dict[str, Any]) -> dict[str, Any]:
     return {
         "model": name,
         "model_type": result.get("model_type") or "vlm",
-        "split": "waymo_miniset_50_per_id_v1",
+        "split": "waymo_miniset",
         "n_tasks": summary.get("total"),
         "n_mcq": (mcq.get("total")),
         "n_oeq": (summary.get("oeq") or {}).get("total"),
@@ -171,7 +171,7 @@ def main() -> None:
         for result in extra:
             if result["name"] not in existing_names:
                 benchmark_summary.setdefault("results", []).append(result)
-        benchmark_summary["dataset_split"] = "waymo_miniset_50_per_id_v1"
+        benchmark_summary["dataset_split"] = "waymo_miniset"
         nusc_bench.write_json(summary_path, benchmark_summary)
         print(f"Wrote {summary_path}")
 
@@ -179,7 +179,7 @@ def main() -> None:
         rows = [row for row in rows if row.get("n_tasks")]
         rows.sort(key=lambda r: (-(r.get("mcq_accuracy") or -1.0), str(r.get("model"))))
         if rows:
-            csv_path = args.output_dir / "waymo_v1_leaderboard.csv"
+            csv_path = args.output_dir / "waymo_leaderboard.csv"
             with csv_path.open("w", encoding="utf-8", newline="") as f:
                 writer = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
                 writer.writeheader()

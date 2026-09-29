@@ -1,10 +1,9 @@
 {
   "meta": {
     "benchmark": "STRIDE",
-    "split": "waymo_v1_examples",
+    "split": "waymo_examples",
     "source_dataset": "Waymo Open Dataset (validation)",
-    "version": "v1",
-    "n_questions": 3,
+    "n_questions": 4,
     "n_templates": 24,
     "n_scenes": 335,
     "counts_by_template": {
@@ -41,22 +40,23 @@
       "trajectory-prediction": 500
     },
     "counts_by_format": {
-      "OEQ": 300,
-      "MCQ": 900
+      "MCQ": 900,
+      "OEQ": 300
     },
-    "image_root_hint": "Set STRIDE_WAYMO_IMAGE_ROOT to the directory containing CAM_FRONT sequences (val/images/).",
     "image_paths_are_relative_to": "STRIDE_WAYMO_IMAGE_ROOT",
     "notes": [
       "Ground-truth answers included for open evaluation.",
       "image_paths are relative to Waymo val/images/.",
+      "bbox_xyxy (when present) is the precomputed target box; eval overlays a red rectangle — users do not need to run SAM.",
+      "candidate_trajectories (when present) are used to overlay TRJ ranking options on the query frame.",
       "Each question uses 5 chronological CAM_FRONT frames; query frame is last."
     ],
-    "packaged_at": "2026-09-28T23:42:04.058540+00:00"
+    "packaged_at": "2026-09-29T01:02:52.158450+00:00"
   },
   "tasks": [
     {
-      "source_dataset": "waymo_validation",
-      "ground_truth_text": "In front",
+      "group_id": "group_138",
+      "frame_index": 138,
       "history_image_paths": [
         "0753089b73ce77d5c9e37dc924786b7f/CAM_FRONT/0753089b73ce77d5c9e37dc924786b7f-118_FRONT.jpg",
         "0753089b73ce77d5c9e37dc924786b7f/CAM_FRONT/0753089b73ce77d5c9e37dc924786b7f-123_FRONT.jpg",
@@ -64,13 +64,20 @@
         "0753089b73ce77d5c9e37dc924786b7f/CAM_FRONT/0753089b73ce77d5c9e37dc924786b7f-133_FRONT.jpg",
         "0753089b73ce77d5c9e37dc924786b7f/CAM_FRONT/0753089b73ce77d5c9e37dc924786b7f-138_FRONT.jpg"
       ],
-      "scenario_cluster": "Foreign Object Debris",
-      "anchor_image_path": "0753089b73ce77d5c9e37dc924786b7f/CAM_FRONT/0753089b73ce77d5c9e37dc924786b7f-138_FRONT.jpg",
-      "scene_id": "0753089b73ce77d5c9e37dc924786b7f",
-      "image_path": "0753089b73ce77d5c9e37dc924786b7f/CAM_FRONT/0753089b73ce77d5c9e37dc924786b7f-138_FRONT.jpg",
-      "frame_name": "0753089b73ce77d5c9e37dc924786b7f-138",
-      "bundle_id": "0753089b73ce77d5c9e37dc924786b7f:group_138",
+      "question": "What is the spatial relationship between the object in the red bounding box and ego vehicle?",
+      "source_dataset": "waymo_validation",
+      "bundle_size": 5,
       "question_format": "MCQ",
+      "question_id": "waymo_val_0753089b73ce77d5c9e37dc924786b7f_group_138_SP-2_obj00",
+      "id": "SP-2",
+      "ground_truth": "A",
+      "bundle_frame_names": [
+        "0753089b73ce77d5c9e37dc924786b7f-118",
+        "0753089b73ce77d5c9e37dc924786b7f-123",
+        "0753089b73ce77d5c9e37dc924786b7f-128",
+        "0753089b73ce77d5c9e37dc924786b7f-133",
+        "0753089b73ce77d5c9e37dc924786b7f-138"
+      ],
       "choices": {
         "A": "In front",
         "B": "Front-left",
@@ -81,7 +88,10 @@
         "G": "Rear-right",
         "H": "Behind"
       },
-      "question": "What is the spatial relationship between the object in the red bounding box and ego vehicle?",
+      "object_id": "0753089b73ce77d5c9e37dc924786b7f-138#obj00",
+      "ground_truth_text": "In front",
+      "frame_name": "0753089b73ce77d5c9e37dc924786b7f-138",
+      "anchor_image_path": "0753089b73ce77d5c9e37dc924786b7f/CAM_FRONT/0753089b73ce77d5c9e37dc924786b7f-138_FRONT.jpg",
       "task": "space-perception",
       "bbox_xyxy": [
         654.408,
@@ -89,13 +99,9 @@
         686.693,
         820.923
       ],
-      "frame_index": 138,
-      "object_id": "0753089b73ce77d5c9e37dc924786b7f-138#obj00",
-      "id": "SP-2",
-      "question_id": "waymo_val_0753089b73ce77d5c9e37dc924786b7f_group_138_SP-2_obj00",
-      "group_id": "group_138",
-      "bundle_size": 5,
-      "object_reference": "the object in the red bounding box",
+      "scene_id": "0753089b73ce77d5c9e37dc924786b7f",
+      "scenario_cluster": "Foreign Object Debris",
+      "bundle_id": "0753089b73ce77d5c9e37dc924786b7f:group_138",
       "image_paths": [
         "0753089b73ce77d5c9e37dc924786b7f/CAM_FRONT/0753089b73ce77d5c9e37dc924786b7f-118_FRONT.jpg",
         "0753089b73ce77d5c9e37dc924786b7f/CAM_FRONT/0753089b73ce77d5c9e37dc924786b7f-123_FRONT.jpg",
@@ -103,19 +109,13 @@
         "0753089b73ce77d5c9e37dc924786b7f/CAM_FRONT/0753089b73ce77d5c9e37dc924786b7f-133_FRONT.jpg",
         "0753089b73ce77d5c9e37dc924786b7f/CAM_FRONT/0753089b73ce77d5c9e37dc924786b7f-138_FRONT.jpg"
       ],
-      "bundle_frame_names": [
-        "0753089b73ce77d5c9e37dc924786b7f-118",
-        "0753089b73ce77d5c9e37dc924786b7f-123",
-        "0753089b73ce77d5c9e37dc924786b7f-128",
-        "0753089b73ce77d5c9e37dc924786b7f-133",
-        "0753089b73ce77d5c9e37dc924786b7f-138"
-      ],
-      "ground_truth": "A",
+      "object_reference": "the object in the red bounding box",
+      "image_path": "0753089b73ce77d5c9e37dc924786b7f/CAM_FRONT/0753089b73ce77d5c9e37dc924786b7f-138_FRONT.jpg",
       "scoring_type": "mcq"
     },
     {
-      "source_dataset": "waymo_validation",
-      "ground_truth_text": "In front",
+      "group_id": "group_074",
+      "frame_index": 74,
       "history_image_paths": [
         "053cb7c6b8b71cc8ed1d9f3b2b5b8636/CAM_FRONT/053cb7c6b8b71cc8ed1d9f3b2b5b8636-054_FRONT.jpg",
         "053cb7c6b8b71cc8ed1d9f3b2b5b8636/CAM_FRONT/053cb7c6b8b71cc8ed1d9f3b2b5b8636-059_FRONT.jpg",
@@ -123,13 +123,20 @@
         "053cb7c6b8b71cc8ed1d9f3b2b5b8636/CAM_FRONT/053cb7c6b8b71cc8ed1d9f3b2b5b8636-069_FRONT.jpg",
         "053cb7c6b8b71cc8ed1d9f3b2b5b8636/CAM_FRONT/053cb7c6b8b71cc8ed1d9f3b2b5b8636-074_FRONT.jpg"
       ],
-      "scenario_cluster": "Cut-ins",
-      "anchor_image_path": "053cb7c6b8b71cc8ed1d9f3b2b5b8636/CAM_FRONT/053cb7c6b8b71cc8ed1d9f3b2b5b8636-074_FRONT.jpg",
-      "scene_id": "053cb7c6b8b71cc8ed1d9f3b2b5b8636",
-      "image_path": "053cb7c6b8b71cc8ed1d9f3b2b5b8636/CAM_FRONT/053cb7c6b8b71cc8ed1d9f3b2b5b8636-074_FRONT.jpg",
-      "frame_name": "053cb7c6b8b71cc8ed1d9f3b2b5b8636-074",
-      "bundle_id": "053cb7c6b8b71cc8ed1d9f3b2b5b8636:group_074",
+      "question": "Where was the object in the red bounding box located relative to the ego vehicle in the previous frame(s)?",
+      "source_dataset": "waymo_validation",
+      "bundle_size": 5,
       "question_format": "MCQ",
+      "question_id": "waymo_val_053cb7c6b8b71cc8ed1d9f3b2b5b8636_group_074_TM-2_obj02",
+      "id": "TM-2",
+      "ground_truth": "F",
+      "bundle_frame_names": [
+        "053cb7c6b8b71cc8ed1d9f3b2b5b8636-054",
+        "053cb7c6b8b71cc8ed1d9f3b2b5b8636-059",
+        "053cb7c6b8b71cc8ed1d9f3b2b5b8636-064",
+        "053cb7c6b8b71cc8ed1d9f3b2b5b8636-069",
+        "053cb7c6b8b71cc8ed1d9f3b2b5b8636-074"
+      ],
       "choices": {
         "A": "Behind",
         "B": "Front-left",
@@ -138,7 +145,10 @@
         "E": "Right",
         "F": "In front"
       },
-      "question": "Where was the object in the red bounding box located relative to the ego vehicle in the previous frame(s)?",
+      "object_id": "053cb7c6b8b71cc8ed1d9f3b2b5b8636-074#obj02",
+      "ground_truth_text": "In front",
+      "frame_name": "053cb7c6b8b71cc8ed1d9f3b2b5b8636-074",
+      "anchor_image_path": "053cb7c6b8b71cc8ed1d9f3b2b5b8636/CAM_FRONT/053cb7c6b8b71cc8ed1d9f3b2b5b8636-074_FRONT.jpg",
       "task": "time-memory",
       "bbox_xyxy": [
         793.22,
@@ -146,13 +156,9 @@
         847.959,
         894.46
       ],
-      "frame_index": 74,
-      "object_id": "053cb7c6b8b71cc8ed1d9f3b2b5b8636-074#obj02",
-      "id": "TM-2",
-      "question_id": "waymo_val_053cb7c6b8b71cc8ed1d9f3b2b5b8636_group_074_TM-2_obj02",
-      "group_id": "group_074",
-      "bundle_size": 5,
-      "object_reference": "the object in the red bounding box",
+      "scene_id": "053cb7c6b8b71cc8ed1d9f3b2b5b8636",
+      "scenario_cluster": "Cut-ins",
+      "bundle_id": "053cb7c6b8b71cc8ed1d9f3b2b5b8636:group_074",
       "image_paths": [
         "053cb7c6b8b71cc8ed1d9f3b2b5b8636/CAM_FRONT/053cb7c6b8b71cc8ed1d9f3b2b5b8636-054_FRONT.jpg",
         "053cb7c6b8b71cc8ed1d9f3b2b5b8636/CAM_FRONT/053cb7c6b8b71cc8ed1d9f3b2b5b8636-059_FRONT.jpg",
@@ -160,19 +166,13 @@
         "053cb7c6b8b71cc8ed1d9f3b2b5b8636/CAM_FRONT/053cb7c6b8b71cc8ed1d9f3b2b5b8636-069_FRONT.jpg",
         "053cb7c6b8b71cc8ed1d9f3b2b5b8636/CAM_FRONT/053cb7c6b8b71cc8ed1d9f3b2b5b8636-074_FRONT.jpg"
       ],
-      "bundle_frame_names": [
-        "053cb7c6b8b71cc8ed1d9f3b2b5b8636-054",
-        "053cb7c6b8b71cc8ed1d9f3b2b5b8636-059",
-        "053cb7c6b8b71cc8ed1d9f3b2b5b8636-064",
-        "053cb7c6b8b71cc8ed1d9f3b2b5b8636-069",
-        "053cb7c6b8b71cc8ed1d9f3b2b5b8636-074"
-      ],
-      "ground_truth": "F",
+      "object_reference": "the object in the red bounding box",
+      "image_path": "053cb7c6b8b71cc8ed1d9f3b2b5b8636/CAM_FRONT/053cb7c6b8b71cc8ed1d9f3b2b5b8636-074_FRONT.jpg",
       "scoring_type": "mcq"
     },
     {
-      "source_dataset": "waymo_validation",
-      "ground_truth_text": "A nighttime driving scene on a multi-lane road with streetlights. The ego vehicle is driving straight, and the road is mostly clear. On the right side of the road, a white pickup truck is parked. The scene is dark, with the primary light sources being streetlights and the vehicle's headlights. The road markings are visible, including a crosswalk and lane dividers. The main risk is Foreign Object Debris The preferred action is to proceed with caution, maintain lane position, and be prepared to stop if any debris is observed on the road surface.",
+      "group_id": "group_033",
+      "frame_index": 194,
       "history_image_paths": [
         "0075c28f1f1a68c4c1c8dcf37958046b/CAM_FRONT/0075c28f1f1a68c4c1c8dcf37958046b-174_FRONT.jpg",
         "0075c28f1f1a68c4c1c8dcf37958046b/CAM_FRONT/0075c28f1f1a68c4c1c8dcf37958046b-179_FRONT.jpg",
@@ -180,27 +180,13 @@
         "0075c28f1f1a68c4c1c8dcf37958046b/CAM_FRONT/0075c28f1f1a68c4c1c8dcf37958046b-189_FRONT.jpg",
         "0075c28f1f1a68c4c1c8dcf37958046b/CAM_FRONT/0075c28f1f1a68c4c1c8dcf37958046b-194_FRONT.jpg"
       ],
-      "scenario_cluster": "Foreign Object Debris",
-      "anchor_image_path": "0075c28f1f1a68c4c1c8dcf37958046b/CAM_FRONT/0075c28f1f1a68c4c1c8dcf37958046b-194_FRONT.jpg",
-      "scene_id": "0075c28f1f1a68c4c1c8dcf37958046b",
-      "image_path": "0075c28f1f1a68c4c1c8dcf37958046b/CAM_FRONT/0075c28f1f1a68c4c1c8dcf37958046b-194_FRONT.jpg",
-      "frame_name": "0075c28f1f1a68c4c1c8dcf37958046b-194",
-      "bundle_id": "0075c28f1f1a68c4c1c8dcf37958046b:group_033",
-      "question_format": "OEQ",
       "question": "Briefly describe the scene, the main risk, and the preferred action.",
-      "task": "scenario-corner-case",
-      "frame_index": 194,
-      "id": "SC-4",
-      "question_id": "0075c28f1f1a68c4c1c8dcf37958046b:group_033_SC-4",
-      "group_id": "group_033",
+      "source_dataset": "waymo_validation",
       "bundle_size": 5,
-      "image_paths": [
-        "0075c28f1f1a68c4c1c8dcf37958046b/CAM_FRONT/0075c28f1f1a68c4c1c8dcf37958046b-174_FRONT.jpg",
-        "0075c28f1f1a68c4c1c8dcf37958046b/CAM_FRONT/0075c28f1f1a68c4c1c8dcf37958046b-179_FRONT.jpg",
-        "0075c28f1f1a68c4c1c8dcf37958046b/CAM_FRONT/0075c28f1f1a68c4c1c8dcf37958046b-184_FRONT.jpg",
-        "0075c28f1f1a68c4c1c8dcf37958046b/CAM_FRONT/0075c28f1f1a68c4c1c8dcf37958046b-189_FRONT.jpg",
-        "0075c28f1f1a68c4c1c8dcf37958046b/CAM_FRONT/0075c28f1f1a68c4c1c8dcf37958046b-194_FRONT.jpg"
-      ],
+      "question_format": "OEQ",
+      "question_id": "0075c28f1f1a68c4c1c8dcf37958046b:group_033_SC-4",
+      "id": "SC-4",
+      "ground_truth": "A nighttime driving scene on a multi-lane road with streetlights. The ego vehicle is driving straight, and the road is mostly clear. On the right side of the road, a white pickup truck is parked. The scene is dark, with the primary light sources being streetlights and the vehicle's headlights. The road markings are visible, including a crosswalk and lane dividers. The main risk is Foreign Object Debris The preferred action is to proceed with caution, maintain lane position, and be prepared to stop if any debris is observed on the road surface.",
       "bundle_frame_names": [
         "0075c28f1f1a68c4c1c8dcf37958046b-174",
         "0075c28f1f1a68c4c1c8dcf37958046b-179",
@@ -208,8 +194,193 @@
         "0075c28f1f1a68c4c1c8dcf37958046b-189",
         "0075c28f1f1a68c4c1c8dcf37958046b-194"
       ],
-      "ground_truth": "A nighttime driving scene on a multi-lane road with streetlights. The ego vehicle is driving straight, and the road is mostly clear. On the right side of the road, a white pickup truck is parked. The scene is dark, with the primary light sources being streetlights and the vehicle's headlights. The road markings are visible, including a crosswalk and lane dividers. The main risk is Foreign Object Debris The preferred action is to proceed with caution, maintain lane position, and be prepared to stop if any debris is observed on the road surface.",
+      "ground_truth_text": "A nighttime driving scene on a multi-lane road with streetlights. The ego vehicle is driving straight, and the road is mostly clear. On the right side of the road, a white pickup truck is parked. The scene is dark, with the primary light sources being streetlights and the vehicle's headlights. The road markings are visible, including a crosswalk and lane dividers. The main risk is Foreign Object Debris The preferred action is to proceed with caution, maintain lane position, and be prepared to stop if any debris is observed on the road surface.",
+      "frame_name": "0075c28f1f1a68c4c1c8dcf37958046b-194",
+      "anchor_image_path": "0075c28f1f1a68c4c1c8dcf37958046b/CAM_FRONT/0075c28f1f1a68c4c1c8dcf37958046b-194_FRONT.jpg",
+      "task": "scenario-corner-case",
+      "scene_id": "0075c28f1f1a68c4c1c8dcf37958046b",
+      "scenario_cluster": "Foreign Object Debris",
+      "bundle_id": "0075c28f1f1a68c4c1c8dcf37958046b:group_033",
+      "image_paths": [
+        "0075c28f1f1a68c4c1c8dcf37958046b/CAM_FRONT/0075c28f1f1a68c4c1c8dcf37958046b-174_FRONT.jpg",
+        "0075c28f1f1a68c4c1c8dcf37958046b/CAM_FRONT/0075c28f1f1a68c4c1c8dcf37958046b-179_FRONT.jpg",
+        "0075c28f1f1a68c4c1c8dcf37958046b/CAM_FRONT/0075c28f1f1a68c4c1c8dcf37958046b-184_FRONT.jpg",
+        "0075c28f1f1a68c4c1c8dcf37958046b/CAM_FRONT/0075c28f1f1a68c4c1c8dcf37958046b-189_FRONT.jpg",
+        "0075c28f1f1a68c4c1c8dcf37958046b/CAM_FRONT/0075c28f1f1a68c4c1c8dcf37958046b-194_FRONT.jpg"
+      ],
+      "image_path": "0075c28f1f1a68c4c1c8dcf37958046b/CAM_FRONT/0075c28f1f1a68c4c1c8dcf37958046b-194_FRONT.jpg",
       "scoring_type": "open_oeq_text"
+    },
+    {
+      "group_id": "group_148",
+      "frame_index": 148,
+      "trajectory_sampling": "uniform",
+      "history_image_paths": [
+        "0441374eb46e1d94536cf7fce1237e9f/CAM_FRONT/0441374eb46e1d94536cf7fce1237e9f-128_FRONT.jpg",
+        "0441374eb46e1d94536cf7fce1237e9f/CAM_FRONT/0441374eb46e1d94536cf7fce1237e9f-133_FRONT.jpg",
+        "0441374eb46e1d94536cf7fce1237e9f/CAM_FRONT/0441374eb46e1d94536cf7fce1237e9f-138_FRONT.jpg",
+        "0441374eb46e1d94536cf7fce1237e9f/CAM_FRONT/0441374eb46e1d94536cf7fce1237e9f-143_FRONT.jpg",
+        "0441374eb46e1d94536cf7fce1237e9f/CAM_FRONT/0441374eb46e1d94536cf7fce1237e9f-148_FRONT.jpg"
+      ],
+      "question": "Given the current scene and three candidate ego future trajectories, which trajectory is the best driving choice?",
+      "source_dataset": "waymo_validation",
+      "bundle_size": 5,
+      "question_format": "MCQ",
+      "candidate_trajectories": {
+        "A": [
+          [
+            1.241,
+            0.001
+          ],
+          [
+            2.211,
+            -0.004
+          ],
+          [
+            2.668,
+            -0.005
+          ],
+          [
+            3.797,
+            -0.005
+          ],
+          [
+            3.833,
+            -0.004
+          ]
+        ],
+        "B": [
+          [
+            1.106,
+            -0.002
+          ],
+          [
+            2.943,
+            -0.001
+          ],
+          [
+            5.045,
+            0.003
+          ],
+          [
+            8.805,
+            0.043
+          ],
+          [
+            15.959,
+            0.243
+          ]
+        ],
+        "C": [
+          [
+            1.099,
+            0.003
+          ],
+          [
+            2.545,
+            0.008
+          ],
+          [
+            2.599,
+            0.007
+          ],
+          [
+            2.61,
+            0.014
+          ],
+          [
+            2.567,
+            0.038
+          ]
+        ]
+      },
+      "question_id": "waymo_val_0441374eb46e1d94536cf7fce1237e9f_group_148_TRJ-8",
+      "id": "TRJ-8",
+      "ground_truth": "C",
+      "bundle_frame_names": [
+        "0441374eb46e1d94536cf7fce1237e9f-128",
+        "0441374eb46e1d94536cf7fce1237e9f-133",
+        "0441374eb46e1d94536cf7fce1237e9f-138",
+        "0441374eb46e1d94536cf7fce1237e9f-143",
+        "0441374eb46e1d94536cf7fce1237e9f-148"
+      ],
+      "choices": {
+        "A": "Candidate trajectory A",
+        "B": "Candidate trajectory B",
+        "C": "Candidate trajectory C"
+      },
+      "ground_truth_text": "Candidate trajectory C",
+      "frame_name": "0441374eb46e1d94536cf7fce1237e9f-148",
+      "anchor_image_path": "0441374eb46e1d94536cf7fce1237e9f/CAM_FRONT/0441374eb46e1d94536cf7fce1237e9f-148_FRONT.jpg",
+      "task": "trajectory-prediction",
+      "scene_id": "0441374eb46e1d94536cf7fce1237e9f",
+      "scenario_cluster": "Pedestrian",
+      "bundle_id": "0441374eb46e1d94536cf7fce1237e9f:group_148",
+      "image_paths": [
+        "0441374eb46e1d94536cf7fce1237e9f/CAM_FRONT/0441374eb46e1d94536cf7fce1237e9f-128_FRONT.jpg",
+        "0441374eb46e1d94536cf7fce1237e9f/CAM_FRONT/0441374eb46e1d94536cf7fce1237e9f-133_FRONT.jpg",
+        "0441374eb46e1d94536cf7fce1237e9f/CAM_FRONT/0441374eb46e1d94536cf7fce1237e9f-138_FRONT.jpg",
+        "0441374eb46e1d94536cf7fce1237e9f/CAM_FRONT/0441374eb46e1d94536cf7fce1237e9f-143_FRONT.jpg",
+        "0441374eb46e1d94536cf7fce1237e9f/CAM_FRONT/0441374eb46e1d94536cf7fce1237e9f-148_FRONT.jpg"
+      ],
+      "image_path": "0441374eb46e1d94536cf7fce1237e9f/CAM_FRONT/0441374eb46e1d94536cf7fce1237e9f-148_FRONT.jpg",
+      "scoring_type": "mcq",
+      "candidate_trajectories_image": {
+        "A": [
+          [
+            515.01,
+            3620.06
+          ],
+          [
+            504.62,
+            2467.91
+          ],
+          [
+            495.59,
+            1601.35
+          ],
+          [
+            494.97,
+            1587.62
+          ]
+        ],
+        "B": [
+          [
+            497.98,
+            2130.43
+          ],
+          [
+            489.81,
+            1288.79
+          ],
+          [
+            481.93,
+            994.15
+          ],
+          [
+            468.69,
+            857.14
+          ]
+        ],
+        "C": [
+          [
+            492.7,
+            2677.23
+          ],
+          [
+            493.41,
+            2579.45
+          ],
+          [
+            486.2,
+            2560.69
+          ],
+          [
+            460.7,
+            2636.05
+          ]
+        ]
+      }
     }
   ]
 }

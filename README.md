@@ -1,10 +1,10 @@
 # STRIDE
-[![arXiv](https://img.shields.io/badge/arXiv-coming_soon-b31b1b.svg?style=plastic)](https://arxiv.org/) [![Web](https://img.shields.io/badge/Web-STRIDE-blue.svg?style=plastic)](https://github.com/Lieqi-Liu/STRIDE) [![HF](https://img.shields.io/badge/%F0%9F%A4%97-HuggingFace-yellow?style=plastic)](https://huggingface.co/)
+[![arXiv](https://img.shields.io/badge/arXiv-coming_soon-b31b1b.svg?style=plastic)](https://arxiv.org/) [![Web](https://img.shields.io/badge/Web-STRIDE-blue.svg?style=plastic)](https://lieqi-liu.github.io/STRIDE/) [![HF](https://img.shields.io/badge/%F0%9F%A4%97-HuggingFace-yellow?style=plastic)](https://huggingface.co/)
 
 This repository contains the implementation of the paper:
 
 > **STRIDE: Evaluating Spatiotemporal Reasoning in Driving Edge Cases** <br>
-> [Lieqi Liu](https://github.com/Lieqi-Liu)<sup>1\*</sup>, [Rui Gao](https://github.com/)<sup>1\*</sup>, Jia-Chen Gu<sup>1</sup>, Wenbo Hu<sup>1</sup>, Zhaobin Mo<sup>2</sup>, Ahmadreza Moradipari<sup>2</sup>, Nejib Ammar<sup>2</sup>, Wei Wang<sup>1</sup>, [Nanyun Peng](https://vnpeng.net/)<sup>1</sup> <br>
+> [Lieqi Liu](https://github.com/Lieqi-Liu)<sup>1\*</sup>, Rui Gao<sup>1\*</sup>, Jia-Chen Gu<sup>1</sup>, Wenbo Hu<sup>1</sup>, Zhaobin Mo<sup>2</sup>, Ahmadreza Moradipari<sup>2</sup>, Nejib Ammar<sup>2</sup>, Wei Wang<sup>1</sup>, [Nanyun Peng](https://vnpeng.net/)<sup>1</sup> <br>
 > <sup>1</sup>University of California, Los Angeles &nbsp;&nbsp; <sup>2</sup>Toyota InfoTech Labs <br>
 > <sup>\*</sup>Equal contribution
 
@@ -15,58 +15,80 @@ This repository contains the implementation of the paper:
 
 ## Update
 
-- **2026.09**: Initial release of STRIDE annotations (nuScenes v6 + Waymo v1), evaluation toolkit, and baseline leaderboard.
+- **2026.09**: Initial release of STRIDE annotations (nuScenes + Waymo), evaluation toolkit, and baseline leaderboard.
 - **2026.09**: Mini demonstration subsets released under `STRIDE/Mini`.
+- **2026.09**: Project website at [`docs/`](./docs) (GitHub Pages).
 
 ## Data Preparation
 
-The instructions for setting up STRIDE are listed as follows:
+STRIDE ships **question annotations** (and nuScenes group sidecars) in this repository. Raw sensor data must be downloaded from upstream datasets; this repo provides the scripts to turn that data into the media layout STRIDE expects.
 
-1. Clone this repository (question annotations ship with the code under `STRIDE/`).
-2. Download the **source images** from the upstream datasets and place them following the layout below:
-   - **nuScenes**: obtain [nuScenes](https://www.nuscenes.org/) trainval under the official ToU, then prepare / download the STRIDE `formatted_scenes` multi-camera grids for the miniset scenes.
-   - **Waymo**: obtain the [Waymo Open Dataset](https://waymo.com/open/) validation CAM_FRONT images under the official terms.
+### 1. Download upstream data
+
+1. **nuScenes** trainval — follow the official [download / ToU](https://www.nuscenes.org/).
+2. **Waymo Open Dataset** validation images — follow the official [terms](https://waymo.com/open/terms/).
+
+### 2. Build STRIDE media (self-contained scripts)
+
+**nuScenes** — stitch 6-camera grids, install sidecars, render selected-vehicle query overlays:
+
+```bash
+pip install nuscenes-devkit matplotlib   # needed for selected-vehicle overlays
+python scripts/prepare_nuscenes_media.py \
+  --nuscenes-root /path/to/nuscenes/trainval \
+  --output-dir /path/to/formatted_scenes
+
+export STRIDE_NUSCENES_FORMATTED_SCENES=/path/to/formatted_scenes
+python scripts/verify_stride_media.py --split nuscenes --require-overlays
+```
+
+This installs `STRIDE/nuScenes/formatted_metadata/` into the output directory, stitches the **2×3 multi-camera grids** (`*_grid.jpg`), and writes `{group}_selected_vehicle_render.jpg` query overlays from the shipped annotation tokens.
+
+**Waymo** — no stitching and **no SAM**: verify relative paths only.
+
+```bash
+python scripts/prepare_waymo_media.py \
+  --waymo-image-root /path/to/waymo/val/images
+
+export STRIDE_WAYMO_IMAGE_ROOT=/path/to/waymo/val/images
+python scripts/verify_stride_media.py --split waymo
+```
+
+Target-object boxes were computed offline (SAM during construction) and are stored as `bbox_xyxy` in `STRIDE/Waymo/questions.json`. TRJ ranking options ship both ego-frame `candidate_trajectories` and preprojected `candidate_trajectories_image`. At eval time `stride.visual.load_waymo_images` draws the red box / labeled curves — users do **not** run SAM or need Waymo calibration files.
 
 | Split | Size | Image Source | Annotation | Notes |
 | :---: | :--: | :----------: | :--------: | :---: |
 | nuScenes | 1150 | nuScenes trainval | [`STRIDE/nuScenes`](./STRIDE/nuScenes) | 23 templates × 50; GT-revised open OEQs |
-| Waymo | 1200 | Waymo Open Dataset val | [`STRIDE/Waymo`](./STRIDE/Waymo) | 24 templates × 50 |
+| Waymo | 1200 | Waymo Open Dataset val | [`STRIDE/Waymo`](./STRIDE/Waymo) | 24 templates × 50; `bbox_xyxy` precomputed |
 | Mini (nuScenes) | 3 | same as nuScenes | [`STRIDE/Mini`](./STRIDE/Mini) | Schema demo only |
-| Mini (Waymo) | 3 | same as Waymo | [`STRIDE/Mini`](./STRIDE/Mini) | Schema demo only |
+| Mini (Waymo) | 4 | same as Waymo | [`STRIDE/Mini`](./STRIDE/Mini) | Schema demo only |
 
 Note that:
 
-1. **STRIDE annotations** (questions + ground truth) are included in this repository under `STRIDE/`.
-2. **Images are not vendored** here due to upstream licenses and size (~55 GB nuScenes grids for miniset scenes; ~1 GB unique Waymo CAM_FRONT frames referenced by the miniset).
-3. **STRIDE Mini** is a tiny subset for schema demonstration, not for reporting scores.
+1. **Questions + nuScenes group metadata** ship in this repo (including Waymo `bbox_xyxy` / trajectory overlays).
+2. **Raw images are not vendored** (upstream licenses / size). Grids + nuScenes query overlays are built locally with `prepare_nuscenes_media.py`.
+3. **Always run `verify_stride_media.py`** before inference so missing frames fail fast.
+4. **STRIDE Mini** is for schema demonstration only, not for reporting scores.
+5. **Scoring** (`python -m stride.cli score`) needs only prediction JSON + shipped questions; **inference** needs the prepared media roots above.
 
-After setup, the data organization is listed as follows:
+After setup, the layout looks like:
 
 ```
 ├── STRIDE
 │   ├── nuScenes
-│   │   └── questions.json          -- 1,150 nuScenes v6 questions + GT
-│   ├── Waymo
-│   │   └── questions.json          -- 1,200 Waymo v1 questions + GT (relative image paths)
-│   ├── Mini
-│   │   ├── nuscenes_mini.json      -- tiny schema demo
-│   │   └── waymo_mini.json
-│   └── statistics                  -- coverage / diversity JSON+CSV
-├── $NUSCENES_FORMATTED_SCENES      -- multi-camera grid frames (external)
-│   ├── scene_012
-│   │   ├── 001_*_grid.jpg
+│   │   ├── questions.json
+│   │   └── formatted_metadata/          -- shipped group sidecars
+│   ├── Waymo/questions.json             -- relative CAM_FRONT paths + overlays
+│   ├── Mini/
+│   └── statistics/
+├── $STRIDE_NUSCENES_FORMATTED_SCENES    -- built by prepare_nuscenes_media.py
+│   ├── scene_012/
+│   │   ├── 010_*_grid.jpg
 │   │   ├── group_002_vehicle_annotations.json
-│   │   └── ...
-│   └── ...
-└── $WAYMO_IMAGE_ROOT               -- Waymo val/images (external)
+│   │   └── group_002_selected_vehicle_render.jpg
+│   └── scene_name_to_formatted_dir.json
+└── $STRIDE_WAYMO_IMAGE_ROOT             -- Waymo val/images
     └── <segment_id>/CAM_FRONT/*.jpg
-```
-
-Export the image roots before running vision inference / vision judges:
-
-```bash
-export STRIDE_NUSCENES_FORMATTED_SCENES=/path/to/formatted_scenes
-export STRIDE_WAYMO_IMAGE_ROOT=/path/to/waymo/val/images
 ```
 
 ## Task Hierarchy
@@ -107,7 +129,7 @@ The annotation files contain question-answering pairs as follows (fields may var
 {
     "meta": {
         "benchmark": "STRIDE",
-        "split": "nuscenes_v6",                 -- or waymo_v1
+        "split": "nuscenes",                 -- or waymo
         "n_questions": 1150,
         "...": "..."
     },
@@ -129,7 +151,9 @@ The annotation files contain question-answering pairs as follows (fields may var
             "object_id": <str>,                 -- when a target object exists
             "source_group_file": <str>,         -- nuScenes: relative group annotation path
             "image_paths": [<str>, ...],        -- Waymo: 5 paths relative to WAYMO_IMAGE_ROOT
-            "bbox_xyxy": [<float>, ...]         -- Waymo: red-box on the query frame
+            "bbox_xyxy": [<float>, ...],        -- Waymo: precomputed target box (no SAM at eval)
+            "candidate_trajectories": {...},    -- Waymo TRJ ranking: ego-frame polylines (m)
+            "candidate_trajectories_image": {...} -- Waymo TRJ ranking: preprojected pixels
         },
         ...
     ]
@@ -142,7 +166,7 @@ The annotation files contain question-answering pairs as follows (fields may var
 
 
 
-### ✨ Python API
+### Load the dataset in Python
 
 1. Install dependencies:
   ```bash
@@ -155,7 +179,7 @@ The annotation files contain question-answering pairs as follows (fields may var
 ```python
 from stride.aggregate import load_tasks
 
-payload, tasks = load_tasks("nuscenes_v6")  # or "waymo_v1", "nuscenes_mini", "waymo_mini"
+payload, tasks = load_tasks("nuscenes")  # or "waymo", "nuscenes_mini", "waymo_mini"
 print(payload["meta"])
 print(tasks[0]["id"], tasks[0]["question"])
 ```
@@ -170,7 +194,7 @@ To help users run models against STRIDE, we provide helpers under `evaluation/`:
 2. Build a blank prediction file:
   ```bash
    python evaluation/make_prediction_template.py \
-     --split nuscenes_v6 \
+     --split nuscenes \
      --output runs/my_model_responses.json
   ```
 3. Fill each `model_response`:
@@ -186,7 +210,7 @@ To help users run models against STRIDE, we provide helpers under `evaluation/`:
    export OPENAI_API_KEY=...
    export STRIDE_NUSCENES_FORMATTED_SCENES=/path/to/formatted_scenes
    python evaluation/run_openai.py \
-     --split nuscenes_v6 \
+     --split nuscenes \
      --model gpt-4.1 \
      --limit 10 \
      --output runs/gpt41_responses.json
@@ -200,7 +224,7 @@ Primary ranking key: **MCQ accuracy**. Open-ended and trajectory metrics are rep
 
 As in the overview figure, STRIDE is substantially harder than prior driving VQA suites: even GPT-6-Astra drops from ~85% on previous benchmarks to **45.5%** MCQ on STRIDE (nuScenes).
 
-### nuScenes v6
+### nuScenes
 
 
 | Rank | Model                     | Type                | MCQ ↑     | BLEURT ↑ | Vision judge ↑ | ADE ↓    | mini-FDE ↓ |
@@ -222,7 +246,7 @@ As in the overview figure, STRIDE is substantially harder than prior driving VQA
 
 
 
-### Waymo v1
+### Waymo
 
 
 | Rank | Model                     | Type        | MCQ ↑     | BLEURT ↑ | Vision judge ↑ | ADE ↓     | mini-FDE ↓ |

@@ -28,8 +28,8 @@ REPO_ROOT = SCRIPT_DIR.parent
 ANNOTATOR_PATH = REPO_ROOT / "lieqiliu" / "run_fake_full_vlm_batch.py"
 DOLPHINS_ROOT = Path("/data2/lieqi/expert_models/Dolphins")
 
-DEFAULT_INPUT_JSON = SCRIPT_DIR / "questions_with_answers_waymo_miniset_50_per_id_v1.json"
-DEFAULT_OUTPUT_DIR = SCRIPT_DIR / "miniset_model_benchmark_outputs" / "expert_dolphins_v1"
+DEFAULT_INPUT_JSON = SCRIPT_DIR / "questions_with_answers_waymo_miniset.json"
+DEFAULT_OUTPUT_DIR = SCRIPT_DIR / "miniset_model_benchmark_outputs" / "expert_dolphins"
 DEFAULT_HF_HOME = Path("/data2/lieqi/huggingface")
 MODEL_NAME = "dolphins_gray311"
 
@@ -236,7 +236,7 @@ def main() -> None:
             "model_type": "expert",
             "expert_repo": "https://github.com/SaFo-Lab/Dolphins",
             "expert_checkpoint": "gray311/Dolphins/checkpoint.pt",
-            "dataset_split": "waymo_miniset_50_per_id_v1",
+            "dataset_split": "waymo_miniset",
             "visual_backend": "waymo_cam_front_paths",
             "prompt_template": "USER: <image> is a driving video. {instruction} GPT:<answer>",
             "created_at": datetime.now().isoformat(timespec="seconds"),

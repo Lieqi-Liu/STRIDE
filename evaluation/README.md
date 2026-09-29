@@ -2,14 +2,42 @@
 
 ## Data Preparation
 
-1. First of all, follow the instructions on [Data Preparation](../README.md#data-preparation) to obtain STRIDE annotations and image roots. Set:
-  ```bash
+1. Follow [Data Preparation](../README.md#data-preparation) to download upstream data and build STRIDE media, then **verify**:
+
+   ```bash
+   python scripts/prepare_nuscenes_media.py \
+     --nuscenes-root /path/to/nuscenes/trainval \
+     --output-dir /path/to/formatted_scenes
    export STRIDE_NUSCENES_FORMATTED_SCENES=/path/to/formatted_scenes
+   python scripts/verify_stride_media.py --split nuscenes --require-overlays
+
+   python scripts/prepare_waymo_media.py \
+     --waymo-image-root /path/to/waymo/val/images
    export STRIDE_WAYMO_IMAGE_ROOT=/path/to/waymo/val/images
-  ```
+   python scripts/verify_stride_media.py --split waymo
+   ```
+
 2. Run inference with your LVLM / expert stack and save results as a single JSON file with a top-level `tasks` list. Each task must include identifying fields (`id`, `scene_id`, `group_id`, …) plus `model_response`.
-  You can start from a blank template:
-3. If you are using a subset of STRIDE (e.g., the Mini demo) for a smoke test, point `--split` to `nuscenes_mini` / `waymo_mini`. Reporting numbers on Mini is **not** valid for the leaderboard — use the full `nuscenes_v6` / `waymo_v1` splits.
+
+   You can start from a blank template:
+
+   ```bash
+   python evaluation/make_prediction_template.py \
+     --split nuscenes \
+     --output $ROOT_TO_RESULTS/my_model_responses.json
+   ```
+
+   Or use the bundled OpenAI-compatible runner (loads media via `stride.visual`):
+
+   ```bash
+   python evaluation/run_openai.py \
+     --split waymo --limit 5 \
+     --model gpt-4.1 \
+     --output $ROOT_TO_RESULTS/smoke_responses.json
+   ```
+
+3. If you are using a subset of STRIDE (e.g., the Mini demo) for a smoke test, point `--split` to `nuscenes_mini` / `waymo_mini`. Reporting numbers on Mini is **not** valid for the leaderboard — use the full `nuscenes` / `waymo` splits.
+
 4. Now the data organization will be like:
 
 ```
@@ -19,6 +47,8 @@
 │   ├── Waymo
 │   │   └── questions.json
 │   └── Mini
+├── $STRIDE_NUSCENES_FORMATTED_SCENES   # grids + selected_vehicle overlays
+├── $STRIDE_WAYMO_IMAGE_ROOT            # Waymo val/images
 ├── $ROOT_TO_RESULTS
 │   └── my_model_responses.json
 ```
@@ -38,7 +68,7 @@
 2. Score MCQ + trajectory metrics (CPU-friendly). By default only tasks with a non-empty `model_response` are scored; use `--no-score-answered-only` for official full-split scoring where missing answers count as incorrect.
   ```bash
    python -m stride.cli score \
-     --split nuscenes_v6 \
+     --split nuscenes \
      --predictions $ROOT_TO_RESULTS/my_model_responses.json \
      --metrics mcq,trajectory \
      --no-score-answered-only \
@@ -48,7 +78,7 @@
 3. (Optional) Score open-ended OEQs with BLEURT.
   ```bash
    python -m stride.cli score \
-     --split nuscenes_v6 \
+     --split nuscenes \
      --predictions $ROOT_TO_RESULTS/my_model_responses.json \
      --metrics mcq,trajectory,bleurt \
      --no-score-answered-only \
@@ -58,7 +88,7 @@
 5. Smoke-test with the bundled sample predictions:
   ```bash
    python -m stride.cli score \
-     --split nuscenes_v6 \
+     --split nuscenes \
      --predictions evaluation/examples/sample_predictions_nuscenes.json \
      --metrics mcq,trajectory \
      --output-dir eval_out/sample
@@ -90,7 +120,7 @@ Official ranking sorts primarily by **MCQ accuracy**. There is no fused overall 
 
 ```
 {
-  "meta": {"model": "my-model", "split": "nuscenes_v6"},
+  "meta": {"model": "my-model", "split": "nuscenes"},
   "tasks": [
     {
       "id": "SP-1",

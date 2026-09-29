@@ -1,0 +1,929 @@
+{
+  "scene_id": "scene_284",
+  "group_id": "group_001",
+  "group_size": 5,
+  "frame_indices_1based": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "fifth_frame_sample_token": "5e3847f5fab34f32ac4aa03554d92e2e",
+  "fifth_frame_cam_front_filename": "samples/CAM_FRONT/n008-2018-08-27-11-48-51-0400__CAM_FRONT__1535385234162404.jpg",
+  "vehicle_annotation_count": 35,
+  "vehicle_annotations": [
+    {
+      "token": "18070e71928f410f89677086f4f14733",
+      "instance_token": "ff063500cb594984bbdde81ec5f22ae3",
+      "category_name": "vehicle.trailer",
+      "visibility_token": "1",
+      "translation": [
+        1762.449,
+        1155.957,
+        2.119
+      ],
+      "size": [
+        2.832,
+        12.209,
+        3.947
+      ],
+      "rotation": [
+        0.9999636544500305,
+        0.0,
+        0.0,
+        -0.008525830102682305
+      ],
+      "num_lidar_pts": 20,
+      "num_radar_pts": 2,
+      "prev": "16b7aa3567e24f3b8cea4d407d64d81a",
+      "next": "54ddf8ebbfd646b2aa88e41867b4c2b3"
+    },
+    {
+      "token": "0aef9b71f4674f1ba660ecfff4c905e5",
+      "instance_token": "99f194c7c445449289266f5a5961aae6",
+      "category_name": "vehicle.trailer",
+      "visibility_token": "1",
+      "translation": [
+        1784.049,
+        1175.58,
+        2.07
+      ],
+      "size": [
+        2.424,
+        18.459,
+        3.851
+      ],
+      "rotation": [
+        -0.3828930441294602,
+        0.0,
+        0.0,
+        0.9237926806146903
+      ],
+      "num_lidar_pts": 0,
+      "num_radar_pts": 0,
+      "prev": "84d55ac64e9540488dc0f9ad72e94c81",
+      "next": "778b1f1b06734b6a9ca2a26449ca9db7"
+    },
+    {
+      "token": "e2d5455fd6734c28880179e02ddcf490",
+      "instance_token": "ae6ae2ff193a446b8971251f47ec63b4",
+      "category_name": "vehicle.car",
+      "visibility_token": "4",
+      "translation": [
+        1791.441,
+        1136.097,
+        0.966
+      ],
+      "size": [
+        2.019,
+        4.441,
+        1.786
+      ],
+      "rotation": [
+        -0.3469216960686677,
+        0.0,
+        0.0,
+        0.937894096791764
+      ],
+      "num_lidar_pts": 15,
+      "num_radar_pts": 5,
+      "prev": "58248bbacf5d43259db346bf5bfd99d9",
+      "next": "ec362f2815fc44e5abab8743c7df9175"
+    },
+    {
+      "token": "3d0b05cf795747fcbbabbacfacd8f090",
+      "instance_token": "cf8fccc642d34c24951b7714a77d8088",
+      "category_name": "vehicle.trailer",
+      "visibility_token": "1",
+      "translation": [
+        1780.86,
+        1177.185,
+        2.296
+      ],
+      "size": [
+        2.795,
+        18.326,
+        4.176
+      ],
+      "rotation": [
+        -0.3828930441294602,
+        0.0,
+        0.0,
+        0.9237926806146903
+      ],
+      "num_lidar_pts": 0,
+      "num_radar_pts": 1,
+      "prev": "02f38b7398e34e738563d0aabb710793",
+      "next": "23c3a4ffa85b4e2cac83a83f644da9ba"
+    },
+    {
+      "token": "44d4c3634336435a8799e72063a109c2",
+      "instance_token": "5da06f4ff36549bb8cfcc5748a41684d",
+      "category_name": "vehicle.trailer",
+      "visibility_token": "4",
+      "translation": [
+        1753.137,
+        1110.133,
+        2.312
+      ],
+      "size": [
+        3.146,
+        16.547,
+        3.933
+      ],
+      "rotation": [
+        -0.46202725311568854,
+        0.0,
+        0.0,
+        0.8868657268033147
+      ],
+      "num_lidar_pts": 431,
+      "num_radar_pts": 10,
+      "prev": "f7d0b4db26c4496e8b97dedbee164609",
+      "next": "a30c2edcd0a04effbfc2db0ae57a1c2e"
+    },
+    {
+      "token": "a76c38cd92094fb4bd75a26e11b765d6",
+      "instance_token": "4f8360a645d640cf977fd8b4ef90c3e7",
+      "category_name": "vehicle.trailer",
+      "visibility_token": "4",
+      "translation": [
+        1761.017,
+        1152.615,
+        2.313
+      ],
+      "size": [
+        2.687,
+        12.51,
+        3.937
+      ],
+      "rotation": [
+        0.9998864358634805,
+        0.0,
+        0.0,
+        -0.015070347581456539
+      ],
+      "num_lidar_pts": 149,
+      "num_radar_pts": 10,
+      "prev": "3270e8317e9f4ea68ae3bb2a3169a8e3",
+      "next": "d9f62467310443fba5a1672773f536d7"
+    },
+    {
+      "token": "c757fc19be7d4050a3877a5d71b11b4f",
+      "instance_token": "1d33543ae6b24f5cae3ea76b2479e964",
+      "category_name": "vehicle.trailer",
+      "visibility_token": "4",
+      "translation": [
+        1749.359,
+        1095.293,
+        1.889
+      ],
+      "size": [
+        2.721,
+        12.736,
+        4.524
+      ],
+      "rotation": [
+        -0.43495952362442764,
+        0.0,
+        0.0,
+        0.900450005724033
+      ],
+      "num_lidar_pts": 92,
+      "num_radar_pts": 11,
+      "prev": "84a8fe6c50ff44d3bb3c1051f130d6e6",
+      "next": "3e4e5b8b423141d2b5014960e2c02669"
+    },
+    {
+      "token": "5c1a2208180e403c93155f93ef545f77",
+      "instance_token": "a4ffb6a1b1bb4398b6634b61611aeeb8",
+      "category_name": "vehicle.car",
+      "visibility_token": "3",
+      "translation": [
+        1822.879,
+        1132.836,
+        0.877
+      ],
+      "size": [
+        1.798,
+        4.597,
+        1.665
+      ],
+      "rotation": [
+        0.9472746098170768,
+        0.0,
+        0.0,
+        0.3204228668430281
+      ],
+      "num_lidar_pts": 2,
+      "num_radar_pts": 1,
+      "prev": "38db8fb5ca494933a82aac5e2e12c577",
+      "next": "862a495b675343f3b32014c9a1f12b75"
+    },
+    {
+      "token": "9b0d91598f8c41c1b19c771e6c3b173b",
+      "instance_token": "3e71d461929e4d55ae8ae29416d9ece9",
+      "category_name": "vehicle.trailer",
+      "visibility_token": "4",
+      "translation": [
+        1746.044,
+        1131.651,
+        0.928
+      ],
+      "size": [
+        2.245,
+        11.218,
+        1.753
+      ],
+      "rotation": [
+        0.9999584190584349,
+        0.0,
+        0.0,
+        0.00911921894438701
+      ],
+      "num_lidar_pts": 9,
+      "num_radar_pts": 3,
+      "prev": "4b535a9f85e14bd79b6bfa6da524add4",
+      "next": "c7db7722e2594fb8884fd768c0e89502"
+    },
+    {
+      "token": "e3c4d84b041d4304a5f8d9404740c5a0",
+      "instance_token": "f96a2da41ddb4cf79c83eb783a3f3cdd",
+      "category_name": "vehicle.car",
+      "visibility_token": "4",
+      "translation": [
+        1800.235,
+        1105.83,
+        0.637
+      ],
+      "size": [
+        1.861,
+        4.688,
+        1.718
+      ],
+      "rotation": [
+        0.9528893099190363,
+        0.0,
+        0.0,
+        -0.3033182537237459
+      ],
+      "num_lidar_pts": 0,
+      "num_radar_pts": 0,
+      "prev": "12e1c42de54b49bcbdf07c7a653579c2",
+      "next": "e6715174e3cf4d159797fb9c0f15a6c0"
+    },
+    {
+      "token": "e0fd200426e04987828f94faf68843b7",
+      "instance_token": "a2a5a0247b4a48ac805208a09c4bf67e",
+      "category_name": "vehicle.trailer",
+      "visibility_token": "4",
+      "translation": [
+        1749.366,
+        1138.43,
+        2.496
+      ],
+      "size": [
+        3.119,
+        12.681,
+        4.103
+      ],
+      "rotation": [
+        0.9999584190584349,
+        0.0,
+        0.0,
+        0.00911921894438701
+      ],
+      "num_lidar_pts": 123,
+      "num_radar_pts": 6,
+      "prev": "8e166690fcda48ee84e0f30b4fcd1691",
+      "next": "e2ea773880c34e118d4752209baccb98"
+    },
+    {
+      "token": "b207e4acf21f4b91843c4353efebe9bf",
+      "instance_token": "3ea60cd9db3840678da4a633c5c1e918",
+      "category_name": "vehicle.truck",
+      "visibility_token": "1",
+      "translation": [
+        1834.211,
+        1103.785,
+        1.926
+      ],
+      "size": [
+        3.285,
+        7.081,
+        4.133
+      ],
+      "rotation": [
+        0.9577547605316257,
+        0.0,
+        0.0,
+        -0.2875861934777267
+      ],
+      "num_lidar_pts": 0,
+      "num_radar_pts": 0,
+      "prev": "d5feaeceef6448b6b846f9fd4f8a445d",
+      "next": "c2a11c219daa4480a9139e15116a0129"
+    },
+    {
+      "token": "f5570847b6d648bc917a87e40628ff2a",
+      "instance_token": "4fbd35096372450db89272a22f1b3b79",
+      "category_name": "vehicle.truck",
+      "visibility_token": "4",
+      "translation": [
+        1718.164,
+        1046.265,
+        1.942
+      ],
+      "size": [
+        2.573,
+        6.899,
+        3.865
+      ],
+      "rotation": [
+        0.8665049702468364,
+        0.0,
+        0.0,
+        0.4991684450539009
+      ],
+      "num_lidar_pts": 4,
+      "num_radar_pts": 2,
+      "prev": "b64ed20e36f442e8875f5aebdeb19b8f",
+      "next": "6dabc6ddcda8467f8d6dcf523890d4e4"
+    },
+    {
+      "token": "2a664a193f0f480089c16b337ad898b0",
+      "instance_token": "bdfeec855d7f478d8d927e225ca8ce88",
+      "category_name": "vehicle.truck",
+      "visibility_token": "2",
+      "translation": [
+        1841.041,
+        1106.165,
+        1.812
+      ],
+      "size": [
+        2.738,
+        10.917,
+        3.234
+      ],
+      "rotation": [
+        0.2454342838740051,
+        0.0,
+        0.0,
+        0.9694132309285108
+      ],
+      "num_lidar_pts": 6,
+      "num_radar_pts": 0,
+      "prev": "a223ce1606bb4c9692d86f5a13872e2d",
+      "next": "09ef28180abf404db35317f48a4fedfe"
+    },
+    {
+      "token": "c361d90241694eb6b5d203b9aebb8384",
+      "instance_token": "bab199bfcf3c46c798105c5675e7a321",
+      "category_name": "vehicle.trailer",
+      "visibility_token": "1",
+      "translation": [
+        1790.748,
+        1170.057,
+        2.175
+      ],
+      "size": [
+        2.831,
+        18.357,
+        4.06
+      ],
+      "rotation": [
+        -0.38327996790032426,
+        0.0,
+        0.0,
+        0.92363221371189
+      ],
+      "num_lidar_pts": 0,
+      "num_radar_pts": 2,
+      "prev": "89ac531a5a0a43bfaaf073a1d223047e",
+      "next": "937d036fddeb4adfb7904bdc93c56c30"
+    },
+    {
+      "token": "9d644a3d500c4106890d2121fdfae140",
+      "instance_token": "e6d03250b3644164b2960726fd21ed14",
+      "category_name": "vehicle.truck",
+      "visibility_token": "3",
+      "translation": [
+        1715.678,
+        1049.026,
+        1.989
+      ],
+      "size": [
+        2.917,
+        6.82,
+        3.892
+      ],
+      "rotation": [
+        0.8667623798222113,
+        0.0,
+        0.0,
+        0.4987213419585498
+      ],
+      "num_lidar_pts": 4,
+      "num_radar_pts": 0,
+      "prev": "95493530ec3442c099acc70bb0bc0c20",
+      "next": "5b1d5746ff864543ad13431f455c6bc9"
+    },
+    {
+      "token": "5b8e672f7d304c6299d282343619f180",
+      "instance_token": "3edcf2502d2b4823a9821099ad0fcc73",
+      "category_name": "vehicle.trailer",
+      "visibility_token": "4",
+      "translation": [
+        1742.794,
+        1082.019,
+        0.855
+      ],
+      "size": [
+        2.548,
+        12.906,
+        1.409
+      ],
+      "rotation": [
+        -0.4483988164966315,
+        0.0,
+        0.0,
+        0.8938335982521692
+      ],
+      "num_lidar_pts": 0,
+      "num_radar_pts": 3,
+      "prev": "0d154ccf95424806ab7857009fc5e7bf",
+      "next": "19e09d97713741909fe6c57f36ccc2b3"
+    },
+    {
+      "token": "612d34bd47784369b7d70a087f9a74cb",
+      "instance_token": "3a947c47aaa24c9bb1d7637493a1059a",
+      "category_name": "vehicle.car",
+      "visibility_token": "3",
+      "translation": [
+        1727.818,
+        1136.609,
+        1.155
+      ],
+      "size": [
+        1.886,
+        4.966,
+        1.884
+      ],
+      "rotation": [
+        -0.4459556937471614,
+        0.0,
+        0.0,
+        0.8950550369750946
+      ],
+      "num_lidar_pts": 1,
+      "num_radar_pts": 0,
+      "prev": "efa0422fb22d467184329266e5c21f9c",
+      "next": "692386057f14455fa6d2d5bffaa772f0"
+    },
+    {
+      "token": "ce3392bf41104f21a364ef78eceecca5",
+      "instance_token": "9c83bab2d5434b93a25e35fd70c4990e",
+      "category_name": "vehicle.trailer",
+      "visibility_token": "1",
+      "translation": [
+        1793.002,
+        1168.022,
+        2.176
+      ],
+      "size": [
+        2.633,
+        18.297,
+        4.062
+      ],
+      "rotation": [
+        -0.38327996790032426,
+        0.0,
+        0.0,
+        0.92363221371189
+      ],
+      "num_lidar_pts": 0,
+      "num_radar_pts": 6,
+      "prev": "02a311c4cade4fe2aa262905a00c99fd",
+      "next": "a0aa0992efb045bd995a994f69d086e4"
+    },
+    {
+      "token": "35ba4a8aeb3343c9a01500c12cb73738",
+      "instance_token": "557b4f1f107e4ffbaf0d1e98153f97fa",
+      "category_name": "vehicle.car",
+      "visibility_token": "4",
+      "translation": [
+        1791.097,
+        1098.157,
+        0.826
+      ],
+      "size": [
+        1.794,
+        4.326,
+        1.691
+      ],
+      "rotation": [
+        0.9506484917266442,
+        0.0,
+        0.0,
+        -0.31026995532577173
+      ],
+      "num_lidar_pts": 10,
+      "num_radar_pts": 1,
+      "prev": "24f4b00aaaef4916a6575dda5c679426",
+      "next": "25a02b850f03409085f3162d229e9f40"
+    },
+    {
+      "token": "ccbc9d91a7524647abee9f8bbdfea59d",
+      "instance_token": "b1491029e5534a1a9a443cbcbd8fbf49",
+      "category_name": "vehicle.trailer",
+      "visibility_token": "4",
+      "translation": [
+        1777.065,
+        1129.299,
+        2.271
+      ],
+      "size": [
+        2.903,
+        12.529,
+        4.265
+      ],
+      "rotation": [
+        0.9084425279125817,
+        0.0,
+        0.0,
+        0.41800977677537426
+      ],
+      "num_lidar_pts": 1635,
+      "num_radar_pts": 20,
+      "prev": "69e6874760ff4b2ebba503a47c8ed95a",
+      "next": "46f7d50021fe4803b00fc8c4c20a9881"
+    },
+    {
+      "token": "02c57a8ead1340ea9ffc69276559acaf",
+      "instance_token": "02c04a9623f645bbae9556d0f50d8008",
+      "category_name": "vehicle.car",
+      "visibility_token": "3",
+      "translation": [
+        1821.501,
+        1135.063,
+        0.863
+      ],
+      "size": [
+        1.762,
+        4.532,
+        1.564
+      ],
+      "rotation": [
+        0.9505026169650892,
+        0.0,
+        0.0,
+        0.3107165511241988
+      ],
+      "num_lidar_pts": 1,
+      "num_radar_pts": 2,
+      "prev": "05ae762f7be5424299d0269ac90ba351",
+      "next": "f0b607cbc16e4394b8bd517b44a31f6b"
+    },
+    {
+      "token": "a5c6cc57e9ba458784ba8107d1ae9e06",
+      "instance_token": "7d1b91a798ae4cd5ae9d866065bd326c",
+      "category_name": "vehicle.construction",
+      "visibility_token": "4",
+      "translation": [
+        1750.728,
+        1051.043,
+        1.379
+      ],
+      "size": [
+        2.93,
+        7.002,
+        3.238
+      ],
+      "rotation": [
+        -0.4671738368487355,
+        0.0,
+        0.0,
+        0.8841654857344473
+      ],
+      "num_lidar_pts": 1,
+      "num_radar_pts": 2,
+      "prev": "557ec12a2676421d98285a425f8f5b3d",
+      "next": "d2e32177c5df4a9c9498e15f2c1100f2"
+    },
+    {
+      "token": "eaac77cec0ce413f84369e494a07aef8",
+      "instance_token": "7d5fa942fa5a481fae1b7b44e0ded45f",
+      "category_name": "vehicle.trailer",
+      "visibility_token": "1",
+      "translation": [
+        1794.51,
+        1165.029,
+        2.352
+      ],
+      "size": [
+        2.963,
+        18.356,
+        4.415
+      ],
+      "rotation": [
+        -0.3783659094374218,
+        0.0,
+        0.0,
+        0.9256561124821641
+      ],
+      "num_lidar_pts": 0,
+      "num_radar_pts": 7,
+      "prev": "0776cd3135a04c2383c457b836289c55",
+      "next": "1e846b76b59b443d90b2cad0db20e73d"
+    },
+    {
+      "token": "352459400579492c81ebbdb33e793440",
+      "instance_token": "a7528f87b368460cb1ce51ef6837c567",
+      "category_name": "vehicle.truck",
+      "visibility_token": "4",
+      "translation": [
+        1806.985,
+        1095.261,
+        1.364
+      ],
+      "size": [
+        3.142,
+        7.666,
+        2.912
+      ],
+      "rotation": [
+        0.3081952253073319,
+        0.0,
+        0.0,
+        0.951323132851169
+      ],
+      "num_lidar_pts": 11,
+      "num_radar_pts": 9,
+      "prev": "976ea47e015b4374b3d173175078bc23",
+      "next": "9cbab564a5164464be6cf2b183764168"
+    },
+    {
+      "token": "37c73087596248c7b4029696b31fd3cb",
+      "instance_token": "2a1b325d3da84d30926ac33325e40a58",
+      "category_name": "vehicle.trailer",
+      "visibility_token": "1",
+      "translation": [
+        1751.373,
+        1141.924,
+        2.108
+      ],
+      "size": [
+        2.668,
+        14.019,
+        3.926
+      ],
+      "rotation": [
+        0.999955340029815,
+        0.0,
+        0.0,
+        0.009450817205778669
+      ],
+      "num_lidar_pts": 8,
+      "num_radar_pts": 4,
+      "prev": "94573eb6a6ea4fcb99fefdac0001dfbe",
+      "next": "5478faa5cf6944c4a301ac3c9752a17a"
+    },
+    {
+      "token": "c91579b89a53459c8c632f3cab57f3be",
+      "instance_token": "bd8a237014124d16b0337b87f33bd358",
+      "category_name": "vehicle.trailer",
+      "visibility_token": "1",
+      "translation": [
+        1804.94,
+        1109.256,
+        0.795
+      ],
+      "size": [
+        1.972,
+        6.049,
+        2.0
+      ],
+      "rotation": [
+        0.9364825717253197,
+        0.0,
+        0.0,
+        0.3507141184137467
+      ],
+      "num_lidar_pts": 0,
+      "num_radar_pts": 0,
+      "prev": "f430416b3ede4d778d69611ee33c801b",
+      "next": "56e8cbe3d6d04cfb8058018c6199e6fc"
+    },
+    {
+      "token": "47dddfdb5e844e7d98b47915ff708c69",
+      "instance_token": "fff603df6b41452bacda2d998dcd4e89",
+      "category_name": "vehicle.trailer",
+      "visibility_token": "2",
+      "translation": [
+        1740.397,
+        1083.785,
+        2.152
+      ],
+      "size": [
+        2.715,
+        12.62,
+        4.117
+      ],
+      "rotation": [
+        -0.4551098128043208,
+        0.0,
+        0.0,
+        0.8904353195427595
+      ],
+      "num_lidar_pts": 17,
+      "num_radar_pts": 1,
+      "prev": "14b7f8127b9742c99be05d90edf83806",
+      "next": "33576d60e49d46168179b9bba8fd6de2"
+    },
+    {
+      "token": "8326620153c74c98adfcde10219cdb39",
+      "instance_token": "1f3fa063fd454c0aa6f37b385cccc5bb",
+      "category_name": "vehicle.truck",
+      "visibility_token": "4",
+      "translation": [
+        1722.194,
+        1045.047,
+        1.842
+      ],
+      "size": [
+        2.591,
+        6.821,
+        3.908
+      ],
+      "rotation": [
+        0.8539915180982476,
+        0.0,
+        0.0,
+        0.5202869275853953
+      ],
+      "num_lidar_pts": 1,
+      "num_radar_pts": 1,
+      "prev": "",
+      "next": "90c8c606d59e427a8072b48f97c54c63"
+    },
+    {
+      "token": "275f248e2d384726b38a30e3e6314571",
+      "instance_token": "39a766506c4740c9b8f2a35c60ed74b8",
+      "category_name": "vehicle.truck",
+      "visibility_token": "4",
+      "translation": [
+        1802.516,
+        1090.004,
+        1.938
+      ],
+      "size": [
+        3.268,
+        9.959,
+        3.684
+      ],
+      "rotation": [
+        0.31065154507976905,
+        0.0,
+        0.0,
+        0.9505238647922272
+      ],
+      "num_lidar_pts": 38,
+      "num_radar_pts": 8,
+      "prev": "dab70d8367c24c9f8ee628ef683c2e81",
+      "next": "3b42d95e0f2445e0b56ac93046677a39"
+    },
+    {
+      "token": "67084bc8991142e69d9547d9b845835e",
+      "instance_token": "6fbf93207b5144d49a67f0769b54faf5",
+      "category_name": "vehicle.trailer",
+      "visibility_token": "1",
+      "translation": [
+        1788.374,
+        1172.457,
+        2.169
+      ],
+      "size": [
+        2.707,
+        18.429,
+        4.047
+      ],
+      "rotation": [
+        -0.3828930441294602,
+        0.0,
+        0.0,
+        0.9237926806146903
+      ],
+      "num_lidar_pts": 0,
+      "num_radar_pts": 1,
+      "prev": "9f1ebb01beba4a87a9e32792b2e759b0",
+      "next": "4a427df5e71246eb8efff770ee794de4"
+    },
+    {
+      "token": "191e412f44b04b3bbd4390187e92ab79",
+      "instance_token": "ddff0286ce3c474fb6c91a95e8438e1c",
+      "category_name": "vehicle.trailer",
+      "visibility_token": "2",
+      "translation": [
+        1796.527,
+        1162.323,
+        2.371
+      ],
+      "size": [
+        3.018,
+        18.241,
+        4.453
+      ],
+      "rotation": [
+        -0.3864292733478307,
+        0.0,
+        0.0,
+        0.9223190427936895
+      ],
+      "num_lidar_pts": 12,
+      "num_radar_pts": 10,
+      "prev": "024f7a8b7a8c4a4bae08f426e50fbc17",
+      "next": "87908466f12548e0937100a9f6c5f19b"
+    },
+    {
+      "token": "6316d80b2adc440ca25060f423ac1a79",
+      "instance_token": "2e021fe20cd045a189f26ef79b343075",
+      "category_name": "vehicle.truck",
+      "visibility_token": "4",
+      "translation": [
+        1727.712,
+        1045.725,
+        2.388
+      ],
+      "size": [
+        2.438,
+        7.25,
+        4.625
+      ],
+      "rotation": [
+        0.8758775153708688,
+        0.0,
+        0.0,
+        0.48253349942543206
+      ],
+      "num_lidar_pts": 0,
+      "num_radar_pts": 2,
+      "prev": "551f99f345dc4a308f378de8f0c8c623",
+      "next": "8d48a60139b74427a09fa3357cddf753"
+    },
+    {
+      "token": "45fe7b53662d4205b576becae247d1b8",
+      "instance_token": "1dda859ab9de4243afb9409f882e0032",
+      "category_name": "vehicle.trailer",
+      "visibility_token": "1",
+      "translation": [
+        1786.025,
+        1173.925,
+        2.129
+      ],
+      "size": [
+        2.457,
+        18.405,
+        4.114
+      ],
+      "rotation": [
+        -0.3828930441294602,
+        0.0,
+        0.0,
+        0.9237926806146903
+      ],
+      "num_lidar_pts": 0,
+      "num_radar_pts": 2,
+      "prev": "49fd2efab6ec4b878f5b9824268dde9e",
+      "next": "05685e0553c1412482ed44e1080bad42"
+    },
+    {
+      "token": "c933655c753f49a8a3970fac43160d86",
+      "instance_token": "860fdf60c3394550aac6d954b550bf30",
+      "category_name": "vehicle.truck",
+      "visibility_token": "1",
+      "translation": [
+        1704.731,
+        1105.394,
+        2.366
+      ],
+      "size": [
+        3.462,
+        9.7,
+        4.172
+      ],
+      "rotation": [
+        -0.4335104965601039,
+        0.0,
+        0.0,
+        0.9011485168229553
+      ],
+      "num_lidar_pts": 0,
+      "num_radar_pts": 0,
+      "prev": "416b9ca9ce534824b69d269b8e955a1b",
+      "next": "7089a08cda914da4bda2fb5ae783e816"
+    }
+  ],
+  "selected_vehicle_annotation_token": "ccbc9d91a7524647abee9f8bbdfea59d",
+  "selected_vehicle_render_path": "scene_284/group_001_selected_vehicle_render.jpg"
+}

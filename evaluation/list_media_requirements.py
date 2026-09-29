@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """List media files referenced by a STRIDE split (for packaging / download checks).
 
-    python evaluation/list_media_requirements.py --split waymo_v1 --output /tmp/waymo_media.txt
-    python evaluation/list_media_requirements.py --split nuscenes_v6 --output /tmp/nusc_groups.txt
+    python evaluation/list_media_requirements.py --split waymo --output /tmp/waymo_media.txt
+    python evaluation/list_media_requirements.py --split nuscenes --output /tmp/nusc_groups.txt
 """
 from __future__ import annotations
 
