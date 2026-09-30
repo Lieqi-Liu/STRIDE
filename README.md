@@ -1,5 +1,5 @@
 # STRIDE
-[![arXiv](https://img.shields.io/badge/arXiv-coming_soon-b31b1b.svg?style=plastic)](https://arxiv.org/) [![Web](https://img.shields.io/badge/Web-STRIDE-blue.svg?style=plastic)](https://lieqi-liu.github.io/STRIDE/) [![HF](https://img.shields.io/badge/%F0%9F%A4%97-HuggingFace-yellow?style=plastic)](https://huggingface.co/)
+[![arXiv](https://img.shields.io/badge/arXiv-coming_soon-b31b1b.svg?style=plastic)](https://arxiv.org/) [![Web](https://img.shields.io/badge/Web-STRIDE-blue.svg?style=plastic)](https://lieqi-liu.github.io/STRIDE/) [![HF](https://img.shields.io/badge/%F0%9F%A4%97-HuggingFace-yellow?style=plastic)](https://huggingface.co/datasets/uclanlp/STRIDE)
 
 This repository contains the implementation of the paper:
 
@@ -18,10 +18,11 @@ This repository contains the implementation of the paper:
 - **2026.09**: Initial release of STRIDE annotations (nuScenes + Waymo), evaluation toolkit, and baseline leaderboard.
 - **2026.09**: Mini demonstration subsets released under `STRIDE/Mini`.
 - **2026.09**: Project website at [`docs/`](./docs) (GitHub Pages).
+- **2026.09**: Annotations on Hugging Face at [`uclanlp/STRIDE`](https://huggingface.co/datasets/uclanlp/STRIDE).
 
 ## Data Preparation
 
-STRIDE ships **question annotations** (and nuScenes group sidecars) in this repository. Raw sensor data must be downloaded from upstream datasets; this repo provides the scripts to turn that data into the media layout STRIDE expects.
+STRIDE ships **question annotations** (and nuScenes group sidecars) in this repository and on Hugging Face ([`uclanlp/STRIDE`](https://huggingface.co/datasets/uclanlp/STRIDE)). Raw sensor data must be downloaded from upstream datasets; this repo provides the scripts to turn that data into the media layout STRIDE expects.
 
 ### 1. Download upstream data
 
@@ -65,7 +66,7 @@ Target-object boxes were computed offline (SAM during construction) and are stor
 
 Note that:
 
-1. **Questions + nuScenes group metadata** ship in this repo (including Waymo `bbox_xyxy` / trajectory overlays).
+1. **Questions + nuScenes group metadata** ship in this repo and on [Hugging Face](https://huggingface.co/datasets/uclanlp/STRIDE) (including Waymo `bbox_xyxy` / trajectory overlays).
 2. **Raw images are not vendored** (upstream licenses / size). Grids + nuScenes query overlays are built locally with `prepare_nuscenes_media.py`.
 3. **Always run `verify_stride_media.py`** before inference so missing frames fail fast.
 4. **STRIDE Mini** is for schema demonstration only, not for reporting scores.
