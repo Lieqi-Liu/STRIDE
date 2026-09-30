@@ -1,10 +1,10 @@
 # STRIDE
-[![arXiv](https://img.shields.io/badge/arXiv-coming_soon-b31b1b.svg?style=plastic)](https://arxiv.org/) [![Web](https://img.shields.io/badge/Web-STRIDE-blue.svg?style=plastic)](https://lieqi-liu.github.io/STRIDE/) [![HF](https://img.shields.io/badge/%F0%9F%A4%97-HuggingFace-yellow?style=plastic)](https://huggingface.co/datasets/uclanlp/STRIDE)
+[![arXiv](https://img.shields.io/badge/arXiv-coming_soon-b31b1b.svg?style=plastic)](https://arxiv.org/) [![Web](https://img.shields.io/badge/Web-STRIDE-blue.svg?style=plastic)](https://pluslabnlp.github.io/STRIDE/) [![HF](https://img.shields.io/badge/%F0%9F%A4%97-HuggingFace-yellow?style=plastic)](https://huggingface.co/datasets/uclanlp/STRIDE)
 
 This repository contains the implementation of the paper:
 
 > **STRIDE: Evaluating Spatiotemporal Reasoning in Driving Edge Cases** <br>
-> [Lieqi Liu](https://github.com/Lieqi-Liu)<sup>1\*</sup>, Rui Gao<sup>1\*</sup>, Jia-Chen Gu<sup>1</sup>, Wenbo Hu<sup>1</sup>, Zhaobin Mo<sup>2</sup>, Ahmadreza Moradipari<sup>2</sup>, Nejib Ammar<sup>2</sup>, Wei Wang<sup>1</sup>, [Nanyun Peng](https://vnpeng.net/)<sup>1</sup> <br>
+> [Lieqi Liu](https://github.com/Lieqi-Liu)<sup>1\*</sup>, Rui Gao<sup>1\*</sup>, Jia-Chen Gu<sup>1</sup>, Wenbo Hu<sup>1</sup>, Zhaobin Mo<sup>2</sup>, Ahmadreza Moradipari<sup>2</sup>, Nejib Ammar<sup>2</sup>, Wei Wang<sup>1</sup>, [Nanyun Peng]<sup>1</sup> <br>
 > <sup>1</sup>University of California, Los Angeles &nbsp;&nbsp; <sup>2</sup>Toyota InfoTech Labs <br>
 > <sup>\*</sup>Equal contribution
 
@@ -17,8 +17,6 @@ This repository contains the implementation of the paper:
 
 - **2026.09**: Initial release of STRIDE annotations (nuScenes + Waymo), evaluation toolkit, and baseline leaderboard.
 - **2026.09**: Mini demonstration subsets released under `STRIDE/Mini`.
-- **2026.09**: Project website at [`docs/`](./docs) (GitHub Pages).
-- **2026.09**: Annotations on Hugging Face at [`uclanlp/STRIDE`](https://huggingface.co/datasets/uclanlp/STRIDE).
 
 ## Data Preparation
 
@@ -281,7 +279,7 @@ Check [STRIDE Evaluation](./evaluation) for more details.
   author       = {Liu, Lieqi and Gao, Rui and Gu, Jia-Chen and Hu, Wenbo and Mo, Zhaobin and Moradipari, Ahmadreza and Ammar, Nejib and Wang, Wei and Peng, Nanyun},
   year         = {2026},
   note         = {Preprint},
-  howpublished = {\url{https://github.com/Lieqi-Liu/STRIDE}}
+  howpublished = {\url{https://github.com/PlusLabNLP/STRIDE}}
 }
 ```
 
